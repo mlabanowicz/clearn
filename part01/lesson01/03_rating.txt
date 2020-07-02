@@ -1,0 +1,149 @@
+Program dziala, generalnie logika jest OK.
+
+Ale jest pare spraw, ktore trzeba wyprostowac na poczatek.
+
+1) Program w jezyku C powinien byc tak napisany,
+   aby byl pozbawiony bledow - albo jezeli juz je zawiera, zebysmy o nich wiedzieli.
+
+   a) Bledy skladniowe, ktore uniemozliwiaja kompilacje
+      Ten program nie ma takich bledow, kompilacja przebiega poprawnie:
+      $ gcc lesson01.c -o lesson01.exe
+      $
+
+   b) Bledy niezgodnosci z jezykiem C
+      Generalnie, jezeli cos piszemy w jezyku C to powinnismy sie
+      trzymac konwencji 'Ansi-ISO C 89' - czyli tzw. czysty jezyk C.
+      Program napisany zgodnie z tym standardem mozna skompilowac zawsze.
+      Jakiekolwiek odstepstwa powoduja, ze program niby troszke latwiejszy
+      w napisaniu, ale juz ma ta wade, ze nie wszedzie takiego programu uzyjemy.
+
+      Ten program nie jest napisany zgodnie z tym standardem:
+      $ gcc -W -Wall -ansi -pedantic -Werror -Wextra lesson01.c -o lesson01.exe
+      lesson01.c: In function 'main':
+      lesson01.c:6:9: error: C++ style comments are not allowed in ISO C90
+       float x;//aby wynik byl dokladnijeszy x bedzie liczba zmmienna przecinkowa
+                ^
+                lesson01.c:6:9: error: (this will be reported only once per input file)
+      $
+
+      Jedyny tutaj problem to komentarze, w jezyku C komentarze powinny byc
+      /* komentarz */
+
+      Najlepsza ksiazka do jezyka C:
+        o) napisana przez autorow jezyka C
+        o) Kerninghama i Ritchie
+        o) tutaj PDF, ale sugerowalbym ja sobie zakupic:
+           http://trash.ttrsite.net/jezykansic.pdf
+
+   c) Deklaracja funkcji 'main' w jezyku C powinna byc jedna z:
+          int main(void)
+          int main(int argc, char * argv [])
+      W lesson01.c jest:
+          int main()
+        w jezyku C taki zapis oznacza, ze funkcja main przyjmuje niezdefniowana ilosc argumentow,
+        co nie jest prawda.
+        w jezyku C++ taki zapis jest poprawny, bo tam taki zapis jest rownoznaczny z:
+          int main(void)
+        Program sie oczywiscie kompiluje i dziala,
+        bo skladniowo jest OK.
+
+   d) Bledy uzycia liczb zmiennoprzecinkowych
+      Liczby zmiennoprzecinkowe nie zawsze zawieraja precyzyjny wynik,
+      czesto jest to przyblizenie.
+      tutaj jest maly artykul:
+        https://eduinf.waw.pl/inf/utils/001_2008/0119.php
+     cytat:
+      "Problem rozwiazujemy stosujac otoczenia.
+       Wyobrazmy sobie, iz chcemy sprawdzic, czy pewna wartosc
+       zmiennoprzecinkowa WFP jest rowna wartosci dokladnej WD.
+       Zamiast porownywac te dwie wartosci ze soba, sprawdzimy,
+       czy na osi liczbowej leza wystarczajaco blisko siebie.
+       Pojecie "wystarczajaco blisko" okresla dokladnosc porownania."
+
+      W programie lesson01.c jest uzycie liczby
+      x jako float (zmiennoprzecinkowa)
+      i jest ona porownywana do '1'.
+      Jak widac program dziala poprawnie, ale moze sie zdarzyc,
+      ze w pewnych kompilatorach '1' w typie float
+      nie bedzie zapisana precyzyjnie.
+      To jest tzw grozny rodzaj bledu: "defined behavior".
+
+      Czyli w zaleznosci od kompilatora,
+      program poprawny a mozemy miec rozne wyniki wprowadzajac
+      dokladnie te same dane wejsciowe.
+
+   e) Reakcja na bledy uzytkownika programu.
+      Ten program moze sie zepsuc, gdy na przyklad:
+      zamiast liczby podamy przykladowo ".", wtedy program
+      pokazuje rozne wyniki, przyklad:
+      $ ./lesson01.exe
+      .
+      -0.000000
+      $ ./lesson01.exe
+      .
+      0.000000
+      $ ./lesson01.exe
+      .
+      -100.000000
+      $ ./lesson01.exe
+      .
+      -37.931606
+
+      Oczywiscie jest to efekt uzycia nizainicjalizowanej zmeinnej x.
+      Bo funkcja scanf nic do niej nie wpisala.
+      Generalnie, dobrym pomyslem jest inicjalizowanie
+      zmiennych na jakies podstawowe/bezpieczne wartosci:
+      {
+        float x = 1.0;
+      }
+      Czasami to moze byc nadmiarowe, ale wtedy, jezeli program
+      bedzie zawieral bledy, to przynajmniej bedzie
+      sie zachowywal zawsze tak samo.
+
+      Zeby sie pozbyc tego problemu, wystarczy zareagowac na
+      wynik dzialania funkji 'scanf'
+      {
+        int scanf_result = scanf(.....);
+        if (scanf_result == EOF) {
+          /* brak danych, user juz nic nie wprowadzi */
+        } else if (scanf_result == 0) {
+          /* uzytkownik nie wprowadzil zadnej wartosci */
+        }
+      }
+
+  f) Kazdy program, obojetnie w jakim jezyku zostal napisany,
+     ZAWSZE zwraca do systemu informacje, czy jego wykonanie
+     sie udalo.
+     W jezyku C ta wartosc to jest wynik dzialania funkcji "main",
+     czyli:
+     {
+       return <status wykonania>;
+     }
+     W przypadku, gdy wykonanie sie udalo bez problemow,
+     zwraca:
+       return EXIT_SUCCESS;
+     gdy bylo cos nie tak, powinien zwrocic:
+       return EXIT_FAILURE;
+     W jezyku C++ mozna zwrocic 0:
+       return 0;
+     ale my nie piszemy w jezyku C++
+
+  g) Informacje o bledach powinny byc wypisywane do strumienia 'stderr'.
+
+     printf("Hello\n");
+       /* to zostanie wyslane jako wynik programu */
+       /* czyli tak jak sie spodziewa koncowy user. */
+
+     fprintf(stdout, "Hello\n");
+       /* to jest dokladnie to samo co wyzej */
+
+     fprintf(stderr, "Tekst\n");
+       /* ten tekst zostanie wyslany do systemu jako informacja z bledem */
+
+Prosze sie nie przejmowac tym, ze tyle tu napisalem.
+
+Generlanie program z poprawkami jest tutaj (03_rating.txt.c):
+  https://ideone.com/fork/wblb9h
+Dla ciekawosci powiem, ze nawet
+ten program po poprawkach zawiera blad,
+ale on jest nieistotny.

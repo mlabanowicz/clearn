@@ -1,0 +1,29 @@
+Niech program wczyta N liczb (0 <= N <= 1000).
+Obliczy srednia arytmetyczna tych liczb.
+I niech wypisze wszystkie wprowadzone liczby, w kolejnosci jak byly wprowadzane, ale tylko te, ktore sa mniejsze rÃ³wne tej sredniej.
+
+Wejscie:
+N
+L1
+...
+LN
+
+Wyjscie:
+LX
+LY
+...
+
+Przyklad:
+
+Wejscie
+5
+2
+5
+1
+4
+3
+
+Wyjscie (srednia z tych wprowadzonych liczb to 3):
+2
+1
+3

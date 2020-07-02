@@ -1,0 +1,73 @@
+Program: lesson03-1.c
+
+$ gcc -W -Wall -ansi -pedantic -Werror -Wextra lesson03-1.c
+lesson03-1.c: In function 'main':
+lesson03-1.c:19:3: error: ISO C90 forbids variable length array 'TAB' [-Werror=vla]
+   int TAB[x];
+   ^~~
+lesson03-1.c:19:3: error: ISO C90 forbids mixed declarations and code [-Werror=declaration-after-statement]
+cc1: all warnings being treated as errors
+
+1) W Ansi C tablice musza miec rozmiar znany podczas kompilacji,
+'x' nie jest znane podczas kompilacji.
+W rozszerzonym standardzie "C99" juz to jest mozliwe,
+ale osobiscie wole takie programy, ktore, jezeli sie da, zeby byly zgodne z "C89",
+czyli to sa takie programy, ktore wszedzie sie skompiluja bez bledow.
+Tak wiec w tym akurat programie bez wahania mozna by uzyc:
+  int TAB[1000];
+Tym bardziej, ze jest tam weryfikacja danych wejsciowych.
+
+2) Deklaracje zmiennych w "C89" moga sie znajdowac tylko na poczatku bloku kodu,
+Blok kodu zaczyna sie klamra '{' i konczy klamra '}':
+{
+  /* Deklaracje zmiennych */
+  int a;
+  /* Instrukcje */
+  a = 67 * 89;
+  /* Tutaj nie mozna juz deklarowac zmiennych w C89 */
+  int b; <--- to jest niezgodne z "C89"
+}
+
+3) Program powinien miec mozliwosc wczytania 1000 liczb.
+Zawsze dobrze sprawdzic wartosci graniczne danego programu.
+Gdy podamy, ze mamy na wejsciu 1000 liczb, zostanie to uznane za blad:
+  if (x >= 1000 || x <= 0)
+Lepiej, jakby to wygladalo tak:
+  if (x > 1000 || x < 0)
+Czyli user moze podac od 0 do 1000 liczb
+
+4) Program uzywa pamieci, do ktorej nie ma dostepu:
+Takie cos nazywa sie "undefined behavior"
+Czasami kompilator jest w stanie to wykryc, ale tylko w bardzo prostych sytuacjach.
+Jest to bardzo groÅºne i trzeba byc mocno wyczulonym na takie bledy,
+bo przewaznie moze sie okazac, ze program dziala przez rok, az tu nagle
+nieoczekiwanie zacznie wykonywac calkiem inne rzeczy.
+Chodzi o tablice.
+W jezyu C deklaracja tablicy jest nastepujaca:
+{
+  int TAB [1000]; /* Mamy tablice 1000 elementowa -> dostepnych jest 1000 int'ow */
+  TAB[0] = 123; /* To jest pierwszy element tablicy, numerejemy je od zera */
+  TAB[1] = 456; /* To jest drugi element tablicy */
+  TAB[999] = 789; /* To jest 1000 element tablicy - ostatni */
+  TAB[1000] = 678; /* W tym miejscu mamy problem, bo zapisalismy 678 poza obszar tablicy -> 'undefined behavior' */
+}
+Nie wolno robic kodu, ktory powoduje 'undefined behavior'.
+W programie lesson03-1.c jest wlasnie dostep poza tablice TAB.
+jezeli jest:
+  int TAB[x];
+to najwiekszy dostepny element to:
+  TAB[x - 1]
+a program uzywa TAB[x], co oznaza, ze uzywa nieswojej pamieci,
+moze byc, ze jakiemus innemu programowi cos nadpisuje.
+Rozwiazaniem jest:
+  int TAB[x + 1]
+albo tak jak to pisalem w 1) zgodnie z C89 ustawic:
+  int TAB[1000 + 1];
+Wtedy ten program juz nie ma tego groznego "undefined behavior".
+
+5) Ten kod sprawdzajacy, czy jeszcze na wejsciu cos jest -> nie jest wymagany,
+ale jest napisany prawidlowo.
+
+Generlanie jak wprowadzamy cos z klawiatury, to zeby powiedziec programowi,
+ze my juz konczymy wprowadzac dane to nalezy wcisnac CTRL+D -> to jest jednoznaczne z przekazaniem,
+ze strumien danych wejsciowych sie zakonczyl i wtedy scanf w programie zwroci EOF.

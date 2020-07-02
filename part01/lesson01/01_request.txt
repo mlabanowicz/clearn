@@ -1,0 +1,34 @@
+Prosze sie nie obawiac, ze program zawiera bledy.
+Kiedy ja zaczynalem programowac pisalem takie koszmarne programy,
+ze az sie sobie dziwie, ze sie teraz tym zajmuje zawodowo.
+
+Na poczatek:
+
+Napisz program w jezyku C, ktory oblicza funkje:
+
+  f(x) = 100 / (x - 1)
+
+czyli danymi wejsciowymi do programu jest jedna liczba x
+a program wypisuje wynik na standardowe wyjscie.
+
+Jezeli sie da i jest wiedza w tym kierunku,
+dobrze by bylo, aby program byl odporny
+na "niedozwolone wartosci x".
+
+Przyklad dzialania programu:
+c/> program.exe
+Podaj x: 3
+Wynik: 50
+
+Prosze sie nie bac uzywac komentarzy,
+nalezy pamietac, ze podczas nauki nie ma
+glupich komentarzy, np:
+{
+  x = 5; /* przypisz do x wartosc 5 */
+}
+jest jak najbardziej ok.
+
+Oczekuje pliku 'lesson01.c', ktory zawiera kompilujacy sie program w c.
+
+Program mozna napisac na stronie internetowej:
+  https://ideone.com/fork/eJul4o

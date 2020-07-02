@@ -1,0 +1,4 @@
+Kolejne zadanie:
+  https://pl.spoj.com/problems/SUMA/
+Program niech bedzie napisany w jezku "C ANSI-ISO 89"
+i niech bedzie odporny na jakiekolwiek bledy.

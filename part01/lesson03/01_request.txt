@@ -1,0 +1,27 @@
+Program, ktory wczyta N (maksymalnie 1000) liczb calkowitych (int) i wyswietli je od konca:
+
+Wejscie:
+N
+L1
+...
+LN
+
+Wyjscie:
+LN
+...
+L1
+
+Przyklad:
+
+Wejscie:
+4
+8
+54
+23
+-98
+
+Wyjscie
+-98
+23
+54
+8

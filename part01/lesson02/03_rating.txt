@@ -1,0 +1,35 @@
+Dobrze byloby, aby sprawdzac program kompilatorem gcc.
+
+Pod windowsem mozna zainstalowac 'cygwin'a, w nim powinien byc dosteny kompilator gcc.
+
+$ gcc lesson02.c -W -Wall -Werror -Wextra -ansi -pedantic
+lesson02.c: In function main:
+lesson02.c:8:15: error: unused variable EPS [-Werror=unused-variable]
+    8 |   const float EPS = 0.000001;
+i      |               ^~~
+cc1: all warnings being treated as errors
+
+Ale to jest akurat tylko niegrozne ostrzezenie.
+
+Program dziala poprawnie.
+
+a) nieuzywana wartosc const, niepotrzebna linia:
+   08: const float EPS = 0.000001;
+
+b) Program z zalozenia mial dzialac, az zakoncza sie dane wejsciowe,
+   czyli nie potrzeba wypisywac, ze dane nie zostaly wprowadzone, linia niepotrzebna:
+   16: fprintf (stderr, "blad - brak danych\n");
+
+c) Wskazowka, z petli while mozna wyjsc za pomoca instrukcji break
+     i = 1;
+     continue; /* to jest skoko do poczatku petli */
+   mozna zamineic na:
+     break; /* skok poza petle, czyli wykona sie kolejna instrukcja poza petla */
+
+d) Ten warunek jest zawsze spelniony, czyli jest on niepotrzebny
+   35: if (i != 1)/*jezeli x spelnia wszystkie warunki jest on przypisywany do z a pozniej wypisuje z*/
+
+
+Generlanie jest ok, ale prosilbym jeszcze, aby wciecia byly robione zawsze tak samo,
+jezeli uzywamy tabow, to niech wszedzie one beda,
+albo jezeli uzywamy spacji, to niech wszedzie beda spacje.
