@@ -1,0 +1,19 @@
+Program, ktory na wejsciu dostanie strumien danych
+o niezdefiniowanym rozmiarze
+(czyli koniec danych mozna wykryc poprzez EOF),
+Na wyjsciu maja sie pojawic zmodyfikowane dane,
+w taki sposob, aby kazdy znak 'A' zamienic na 'a'.
+Program nie moze uzywac tablic, nalezy uzyc tylko zwyklych zmiennych.
+Nalezy wykorzystac: getchar i putchar
+
+Przyklad:
+
+Wejscie:
+Ala ma kota.
+Ewa lubi czytac.
+Adam ma Auto.
+
+Wyjscie:
+ala ma kota.
+Ewa lubi czytac.
+adam ma auto.
