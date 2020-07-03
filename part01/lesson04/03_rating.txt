@@ -1,0 +1,33 @@
+lesson04.c
+
+Ok, program wyglada bardzo ladnie.
+
+2 problemy:
+
+1) nieuzyta zmienna y
+   (nieistotny blad)
+
+2) przypadki z danymi skrajnymi (0 <= N <= 1000):
+   N = 1000 : program dziala bez bledow
+   N = 0    : wydarzy sie tutaj dzielenie przez zero
+   Na takie bledy trzeba byc uczulonym,
+   to jest grozne (undefined behavior),
+   czyli w takim przypadku moze zdarzyc sie cokolwiek:
+     a) moze sie nic nie zdarzyc
+     b) program moze nagle sie zakonczyc
+     c) program moze wygeneorwac jako wynik dzielenia
+        przez zero jakas dziwna liczbe i dzialac jakby nigdy nic
+     d) moze sie zamknac system w komputerze :)
+     e) generlanie wszytko to, czego sie nie spodziewamy.
+   Byl taki przypadek kiedys w rakiecie NASA, gdzie
+   2 komputery wykonywaly ten sam program,
+   i bylo nieobsluzone dzielenie przez 0,
+   1-szy komputer sie zwiesil,
+   2-gi komputer sie zwiesil i rakieta przestala miec sterowanie
+   i gdzies tam chyba wybuchla.
+   Niby glupie dzielnie przez zero.
+
+   Oczywisice, tresc zadania jest taka troche niepoprawna,
+   bo ile wynosi srednia z 0 liczb :).
+
+   Ale generalnie trzeba na takie rzeczy byc przygotowanym.
