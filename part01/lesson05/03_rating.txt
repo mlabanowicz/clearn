@@ -1,0 +1,42 @@
+
+A) main() <- brakuje void, lepiej tego uzywac, wtedy taki
+   program skompilowany w C i w C++ ma identyczna interpretacje.
+   Na pewno to nie zaszkodzi trzymac sie tej konwencji.
+
+B) Program nie wykonuje tego, co mial w tresci zadania.
+   Program mial zamieniac 'A' na 'a'.
+   Ten program zamienia wszystkie duze znaki na male znaki.
+   W tresci jest przyklad, z danymi wejsciowymi i wyjsciowymi.
+   Zawsze nalezy sprawdzic, czy program na pewno realizuje swoje
+   zadanie.
+
+C) Dla czytelnosci programu, zamiast sztywnych wartosci 65 i 90, lepiej uzywac
+   znakow char:
+
+   takie cos:
+     if ( i>=65 && i <=90){
+   mozna zapisac tak (to jest dokladnie to samo):
+     if ( i>='A' && i <='Z'){
+
+   A takie cos:
+     i += 32;
+   Lepiej zapisac tak:
+     i += ('a' - 'A');
+
+   Program wykonuje dokladnie to samo a jest bardziej czytelny.
+
+
+Sprawa, jak dodajemy plik do folderu,
+dobrze byloby aby mial przedrostek
+z kolejnym numerem pliku.
+
+Czyli jezeli dodajemy pierwszy plik w katalogu:
+  01_<nazwa>
+Kolejny plik w katalogu dodajemy:
+  02_<nazwa>
+itd.
+
+Wtedy prosto widac historie komunikacji.
+
+Polskie znaki da sie obsluzyc w ANSI-C, ale to bedzie jedno z przyszlych zadan.
+Na razie skupiamy sie wylacznie na alfabecie angielskim.

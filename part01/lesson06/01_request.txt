@@ -1,0 +1,22 @@
+Program, ktory na wejsciu dostanie strumien danych
+o niezdefiniowanym rozmiarze, zamienia wszystkie bajty
+na wartosc w systemie szesnastkowym (z malymi literami a-f).
+Program ma wypisywac dane liniami, po max 60 znakow w jednej lini.
+
+Przyklad_1:
+
+Wejscie:
+To sa jakies dane.
+A to kolejne dane.
+A to jest ostatnia linijka.
+
+Wyjscie:
+546f207361206a616b6965732064616e652e0a4120746f206b6f6c656a6e
+652064616e652e0a4120746f206a657374206f737461746e6961206c696e
+696a6b612e0a
+
+Przyklad_2 (dane binarne - dostepne w plikach):
+Wejscie:
+  plik: data.in
+Wyjscie:
+  plik: data.out
