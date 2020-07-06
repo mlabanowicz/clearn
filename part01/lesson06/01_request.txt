@@ -20,3 +20,16 @@ Wejscie:
   plik: data.in
 Wyjscie:
   plik: data.out
+
+Wskazowki:
+Test programu, ktory ma wczytac dane z pliku:
+#1 kompilacja:
+   $ gcc program.c -o program.exe
+#2 uruchomienie programu
+   + wczytanie danych wejsciowych z pliku
+   + zapisanie danych wyjsciowych do pliku:
+   $ ./program.exe < data.in > program.out
+#3 wyswietlenie danych wyjsciowych:
+   $ cat program.out
+#3 porownanie wynikow ze wzorcem:
+   $ diff data.out program.out
