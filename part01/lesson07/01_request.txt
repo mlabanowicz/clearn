@@ -1,0 +1,14 @@
+Program, ktory dostanie na wejsciu niezdefiniowana ilosc liczb calkowitych (int),
+wypisze je na wyjsciu w postaci binarnej (kazda liczba w osobnej lini).
+
+Wejscie:
+0
+6
+-8
+12
+
+Wyjscie:
+0
+110
+-1000
+1100

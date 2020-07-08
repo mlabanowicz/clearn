@@ -1,0 +1,50 @@
+[02_lesson06.c]
+
+Wystepuja tutaj problemy ze zgodoscia z ANSI-C:
+  $ gcc -W -Wall -ansi -pedantic -Werror -Wextra 02_lesson06.c
+  02_lesson06.c: In function "main":
+  02_lesson06.c:11:7: error: ISO C90 forbids mixed declarations and code [-Werror=declaration-after-statement]
+         int x = getchar ();
+         ^~~
+  02_lesson06.c:7:14: error: unused variable "x" [-Werror=unused-variable]
+     int i = 0, x = 0;
+                ^
+  cc1: all warnings being treated as errors
+
+Prosilbym, aby na przyszlosc sprawdzac program
+kompilatorem gcc z podanymi opcjami:
+  -W -Wall -ansi -pedantic -Werror -Wextra
+Jezeli kompilacja generuje jakies ostrzezenia,
+to nalezy sie ich pozbyc poprawiajac kod.
+
+Jezeli chpodzi o 'printf':
+  printf("%.2x", x)
+'printf' jest specyficzna funkcja, ktora przyjmuje niezdefiniowana liczbe parametrow.
+  "%.2x" oznacza, ze oczekuje ona typu (unsigned int).
+  Podany typ to (int). /* int x; */
+W tej funkcji dobra regula jest, aby zawsze podawac takiego typu argumenty,
+jakich ona sie spodziewa.
+Normalnie gdy napiszemy cos takiego:
+{
+  int i = 67;
+  unsigned int a = i;
+}
+To tutaj nie bedzie bledu, bo wystepuje niejawna konwersja z (int) na (unsigned int).
+
+W przypadku printf taka niejawna konwersja _!_nie_wystepuje_!_
+i moga sie przez to dziac dziwne rzeczy.
+Czyli 'undefined behavior'.
+Nie znam systemu, na ktorym to by powodowalo problem, ale lepiej uzyc jawnej konwersji:
+  printf("%.2x", (unsigned int)x)
+
+Program dziala "prawie" tak, jak bylo w opisie.
+Jeden blad -> w przypadku, gdy rozmiar danych wejsciowych
+nie jest wielokrotnoscia 30, to program nie wypisze konca znaku konca linii.
+  $ gcc 02_lesson06.c -o 02_lesson06.exe
+  $ ./02_lesson06.exe < data.in > program.out
+  $ diff data.out program.out
+  9c9
+  < 73fc807dd0bd133ab13209870524c0b1
+  ---
+  > 73fc807dd0bd133ab13209870524c0b1
+  \ No newline at end of file
