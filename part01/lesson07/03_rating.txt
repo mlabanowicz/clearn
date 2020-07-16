@@ -1,0 +1,46 @@
+Zeby program wykrywal koniec danych EOF, to:
+wskazowka: zmienna 'scanf_result' powinna zawierac rezultat z _OSTATNIEGO_ wywolania funkcji scanf.
+Widze, ze jest to juz _troche_ poprawione, ale nie do konca,
+bo co w przypadku, gdy program dostanie 0 liczb?
+
+Program dla garnicznych wartosci dziala bardzo dobrze:
+Wejscie:
+2147483647
+-2147483648
+0
+1
+1
+-1
+Wyjscie:
+1111111111111111111111111111111
+-10000000000000000000000000000000
+0
+1
+-1
+
+Mankament, gdy poda sie liczbe ujemna,
+ktora ma wiecej, niz jedna '1' w systemie binarnym:
+-12
+wynik jest:
+-1-100
+a powinien byc:
+-1100
+
+Jezeli chodzi o ustalenie sobie limitu "100".
+W obecnych komputerach 'int'y przewaznie maja rozmiar 32 bitowy.
+Tak wiec 100 jest jak najbardziej OK.
+Ale mozna zalozyc, ze w przyszlosci beda inty 128 bitowe,
+wtedy taki program straci swoja mozliwosc konwersji.
+Zeby zapobiec takiej sytuacji mozna skorzystac z informacji, jaka daje nam standard ANSI-C:
+  #include <limits.h>
+  CHAR_BIT    <- mowi nam, ile bitow jest zawartych w jednym bajcie (przewaznie jest 8)
+  sizeof(int) <- mowi nam, z ilu bajtow sklada sie liczba typu 'int'
+Mozna w takim razie wyznaczyc sobie, z ilu bitow sklada sie typ 'int':
+  #define INT_BIT (CHAR_BIT * sizeof(int))
+Wtedy,
+  zamiast:
+    int tab [100];
+  mozna uzyc:
+    int tab[INT_BIT];
+
+Zanim przejdziemy do kolejnego zadania, prosze o poprawienie programu.
