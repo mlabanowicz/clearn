@@ -3,12 +3,11 @@ wskazowka: zmienna 'scanf_result' powinna zawierac rezultat z _OSTATNIEGO_ wywol
 Widze, ze jest to juz _troche_ poprawione, ale nie do konca,
 bo co w przypadku, gdy program dostanie 0 liczb?
 
-Program dla garnicznych wartosci dziala bardzo dobrze:
+Program dla granicznych wartosci dziala bardzo dobrze:
 Wejscie:
 2147483647
 -2147483648
 0
-1
 1
 -1
 Wyjscie:
