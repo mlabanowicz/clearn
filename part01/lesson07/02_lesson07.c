@@ -7,9 +7,6 @@ int n = 0, x = 0, y = 1, z = 0,tab[100];
 int scanf_result = scanf("%d", &n);
 while (1 == 1)
 {
-if (scanf_result == EOF){/*program nie wykrywa konca danych, nie wiem jak to naprawic*/
-break;
-}
 if (scanf_result != 1)
 {
 fprintf (stderr, "blad - podane dane nie sa liczba\n");
@@ -37,7 +34,9 @@ if (z == 0)
 {
 y = 1;
 printf ("\n");
-scanf ("%d", &n);
+if (scanf("%d", &n) == EOF){
+break;
+}
 }
 }
 }
