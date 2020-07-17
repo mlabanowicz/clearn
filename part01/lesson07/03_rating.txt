@@ -43,3 +43,19 @@ Wtedy,
     int tab[INT_BIT];
 
 Zanim przejdziemy do kolejnego zadania, prosze o poprawienie programu.
+
+[02_fixed-lesson07.c]
+---------------------
+
+Program juz dziala poprawnie.
+1) Gdy program dostanie 0 liczb na wejsciu,
+   to nie musi pisac, ze to jest blad.
+   Gdyby w specyfikacji zadania bylo, ze program
+   na pewno dostanie przynajmniej jedna liczbe,
+   wtedy wypisanie bledu jak najbardziej ma sens.
+2) Warunek, ktory sie nie wydarza,
+   ale jezeli juz jest,
+   to:
+    if (z == 100)
+   powinien byc:
+     if (z == INT_BIT)
