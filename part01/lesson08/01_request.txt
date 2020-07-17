@@ -3,6 +3,7 @@ i czasy w sekundach pokonania pewnego dystansu.
 Program na wyjsciu ma wypisac liste zawodnikow, ktorzy dostali sie na podium.
 Dla jasnosci: zawodnik, ktory uzyskal mniejszy czas ma wyzsze miejsce na podium.
 Imie zawodnika moze sie skladac z maksymalnie 20 znakow.
+Dla ulatwienia, kazdy zawodnik dobiegl do mety z innym czasem.
 
 Przyklad:
 
