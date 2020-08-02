@@ -1,0 +1,43 @@
+Struktura programu dobrze zaprojektowana.
+
+Kompilacja:
+  Brakuje na koncu funkcji main:
+    return EXIT_SUCCESS;
+  W tym przypadku do systemu zostanie zwrocona niezdefiniowana wartosc.
+  System nie bedzie wiedzial, czy program sie zakonczyl poprawnie czy nie.
+
+Program uzywa tablicy o 100 elementach.
+Brak ochrony, gdy na wejsciu bedzie wiecej niz 100 zawodnikow.
+
+Ta tablica, jak sie dobrze przyjrzec, nie jest wogole wykorzystana.
+Dane do tablicy sa wpisywane przy kazdym kroku iteracji,
+po takim kroku az do konca dzialania programu nikt juz
+do tego wpisanego wlasnie elementu nie zaglada.
+
+Mozna by sie pozbyc tej tablicy, wtedy program nie bedzie mial tego 100 elementowego ograniczenia.
+
+Algorytm wymaga niewielkiej poprawy, aby dzialal dobrze.
+
+Przykladowe dane wejsciowe, dla ktorych program nie dziala:
+  03_data_1_a.in
+  03_data_1_b.in
+  03_data_1_c.in
+Dane w tych plikach sa dokladnie takie same,
+tylko poukladane w roznych kolejnosciach.
+
+
+Kolejny krok do zrobienia:
+
+1) Poprawic algorytm, aby program dzialal.
+  Wskazowka:
+    Na poczatek mozna zrobic program, prostszy, ktory przykladowo
+    bedzie wypisywal tylko miejsce 1.
+    Gdy juz ten program bedzie dzialal poprawnie z roznumi danymi wjesciowymi,
+    wtedy dodac obsluge wypisywania miejsca 2.
+    itd.
+
+2) Poprawic kod, zeby funkcja main zwracala poprawny status do systemu.
+
+3) sprobowac pozbyc sie tej tablicy, albo przynajmniej dodac obsluge
+   ocrony pamieci, gdy dane wejsciowe beda zawieraly wiecej niz 100 zawodnikow.
+
