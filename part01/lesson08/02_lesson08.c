@@ -19,8 +19,7 @@ extern "C"
     struct zawodnik osoba;
     while (1 == 1)
       {
-	int scanf_result =
-	  scanf ("%s %d", osoba.imie, &osoba.czasZawodnika);
+	int scanf_result = scanf ("%s %d", osoba.imie, &osoba.czasZawodnika);
 	if (scanf_result != 2 && scanf_result != EOF)
 	  {
 	    fprintf (stderr, "Niepoprane dane wejsciowe\n");
