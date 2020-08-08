@@ -16,11 +16,12 @@ extern "C"
     struct zawodnik drugiemiejsce;
     struct zawodnik trzeciemiejsce;
     int x = 0, iloscOsob = 1;
-    struct zawodnik tablica[100];
+    struct zawodnik osoba;
     while (1 == 1)
       {
+          x=0;
 	int scanf_result =
-	  scanf ("%s %d", tablica[x].imie, &tablica[x].czasZawodnika);
+	  scanf ("%s %d", osoba.imie, &osoba.czasZawodnika);
 	if (scanf_result != 2 && scanf_result != EOF)
 	  {
 	    fprintf (stderr, "Niepoprane dane wejsciowe\n");
@@ -28,28 +29,40 @@ extern "C"
 	  }
 	if (scanf_result == EOF)
 	  break;
-	if (iloscOsob != 1)
+	if (iloscOsob >= 3)
 	  {
-	    if (tablica[x].czasZawodnika == pierwszemiejsce.czasZawodnika || tablica[x].czasZawodnika == drugiemiejsce.czasZawodnika || tablica[x].czasZawodnika == trzeciemiejsce.czasZawodnika)
+	    if (osoba.czasZawodnika == pierwszemiejsce.czasZawodnika || osoba.czasZawodnika == drugiemiejsce.czasZawodnika || osoba.czasZawodnika == trzeciemiejsce.czasZawodnika)
 	      {
 		fprintf (stderr, "Czas zawodnikow nie moze byc rowny\n");
 		return EXIT_FAILURE;
 	      }
-	    if (tablica[x].czasZawodnika < pierwszemiejsce.czasZawodnika && tablica[x].czasZawodnika < drugiemiejsce.czasZawodnika && tablica[x].czasZawodnika < trzeciemiejsce.czasZawodnika)
-	      pierwszemiejsce = tablica[x];
-	    if (tablica[x].czasZawodnika < drugiemiejsce.czasZawodnika && tablica[x].czasZawodnika > pierwszemiejsce.czasZawodnika && tablica[x].czasZawodnika < trzeciemiejsce.czasZawodnika)
-	      drugiemiejsce = tablica[x];
-	    if (tablica[x].czasZawodnika > pierwszemiejsce.czasZawodnika && tablica[x].czasZawodnika > drugiemiejsce.czasZawodnika && tablica[x].czasZawodnika < trzeciemiejsce.czasZawodnika)
-	      trzeciemiejsce = tablica[x];
-	  }
-	else
-	  {
-	    trzeciemiejsce = tablica[x];
-	    drugiemiejsce = tablica[x];
-	    pierwszemiejsce = tablica[x];
-	  }
-	x++;
+        if(osoba.czasZawodnika < pierwszemiejsce.czasZawodnika){
+        trzeciemiejsce = drugiemiejsce;
+        drugiemiejsce = pierwszemiejsce;
+        pierwszemiejsce = osoba;
+        }
+        if (osoba.czasZawodnika < drugiemiejsce.czasZawodnika && osoba.czasZawodnika > pierwszemiejsce.czasZawodnika){
+        trzeciemiejsce = drugiemiejsce;
+        drugiemiejsce = osoba;
+        }
+        if (osoba.czasZawodnika > drugiemiejsce.czasZawodnika && osoba.czasZawodnika > pierwszemiejsce.czasZawodnika && osoba.czasZawodnika < trzeciemiejsce.czasZawodnika){
+        trzeciemiejsce = osoba;
+        }
 	iloscOsob++;
+	  }
+    if (iloscOsob == 2){
+        if(osoba.czasZawodnika < pierwszemiejsce.czasZawodnika){
+        drugiemiejsce = pierwszemiejsce;
+        pierwszemiejsce = osoba;
+        }
+        else
+        drugiemiejsce = osoba;
+        iloscOsob++;
+    }
+if (iloscOsob == 1){
+pierwszemiejsce = osoba;
+iloscOsob++;
+	}
       }
     if (iloscOsob < 3)
       {
