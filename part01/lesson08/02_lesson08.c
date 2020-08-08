@@ -15,7 +15,7 @@ extern "C"
     struct zawodnik pierwszemiejsce;
     struct zawodnik drugiemiejsce;
     struct zawodnik trzeciemiejsce;
-    int x = 0, iloscOsob = 1;
+    int iloscOsob = 1;
     struct zawodnik osoba;
     while (1 == 1)
       {
