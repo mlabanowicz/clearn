@@ -75,6 +75,7 @@ iloscOsob++;
     printf ("1. %s\n", pierwszemiejsce.imie);
     printf ("2. %s\n", drugiemiejsce.imie);
     printf ("3. %s\n", trzeciemiejsce.imie);
+    return EXIT_SUCCESS;
   }
 #ifdef __cplusplus
 }
