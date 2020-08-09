@@ -27,6 +27,11 @@ extern "C"
 	  }
 	if (scanf_result == EOF)
 	  break;
+	if (osoba.czasZawodnika <= 0)
+	  {
+	    fprintf (stderr, "Czas nie moze byc ujemny\n");
+	    return EXIT_FAILURE;
+	  }
 	if (iloscOsob >= 3)
 	  {
 	    if (osoba.czasZawodnika == pierwszemiejsce.czasZawodnika || osoba.czasZawodnika == drugiemiejsce.czasZawodnika || osoba.czasZawodnika == trzeciemiejsce.czasZawodnika)
