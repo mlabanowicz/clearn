@@ -1,0 +1,48 @@
+Na pierwszy rzut mozna by powiedziec, ze program dziala
+bardzo dobrze, przechodzi testy bez problemow.
+
+Ale jest jeden problem, program ma maly blad, ktory
+moze wygenerowac niepoprawne wyniki.
+Linie:
+15:  struct zawodnik pierwszemiejsce;
+16:  struct zawodnik drugiemiejsce;
+17:  struct zawodnik trzeciemiejsce;
+to dekaracje zmiennych.
+Pytanie, jake sa wartosci tych zmiennych?
+Odpowiedz: niewiadomo, zmienne maja nieustalone wartosci.
+Czyli w programie nie mozemy zrobic czegos takiego:
+  if (drugiemiejsce.czasZawodnika == 56) {
+  }
+Bo to bedzie generowalo niewiadome wyniki.
+Pierwsze, co trzeba zrobic, to ustalic wartosci tych zmiennych
+zanim beda uzywane.
+
+Mala podpowiedz, prosze dodac zaraz za deklaracjami tych zmienych linijke:
+20: trzeciemiejsce.czasZawodnika = -23;
+Czyli zasymulujemy, ze ta niezdefniowana wartosc to -23.
+Wtedy wyniki dzialania programu beda niepoprawne.
+
+
+Dodalem dodatkowe pliki:
+
+A) '04_test_gen.awk'
+Ten program generuje testowe dane wejsciowe do programu,
+przykladowe wywolanie:
+  echo 100 | awk -f ./04_test_gen.awk > lista.txt
+wygeneruje losawa liste zawodnikow.
+
+B) '04_test_org.sh'
+Program w jezyku skryptowym BASH.
+On realizuje dokladnie to cale zadanie.
+Jak widac, miesci sie w jendej linijce,
+ale Twoj program w C jest o niebo szybszy.
+Twoj program ma zlozonosc czasowa: O(N),
+ten program w bash wykonuje sortowanie
+wszystkich elementow, czyli ma zlozonosc O(N x logN)
+
+C) '04_judge.sh'
+Skrypt, ktory sprawdza wyniki dzialania programu.
+
+
+TODO:
+  Prosze o poprawienie uzycia niezdefiniowanej zmiennej.
