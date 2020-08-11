@@ -1,0 +1,4 @@
+Program teraz nie dziala dla takich danych testowych:
+  06_input.txt
+
+TODO: poprawic :)
