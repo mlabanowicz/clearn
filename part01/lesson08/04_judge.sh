@@ -4,7 +4,7 @@ rm -fr judge
 mkdir judge
 pushd judge
 
-gcc ${1} -W -Wall -ansi -pedantic -Werror -Wextra ${2} ../05_lesson08.c -o a.exe
+gcc ${1} -W -Wall -ansi -pedantic -Werror -Wextra ${2} ../07_lesson08.c -o a.exe
 
 check()
 {
