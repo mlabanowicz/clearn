@@ -1,1 +1,13 @@
-TBD - jutro dodam :)
+Program, ktory obliczy, ile jest podanych wyrazow w strumieniu wejsciowym.
+Wyraz bedzie podany jako argument wywolania programu.
+
+Przyklad dla danych wejsciowych:
+<01_data.in>
+
+Wywolanie:
+# ./program.exe ma < 01_data.in
+3
+# ./program.exe psa < 01_data.in
+2
+# ./program.exe a < 01_data.in
+11
