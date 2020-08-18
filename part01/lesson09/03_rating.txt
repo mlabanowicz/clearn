@@ -1,0 +1,56 @@
+Niezgodnosc z ANSI/ISO:
+  $ gcc -W -Wall -ansi -pedantic -Werror -Wextra 02_lesson09.c
+  02_lesson09.c: In function 'main':
+  02_lesson09.c:22:5: error: ISO C90 forbids mixed declarations and code [-Werror=declaration-after-statement]
+       char * str = strstr(word,argv[argc-1]);
+       ^~~~
+
+Jezeli chodzi o styl, to prosilbym, aby wciecia byly zawsze robione tak samo.
+W tym programie sa raz spacje, a raz TABy (linie: 16,17,18,19,21).
+Niech beda:
+  a) tylko spacje
+    albo
+  b) tylko TABy
+
+Program dziala dla podanych danych wejsciowych bardzo dobrze.
+Jak widac w kodzie, ma on tablice 50 elementowa co moze oznaczac,
+ze taki program ma jakis limit.
+I rzeczywiscie, wyraz nie moze przekroczyc (50-1) znakow.
+Kolejny limit (scanf): szukane wyrazy nie moga zawierac spacji.
+
+W programie brakuje ochrony przed sprawdzeniem, czy argument argv[1] jest dostepny.
+
+argc - zawiera w sobie liczbe wypelnionych pol w tablicy argv
+argv[0] : zawiera w sobie sciezke do pliku programu
+argv[1] : pierwszy argument podany przez user'a
+argv[2] : drugi argument podany przez user'a
+...
+argv[argc - 1] : ostatni argument podany przez user'a
+argv[argc] : zawiera w sobie wartosc NULL
+argv[argc + 1] : ten element nie istnieje, nie mozna sie do tego juz odwolywac
+
+Napis w jezyku C mozna traktowac jako tablica znakow:
+{
+  char * wyraz = argv[1];
+
+  /* w tym momencie 'wyraz' to jest wskaznik (adres) na poczatek napisu. */
+  printf("wyraz = \"%s\"\n", wyraz); /* wydrukuje caly wyraz */
+
+  /* wyraz[0] zawiera w sobie pierwszy znak char */
+  /* printf "%s" spodziewa sie wlasnie adresu pierwszego znaku do drukowania */
+  printf("wyraz = \"%s\"\n", &wyraz[0]); /* wydrukuje caly wyraz ('wyraz' to ta sama wartosc co '&wyraz[0]') */
+  printf("wyraz = \"%s\"\n", &wyraz[1]); /* wydrukuje wyraz poczawszy od drugiej litery */
+  printf("wyraz = \"%s\"\n", &wyraz[3]); /* wydrukuje wyraz poczawszy od czwartej litery */
+
+  /* mozna takze odwolywac sie do znakow w tablicy */
+  putchar(wyraz[2]);
+  if (wyraz[5] == 'a') {
+    puts("6 znak w wyrazie to male a !");
+  }
+}
+
+TODO: Kolejny program, ktory takze powinien realizowac to zadanie,
+ale zamiast scanf niech uzywa tylko 'getchar'.
+Program ma nie wykorzystywac pamieci do przechowywania zczytanych znakow,
+czyli po kazdym zczytaniu znaku ze strumienia wejsciowego powinien
+w jakis sposob aktualizowac status.
