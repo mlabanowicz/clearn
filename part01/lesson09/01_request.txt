@@ -1,5 +1,9 @@
 Program, ktory obliczy, ile jest podanych wyrazow w strumieniu wejsciowym.
 Wyraz bedzie podany jako argument wywolania programu.
+Podany wyraz zaczyna sie litera,
+ktora juz pozniej w tym wyrazie nie moze wystapic,
+czyli wyraz 'ewa' moze byc podany do programu,
+natomiast 'lalala' nie moze byc podany do programu.
 
 Przyklad dla danych wejsciowych:
 <01_data.in>

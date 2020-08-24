@@ -54,3 +54,13 @@ ale zamiast scanf niech uzywa tylko 'getchar'.
 Program ma nie wykorzystywac pamieci do przechowywania zczytanych znakow,
 czyli po kazdym zczytaniu znaku ze strumienia wejsciowego powinien
 w jakis sposob aktualizowac status.
+
+Zeby nie kombinowac, takie sprostowanie:
+podany wyraz zaczyna sie jakas litera, ale ta litera juz pozniej w tym wyrazie nie moze nastapic.
+
+Podpowiedz:
+Zrobic na poczatek program ktory dziala z wyrazami o dlugosci 1.
+Nastepnie, zrobic program, ktory dziala z wyrazami o dlugosci 2.
+itd.
+Powinien sie w koncu pojawic "jakis wspolny mechanizm", ze program dobrze zadziala
+z wyrazami o kazdej dlugosci.
