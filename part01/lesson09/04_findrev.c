@@ -55,6 +55,7 @@ int main(int argc, char * argv []) {
 
   if (dlugosc_wyrazu == 0) {
     fprintf(stderr, "Blad, wyraz musi skladac sie z przynjamniej jednej litery !\n");
+    exit(EXIT_FAILURE);
   }
 
   i = dlugosc_wyrazu;
