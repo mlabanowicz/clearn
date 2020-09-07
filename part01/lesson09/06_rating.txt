@@ -1,0 +1,28 @@
+[05_lesson09.c]
+  gcc -W -Wall -ansi -pedantic -Werror -Wextra 05_lesson09.c && echo okok | ./a.out ok
+  05_lesson09.c: In function "main":
+  05_lesson09.c:58:13: error: statement with no effect [-Werror=unused-value]
+       d ? 0 : 1;
+       ~~~~~~^~~
+  Ta linia nic nie robi.
+
+Czy na pewno chcemy aby program zakonczyl zliczac,
+gdy spelniony bedzie ponizszy warunek ?
+Czy ten warunek jest tutaj wogole potrzebny/wykorzystany ?
+  46:    if (i == dlugosc_wyrazu) {
+  47:      break;
+  48:    }
+
+Program nie dziala dla takich danych (06_okok.*):
+Wywolanie:
+  ./05_lesson09.exe ok
+Wejscie:
+  okok
+Wyjscie (powinno byc):
+  2
+
+Zawsze warto sobie wygenerowac jakies proste zestawy danych,
+nawet mozna je tutaj wrzucac na git'a.
+Najlepiej niech maja postac tak jak pliki: '06_okok.*'.
+
+Prosze sprobowac poprawic program, niewiele mu brakuje.
