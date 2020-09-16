@@ -1,0 +1,24 @@
+Program nie dziala dla takich danych (08_test.*):
+Wywolanie:
+  ./07_lesson09.exe ok
+Wejscie:
+  ooko
+Wyjscie (powinno byc):
+  1
+
+Prosze poprawic program.
+
+FYI:
+Zrobilem sedziego, ktory sprawdza dzialanie programu dla roznych danych testowych.
+Wywolanie:
+  ./08_judge.sh <nazwa_programu_do_sprawdzenia>
+  Gdy jest wszystko OK, to po zakonczeniu sprawdzania wypisze SUCCESS.
+Obecne rezultat:
+  $ ./08_judge.sh 07_lesson09.c
+  Checking 10/61 ... 1c1
+  < 130
+  \ No newline at end of file
+  ---
+  > 118
+  \ No newline at end of file
+  FAILED !
