@@ -28,10 +28,19 @@ generate_random()
   }
   {
     srand($1 + systime() * 0);
-    words = randRange(1, $2);
-    while (words--)
+    if ($2 == 1)
     {
-      printf("%s\n", randString(randRange(1, $3), chars));
+      s = randString(1, chars);
+      gsub(s, "", chars);
+      printf("%s%s\n", s, randString(randRange(0, $3 - 1), chars));
+    }
+    else
+    {
+      words = randRange(1, $2);
+      while (words--)
+      {
+        printf("%s\n", randString(randRange(1, $3), chars));
+      }
     }
   }'
 }
