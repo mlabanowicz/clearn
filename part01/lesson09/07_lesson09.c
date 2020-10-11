@@ -40,6 +40,14 @@ int main(int argc, char * argv []) {
     fprintf(stderr, "LOG: pobrano znak: (%d = '%c') [i=%d, dlugosc_wyrazu=%d]\n", c, isprint(c) ? c : '.', i, dlugosc_wyrazu);
     d--;
     ++i;
+
+    if (c != wyraz[i] && c == wyraz[0]) {
+      fprintf(stderr, "Kolejny znak sie nie zgadza, ale ten znak znajduje sie na poczatku szukanego napisu\n");
+      fprintf(stderr, "Resetujemy szukanie od tego dokladnie znaku\n");
+      d = dlugosc_wyrazu - 1;
+      i = 0;
+    }
+
     if (c == wyraz[i]) {
       fprintf(stderr, "LOG: zgadza sie pobrany znak '%c' ze znakiem w wyrazie na pozycji %d\n", c, i);
 
