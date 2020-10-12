@@ -114,7 +114,7 @@ static void wskazniki(void)
   printf("wskazniki: ptr = %p = \"%s\"\n", (void *)(ptr), ptr);
 
   /* ptr, jako zmienna, mozna modyfikowac */
-  /* Czyli, jezeli chcemy przeskoczyc o 3 elementy: */
+  /* Czyli, jezeli chcemy przeskoczyc o 2 elementy: */
   ptr += 2;
   /* Teraz ptr wskazuje na 2 element w tablicy arr */
   printf("wskazniki: (+=2) ptr = %p = \"%s\"\n", (void *)(ptr), ptr);

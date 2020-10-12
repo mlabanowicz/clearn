@@ -1,0 +1,20 @@
+Napisac program, ktory wczyta niezidentyfikowana liczba napisow,
+o maksymalnym rozmiarze 20 znakow
+(do wczytywania kolejnych wyrazow nalezy zastosowac funkcje scanf),
+wyswietli dlugosc tych napisow.
+Program nie moze uzywac 'strlen'.
+Program w calym swoim kodzie moze zawierac tylko po jednym znaku
+'[' i ']' (moze byc tylko deklaracja tablicy).
+Reszta operacji nalezy wykonywac uzywajac wskaznikow.
+
+Przyklad:
+
+Input:
+ala
+ma
+kota
+
+Output:
+3
+2
+4
