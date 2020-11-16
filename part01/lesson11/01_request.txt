@@ -1,0 +1,16 @@
+Napisac program, ktory wczyta niezidentyfikowana liczbe
+czasow w formacie: HH:MM:SS,
+doda je wszystkie do siebie, na koncu wypisze sume tych czasow
+w takim samym formacie:
+
+Przyklad:
+
+Input:
+00:01:00
+00:02:30
+00:02:05
+
+Output:
+00:05:35
+
+Przyklad, jak wczytac/wypisac czas w '01_example.c'.

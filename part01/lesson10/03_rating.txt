@@ -1,0 +1,5 @@
+Program dziala bardzo dobrze.
+Druga petla, ktora przesuwa wskaznik na poczatke tablicy
+jest niepotrzebna.
+Podczas dzialania tej petli, ani po niej,
+nikt z tego wskaznika nie korzysta.
