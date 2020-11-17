@@ -89,14 +89,16 @@ int main(void) {
     }
 
     /* !!! Jezeli udalo sie zarezerwowac (zaalokowac) obszar na HEAPie                */
-    /* !!! to na koncu programu __MUSIMY__ zwolnic ten obszar dla systemu             */
-    /* !!! aby inne programy mogly z niego korzystac.                                 */
+    /* !!! to gdy juz go nie potrzebujemy to __MUSIMY__ zwolnic ten obszar dla        */
+    /* !!! systemu aby inne programy mogly z niego korzystac.                         */
     /* !!! Nalezy pamietac, aby do free zostala przekazana dokladnie ta sama wartosc, */
     /* !!! jaka zostala zwrocona przez malloc                                         */
 
     fprintf(stderr, "LOG: Zwalnianie zaaolokawengo wczesniej obszaru na HEAP'ie : %p\n", (void *)tablica_on_heap);
 
     free(tablica_on_heap);
+    
+    /* !!! W tym miejscu już NIE MOZEMY korzystac z tego obszaru, nie jest on juz dostepny !!! */
   }
   else {
     fprintf(stderr, "LOG: Nie udalo sie zarezerwowac obszaru !\n");
