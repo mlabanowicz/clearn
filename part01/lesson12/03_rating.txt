@@ -1,0 +1,30 @@
+Tutaj alokujemy obszar o rozmiarze 123456 bajtow,
+---
+17:  tablica_on_heap = (char *)malloc(123456);
+---
+a co w przypadku, gdy napis bedzie mial dlugosc 200000?
+Program ma dzialac dla dowolnej dlugosci napisu.
+
+Prosze najpierw jednym scanf'em odcztac dlugosc napisu,
+a pozniej dopiero zaalokowac obszar o odpowiednim rozmiarze,
+mozna to zrobic tak:
+  1: scanf("%d", &dlugosc_napisu); /* odczytanie dlugosci napisu */
+  2: tablica_on_heap = malloc(dlugosc_napisu + 1); /* zaalokuj obszar na napis + 1 bajt na znak '\0' */
+  3: scanf("%s", tablica_on_heap); /* wczytaj napis */
+
+============================================================
+
+W programie jest taki zapis, on dziala, ale jest nieczytelny:
+-----------------------------------------------------
+33:        if(tablica_on_heap[lengthstring] == znak)
+34:          result++;
+35:          lengthstring--;
+-----------------------------------------------------
+
+Lepiej, jakby kazdy blok kodu byl w klamrach + odpowiednie wciecia:
+-----------------------------------------------------
+33:        if(tablica_on_heap[lengthstring] == znak) {
+34:          result++;
+35:        }
+36:        lengthstring--;
+-----------------------------------------------------
