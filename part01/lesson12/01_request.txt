@@ -1,0 +1,27 @@
+Napisac program, ktory wyliczy, ile razy w podanym napisie wystepuje podany znak.
+Wejscie:
+<dlugosc_napisu>
+<napis>
+<poszukiwany_znak>
+
+Wyjscie:
+<liczba_wystapien_znaku_w_napisie>
+
+Przyklad:
+
+Input:
+13
+AlaMaKotaIPsa
+a
+
+Output:
+4
+
+Program powinien:
+1) Wczytac dlugosc napisu
+2) Zaalokowac odpowiedni obszar w pamieci typu HEAP (napis moze miec dlugos 1GB)
+3) Wczytac ten napis do zaalokowanej pamieci
+4) Wczytac poszukiwany znak
+5) Wyliczyc, ile razy ten znak wystepuje w napisie
+6) Wyswietlic ta wartosc
+7) Zwolnic pamiec
