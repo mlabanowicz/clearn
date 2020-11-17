@@ -41,6 +41,7 @@ int main(void) {
       minutessum -= 60;
       fprintf(stderr, "LOG: minuty przekroczyly 60\n");
     }
+    hourssum += hours;
     if(hourssum > 99){
         fprintf(stderr, "LOG: przokroczono maksymalną ilość godzin");
         return EXIT_FAILURE;
