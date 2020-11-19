@@ -1,0 +1,64 @@
+Warning:
+04_lesson12.c: In function 'main':
+04_lesson12.c:25:5: error: ISO C90 forbids mixed declarations and code [-Werror=declaration-after-statement]
+   25 |     int scanf_result = scanf("%s %c",tablica_on_heap, &znak );
+         |     ^~~
+         cc1: all warnings being treated as errors
+
+[@] To nalezy poprawic.
+
+===========
+
+Linia 31 zawiera sprawdzenie, czy operacja odczytania napisu i znaku sie powiodla.
+I to jest ok.
+Ale pomiedzy scanfem a tym sprawdzeniem jest juz uzycie napisu,
+ktory nie wiadomo, czy zostal wczytany.
+
+[@] To nalezy poprawic.
+
+===========
+
+Sprawdzenie dlugosci napisu moze pomoc tylko wtedy,
+gdy wyraz bedzie krotszy niz pobrana 'dlugoscnapisu', np:
+--
+5 ala a
+--
+
+Pytanie, co wtedy, gdy podany napis bedzie dluzszy niz 'dlugoscnapisu'?
+Przykladowe dane wejsciowe:
+--
+2 koteczek k
+--
+Wtedy do obszaru o rozmiarze 2+1=3 bajtow zostanie wpisane dane o rozmiarze 9 bajtow:
+
+                 zarezerwowany obszar, mozna go uzywac
+                /
+          |<------>|
+  ...  +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+ ...
+  ...  |  |k |o |t |e |c |z |e |k |\0|  |  |  |  |  |  | ...
+  ...  +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+ ...
+                   |<----------------------------------- ...
+                             \
+                              obszar niedostepny, nie mozna go uzywac
+                              jakiekolwiek
+                              odczytanie bajta z / zapisanie bajta w
+                              tej pamieci
+                              oznacza 'undeifned behavior'.
+                              Bardzo niebezpieczna sytuacja,
+                              bo to nie oznacza,
+                              ze programista od razu sie dowie,
+                              ze jest blad
+                              taki program moze dzialac bez problemow
+                              na jednym komuterze a na innym wogole
+
+[@] Tak wiec na razie na ta okolicznosc sie nie zabepieczamy,
+    ale nalezy wiedziec, ze jest taki problem.
+
+===========
+
+Program nie dziala poprawnie dla danych:
+--
+2 aa a
+--
+
+[@] To nalezy poprawic.
