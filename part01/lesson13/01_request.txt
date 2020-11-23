@@ -1,0 +1,24 @@
+Program, ktory wyswietli histogram znakow wystepujacych w strumieniu wejsciowym,
+czyli liczbe wystapien poszczegolnych znakow alfabetu (malych i duzych liter).
+ma nie wypisywac znakow, ktore nie wystepuja w strumieniu wejsciowym:
+
+[!] Program ma miec mozliwosc oblsugi plikow nawet o rozmairze 1GB
+[!] Program nie moze wykorzystac wiecej, niz 4k pamieci RAM.
+
+Przyklad:
+
+Input:
+Ala ma kota.
+Test.
+
+Output:
+A:1
+T:1
+a:3
+e:1
+k:1
+l:1
+m:1
+o:1
+s:1
+t:2

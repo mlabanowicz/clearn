@@ -1,0 +1,16 @@
+Warning:
+06_lesson12.c: In function 'main':
+06_lesson12.c:31:5: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   31 |     int dlugosc = strlen(tablica_on_heap);
+      |     ^~~
+
+[@] Dalej zle, juz to zostawmy, ale prosze o
+    pilnowanie, aby nie bylo takich bledow.
+
+====
+
+W przypadku, gdy program nie bedzie w stanie zaalokowac pamieci, program powinien zwrocic BLAD.
+
+====
+
+Program dziala prawidlowo.
