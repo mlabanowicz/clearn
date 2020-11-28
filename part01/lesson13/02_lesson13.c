@@ -42,7 +42,7 @@ extern "C"
 		  }
 		x++;
 		if(x == 122){
-		  fprintf(stderr,"znak \"%c\" nie jest zamieszczony w naszej tablicy\n",znak);
+		  fprintf(stderr,"LOG: znak \"%c\" nie jest zamieszczony w naszej tablicy\n",znak);
 		}
 	      }
 
