@@ -1,0 +1,112 @@
+'02_lesson13.c'
+
+================
+
+[1] Problem z malloc'iem, korzystanie z pamieci poza zaalokowanym obszarem
+
+{
+  char *alfabet = NULL;
+  alfabet = (char *) malloc (81);
+}
+
+Malloc zaalokowal nam obszar o rozmiarze 81 bajtow.
+alfabet ma w sobie adres tego obszaru.
+Zawartosc tego obszaru jest _NIEUSTALONA_
+
+alfabet
+    \
+     \
+     +-+-+-+-+-+-+...+-+
+     |?|?|?|?|?|?|...|?|
+     +-+-+-+-+-+-+...+-+
+     [0]             [80]
+
+Czyli mozemy sobe siegac do komorek od 0 do 80.
+{
+  alfabet[6]   = 1; /* jest ok */
+  alfabet[80]  = 2; /* jest ok */
+  alfabet[65]  = 3; /* jest ok */
+  alfabet['A'] = 4; /* jest OK, bo 'A' to jest 65 */
+  alfabet[97]  = 5; /* NIE MOZNA, tablica ma tylko 81 bajtow ! */
+  alfabet['a'] = 6; /* NIE MOZNA, tablica ma tylko 81 bajtow ! ('a' to jest 97) */
+}
+
+W tym kodzie wypelniamy tablice 'alfabet' przedzialami <65..90>, <97,122>:
+Inny zapis bez petli:
+
+    alfabet['A'] = 'A'; /* czyli do komorki 65 wpisujemy 65 */
+    alfabet['B'] = 'B'; /* czyli do komorki 66 wpisujemy 66 */
+    ...
+    alfabet['Z'] = 'Z'; /* czyli do komorki 90 wpisujemy 90 */
+
+    /*----*/
+    /* alfabet['[']  komorki o indeksie 91 nie ruszamy, ona ma w sobie nieustalana wartosc */
+    /* alfabet['\\'] komorki o indeksie 92 nie ruszamy, ona ma w sobie nieustalana wartosc */
+    ...
+    /* alfabet['`']  komorki o indeksie 96 nie ruszamy, ona ma w sobie nieustalana wartosc */
+    /*----*/
+
+    alfabet['a'] = 'a'; /* czyli do komorki 97 wpisujemy 97 */
+    alfabet['b'] = 'b'; /* czyli do komorki 98 wpisujemy 98 */
+    ...
+    alfabet['z'] = 'z'; /* czyli do komorki 122 wpisujemy 122 */
+
+!! Czyli korzystamy z pamieci poza obszarem zaalokowanym !!
+!! Undefine Behavior !!
+
+[@] To trzeba poprawic.
+
+NOTE: Tablica 'alfabet' w kodzie realizuje tylko funkcje f(x)=x,
+      a taka funkcja nie wymaga trzymania w pamieci zadnych danych.
+      Wydaje sie, ze ta tablica jest zbedna.
+
+================
+
+[2] Alokacja pamieci dla tablic roznych typow
+
+{
+  int *wynik = NULL;
+  wynik = (int *) malloc (81);
+}
+
+Malloc zaalokowal nam obszar o rozmiarze 81 bajtow.
+wynik ma w sobie adres tego obszaru.
+Zawartosc tego obszaru jest _NIEUSTALONA_.
+Jednak wynik jest wskaznikiem na inty i tutaj kazdy int sklada sie z 4 bajtow:
+
+ obszar zaalokowany
+    \
+     \
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+...+-+
+     |?|?|?|?|?|?|?|?|?|?|?|?|?|...|?|
+     +-+-+-+-+-+-+-+-+-+-+-+-+-+...+-+
+     [0]                           [80] // indeks w bajtach
+     : : : : : : : : : : : : : :...: :
+     +-------+-------+-------+--...
+     |  int  |  int  |  int  |
+     +-------+-------+-------+--...
+     /  [0]     [1]     [2]             // indeksy w 'int'ach
+    /
+  wynik
+
+Czyli 81 bajtow zmiesci w sobie 20 pelnych 'int'ow.
+Zeby zaalokowac 81 intow nalezy podac dokladny rozmiar w bajtach, czyli
+przemnozyc 81 przez rozmiar inta:
+{
+  wynik = (int *) malloc(81 * sizeof(int));
+  /* teraz mamy pewnosc, ze zaalokowany obszar pomiesci nam dokladnie 81 intow */
+  /* czyli bedziemy mogli siegac do intow od indeksu [0] do [80] */
+}
+
+[@] To trzeba poprawic.
+    (prosze takze pamietac, zeby nie korzystac z pamieci poza zaalokowanym obszarem)
+
+================
+
+[3] Brak zwolnienia pamieci
+
+Brak operacji zwolnienia pamieci do systemu.
+Kazdy zaalokowany obszar powinien byc oddany spowrotem do systemu
+za pomoca 'free'.
+
+[@] To trzeba poprawic.
