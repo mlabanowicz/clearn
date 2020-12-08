@@ -1,0 +1,78 @@
+'04_lesson13.c'
+
+================
+
+[1] Problem z malloc'iem, korzystanie z pamieci poza zaalokowanym obszarem
+
+{
+  int *wynik = NULL;
+  wynik = (int *) malloc(123 * sizeof(int));
+}
+
+Malloc zaalokowal nam obszar o rozmiarze 123 intow.
+
+Czyli dostep:
+  wynik[0] - ok
+  wynik[1] - ok
+  wynik[2] - ok
+  ...
+  wynik[122] - ok
+  ---
+  wynik[123] - ZLE
+  wynik[124] - ZLE
+  wynik[125] - ZLE
+
+Co w przypadku, gdy dane wejsciowe beda zawieraly caly program '04_lesson13.c'?
+Czy podczas analizowania tego programu nie wyjedziemy poza pamiec?
+
+[@] To trzeba poprawic.
+
+================
+
+[2] Wyjscie programu niezgodne z zalozeniem:
+
+Program na wyjsciu mial pokazac tylko:
+"liczbe wystapien poszczegolnych znakow alfabetu (malych i duzych liter)"
+
+[@] To trzeba poprawic.
+
+================
+
+[3] Warning:
+
+4_lesson13.c:23:11: warning: array subscript has type 'char' [-Werror=char-subscripts]
+
+...
+23:  wynik[znak]++;
+...
+
+'wynik' jest tablica
+(wskaznikiem zawierajacym adres pierwszego elementu)
+o rozmiarze 123 intow.
+
+'znak' jest typem char
+
+w C/C++ char moze byc signed albo unsigned - zalezy to od systemu/kompilatora,
+programista musi tak dostosowac program, aby byl on odporny na takie zjawisko.
+
+gdy char w systemie/kompilatorze jest defaultowo signed:
+  'char' : min value: -128, max value: 127
+gdy char w systemie/kompilatorze jest defaultowo unsigned:
+  'char' : min value:    0, max value: 255
+
+Co bedzie, jezeli w strumieniu wejsciowym bedzie bajt o wartosci 0x80,
+typ char moze taki bajt zwracac jako -128, wtedy:
+  wynik[-128] -> skorzystanie z niedozwolonego obszaru pamieci.
+
+W takim przypadku, nalezy pamietac, ze mozna wymusic znak dla typu char:
+  '  signed char' : min value: -128, max value: 127
+  'unsigned char' : min value:    0, max value: 255
+
+Rozwiazaniem moze byc rzutowanie:
+...
+  wynik[(unsigned char)znak]++;
+...
+wtedy mamy pewnosc, ze indeks podany do tablicy 'wynik' bedzie zawieral
+sie w przedziale od 0 do 255.
+
+[@] To trzeba poprawic.
