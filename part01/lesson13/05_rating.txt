@@ -25,6 +25,11 @@ Czyli dostep:
 Co w przypadku, gdy dane wejsciowe beda zawieraly caly program '04_lesson13.c'?
 Czy podczas analizowania tego programu nie wyjedziemy poza pamiec?
 
+[%] Problem wystepuje wtedy, gdy np, dane wejsciowe przykladowo zawieraja znak '{':
+--begin--
+void Dummy_fun(void) { }
+--end----
+
 [@] To trzeba poprawic.
 
 ================
@@ -33,6 +38,11 @@ Czy podczas analizowania tego programu nie wyjedziemy poza pamiec?
 
 Program na wyjsciu mial pokazac tylko:
 "liczbe wystapien poszczegolnych znakow alfabetu (malych i duzych liter)"
+
+[%] Problem wystepuje wtedy, gdy np, dane wejsciowe przykladowo zawieraja znak '_':
+--begin--
+void Dummy_fun(void) { }
+--end----
 
 [@] To trzeba poprawic.
 
@@ -74,5 +84,16 @@ Rozwiazaniem moze byc rzutowanie:
 ...
 wtedy mamy pewnosc, ze indeks podany do tablicy 'wynik' bedzie zawieral
 sie w przedziale od 0 do 255.
+
+[%] Problem wystepuje wtedy, gdy np, dane wejsciowe przykladowo zawieraja bajt o wartosci 0x80
+
+[@] To trzeba poprawic.
+
+================
+
+[4] Ten LOG wydaje sie byc nieprawidlowy,
+    tutaj takze jest skorzystanie z pamieci poza zaalokowanym obszarem:
+
+24: fprintf (stderr,"LOG: Wczytalismy znak o wartosci %c , znak ten powtorzyl sie %d razy\n",znak, wynik[x]);
 
 [@] To trzeba poprawic.
