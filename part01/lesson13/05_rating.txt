@@ -97,3 +97,13 @@ sie w przedziale od 0 do 255.
 24: fprintf (stderr,"LOG: Wczytalismy znak o wartosci %c , znak ten powtorzyl sie %d razy\n",znak, wynik[x]);
 
 [@] To trzeba poprawic.
+
+================
+
+Zeby ulatwic sobie zycie i wylapywac problemy w C/C+ jest dodana mozliwosc
+uzycia tzw assertow, przyklad:
+  https://ideone.com/A0MH3h
+
+Do programu '04_lesson13.c' dodalem takie zabezpieczenia, wynik dzialania:
+  https://ideone.com/hYpMpT
+
