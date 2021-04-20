@@ -1,0 +1,7 @@
+Przyklad, jak wyglada tablica w C i wypisanie adresu pierwszego elementu:
+
+{
+  int tablica [200];
+
+  printf("adres perwszego elementu: %p\n", (void *)(&tablica[0]));
+}

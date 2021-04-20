@@ -1,0 +1,2 @@
+Napisz program, ktory zadeklaruje tablice int o rozmiarze 256.
+Niech program wypisze adres kazdej komorki z tej tablicy.
