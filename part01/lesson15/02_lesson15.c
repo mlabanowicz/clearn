@@ -10,7 +10,7 @@ extern "C" {
         int i=-1;
         while(scanf("%d", p) == 1 && i != 255){
             i++;
-            fprintf(stderr, "LOG:Wczytujemy znak %d do komórki o adresie %p i = %d!\n", tablica[i] ,p,i);
+            fprintf(stderr, "LOG:Wczytujemy znak %d do komórki o adresie %p i = %d!\n", tablica[i] , p, i);
             p++;
         }
         for(;i != 0;i--){
