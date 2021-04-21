@@ -1,0 +1,18 @@
+{
+  int tablica [200];
+
+  int * p = &tablica[0];
+
+  scanf("%d", p); /* wczytanie liczby do pierwszego elementu w tablicy (indeks 0) */
+
+  ++p; /* zwiekszenie adresu, teraz p wskazuje na kolejny elemnt w tablicy */
+
+  scanf("%d", p); /* wczytanie liczby do drugiego elementu w tablicy (indeks 1) */
+
+  printf("wartosc elementu tablicy o indeksie 0: %d\n", tablica[0]);
+  printf("wartosc elementu tablicy o indeksie 1: %d\n", tablica[1]);
+
+  /* p wskazuje na element o indeksie 1 */
+  printf("wartosc elementu tablicy o indeksie 0: %d\n", p[-1]);
+  printf("wartosc elementu tablicy o indeksie 1: %d == %d\n", p[0], *p);
+}

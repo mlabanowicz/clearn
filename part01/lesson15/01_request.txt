@@ -1,0 +1,23 @@
+Napisz program, ktory zadeklaruje zmienne podane ponizej:
+  int tablica [256];
+  int * ptr; /* pointer */
+  int i; /* zmienna calkowita pomocnicza */
+Program nie moze deklarowac/wykorzystywac innych zmiennych.
+
+Program ma wczytac liczby calkowite dodatnie ze standardowego wejscia do tej tablicy,
+do tego celu ma uzywac wskaznika, tak jak jest to podane w 01_info.txt.
+Na koncu, ma wypisac te wszystkie liczby na stanardowe wyjscie
+w odwrotnej kolejnosci, takze uzywajac wskaznika.
+
+Przyklad dzialania programu:
+Wejscie:
+2
+5
+8
+1
+
+Wyjscie:
+1
+8
+5
+2
