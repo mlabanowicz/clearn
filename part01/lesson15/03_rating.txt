@@ -1,0 +1,66 @@
+[02_lesson15.c]
+
+3 problemy, prosze je poprawic:
+
+1) Wyswietlanie za pomoca fprintf wartosci pointer'a musi byc typu (void *),
+   to jest wazne:
+    {
+      int * p; /* typ p to jest (int *)    printf("%p") wymaga rzutowania na (void *) */
+      ...
+      /*               +---- !! to rzutowanie jest bardzo wazne !!  */
+      /*              /                                             */
+      printf("%p", (void *)p);
+    }
+  ** DO POPRAWIENIA
+
+2) Zle dzialanie programu, gdy podamy przykladowo 5 liczb:
+  IN:
+    1 2 3 4 5
+  EXPECTED:
+    5 4 3 2 1
+  RECEIVED:
+    5 4 3 2
+
+  ** DO POPRAWIENIA
+
+3) W napisach w pliku zrodlowym lepiej nie uzywac znakow unicode: "komórki" lepiej zamienic na "komorki"
+  ** DO POPRAWIENIA
+
+4) Niedozwolone uzycie pamieci (uzycie komorki poza tablica) podczas ladowania danych, gdy
+   na wejsciu podane jest 257 liczb (liczby od 1 do 257).
+   Wynik dzialania programu na linuxie (ubuntu 20.04), gdy jest on
+   skompilowany w trybie debugowym z opcja -fsanitize=address:
+
+    ....
+    LOG:Wczytujemy znak 253 do komÃ³rki o adresie 0x7ffce161e5e0 i = 252!
+    LOG:Wczytujemy znak 254 do komÃ³rki o adresie 0x7ffce161e5e4 i = 253!
+    LOG:Wczytujemy znak 255 do komÃ³rki o adresie 0x7ffce161e5e8 i = 254!
+    LOG:Wczytujemy znak 256 do komÃ³rki o adresie 0x7ffce161e5ec i = 255!
+    =================================================================
+    ==63240==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7ffce161e5f0 at pc 0x7fa4041aa4ed bp 0x7ffce161
+    e060 sp 0x7ffce161d7e8
+    WRITE of size 4 at 0x7ffce161e5f0 thread T0
+        #0 0x7fa4041aa4ec  (/lib/x86_64-linux-gnu/libasan.so.5+0x6e4ec)
+        #1 0x7fa4041ab680 in __isoc99_vscanf (/lib/x86_64-linux-gnu/libasan.so.5+0x6f680)
+        #2 0x7fa4041ab796 in __isoc99_scanf (/lib/x86_64-linux-gnu/libasan.so.5+0x6f796)
+        #3 0x562cbf49b44c in main /home/user/work/c/clearn/part01/lesson15/02_lesson15.c:11
+        #4 0x7fa403f710b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+        #5 0x562cbf49b1ed in _start (/home/user/ram/.output/home/user/work/c/clearn/part01/lesson15/lesson15.elf+0x11ed)
+
+    Address 0x7ffce161e5f0 is located in stack of thread T0 at offset 1056 in frame
+        #0 0x562cbf49b2b8 in main /home/user/work/c/clearn/part01/lesson15/02_lesson15.c:7
+
+  Problemem tutaj jest to, ze najpierw robimy scanf(), ktory cos wczyta do podanej komorki pamieci, a dopiero pozniej sprawdzamy,
+  czy to sie wogole zmiesci do tej pamieci, prosze pamietac, ze takie cos:
+    scanf("%d", p) == 1 && i != 255
+  oznacza, ze
+  wykonaj operacje 1:
+    (scanf("%d", p) == 1)
+  Jezeli ta operacja zwroci TRUE, wtedy i tylko wtedy wykonaj operacje 2:
+    (i != 255)
+
+   [__wskazowka__] : Lepiej byloby zamienic te operacje miejscami, czyli
+     najpierw sprawdzic, ze jest jeszcze miejsce i jezeli bedzie to miejsce,
+     wtedy wczytac dane do dostepnej komorki pamieci.
+
+  ** DO POPRAWIENIA
