@@ -1,6 +1,6 @@
 [02_lesson15.c]
 
-4 problemy, prosze je poprawic:
+5 problemow, prosze je poprawic:
 
 1) Wyswietlanie za pomoca fprintf wartosci pointer'a musi byc typu (void *),
    to jest wazne:
@@ -62,5 +62,19 @@
    [__wskazowka__] : Lepiej byloby zamienic te operacje miejscami, czyli
      najpierw sprawdzic, ze jest jeszcze miejsce i jezeli bedzie to miejsce,
      wtedy wczytac dane do dostepnej komorki pamieci.
+
+  ** DO POPRAWIENIA
+
+5) Niedozwolone uzycie pamieci (uzycie komorki poza tablica), gdy nie ma podanych danych wejsciowych:
+    =================================================================
+    ==66771==ERROR: AddressSanitizer: stack-buffer-underflow on address 0x7fff7c31b65c at pc 0x556d667254b2 bp 0x7fff7c3
+    1b620 sp 0x7fff7c31b610
+    READ of size 4 at 0x7fff7c31b65c thread T0
+        #0 0x556d667254b1 in main /home/user/work/c/clearn/part01/lesson15/02_lesson15.c:17
+        #1 0x7f2a0c6a20b2 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+        #2 0x556d667251ed in _start (/home/user/ram/.output/home/user/work/c/clearn/part01/lesson15/lesson15.elf+0x11ed)
+
+    Address 0x7fff7c31b65c is located in stack of thread T0 at offset 28 in frame
+        #0 0x556d667252b8 in main /home/user/work/c/clearn/part01/lesson15/02_lesson15.c:7
 
   ** DO POPRAWIENIA
