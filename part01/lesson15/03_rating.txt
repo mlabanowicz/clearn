@@ -1,6 +1,6 @@
 [02_lesson15.c]
 
-3 problemy, prosze je poprawic:
+4 problemy, prosze je poprawic:
 
 1) Wyswietlanie za pomoca fprintf wartosci pointer'a musi byc typu (void *),
    to jest wazne:
