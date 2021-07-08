@@ -1,0 +1,17 @@
+[04_lesson15.c]
+
+Elegancko, teraz program dziala jak nalezy.
+
+Jednak, w tresci zadania jest takie cos:
+
+" Na koncu, ma wypisac te wszystkie liczby na stanardowe wyjscie
+  w odwrotnej kolejnosci, takze uzywajac wskaznika. "
+
+     __takze_uzywajac_wskaznika__
+
+A jak widac, ten program (04_lesson15.c) do wypisania danych nie uzywa wskaznika tylko tablicy i indeksow.
+
+Uzycie wskaznika jest duzo lepszym (bo duzo szybszym) rozwiazaniem,
+to jest wlasnie sila jezyka C, bezposredni dostep do pamieci zwyklym wskaznikiem.
+
+Dodaj jeszcze ta zmiane w wypisywaniu uzywajac wskaznika.
