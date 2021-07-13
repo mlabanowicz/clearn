@@ -1,0 +1,16 @@
+Napisz program, ktory ma zaimplelentowana funkcje (czyli posiada jej definicje) wartosc potegi liczby:
+
+  int potega(int podstawa, int wykladnik);
+
+Finalny program powinien wczytywac 2 liczby nieujemne i wyswietlic wynik potegi.
+
+Przyklad dzialania programu:
+Wejscie:
+2 8
+3 3
+5 5
+
+Wyjscie:
+256
+27
+3125
