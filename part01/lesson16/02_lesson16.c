@@ -28,7 +28,7 @@ extern "C"
 
 	printf ("%d\n", potega);
       }
-    if (x <= -1 || n <= -1 || scanf ("%d %d", &x, &n) != 2)
+    if (x <= -1 || n <= -1 || scanf ("%d %d", &x, &n) != EOF)
       {
 	fprintf (stderr, "blad, niepoprawne dane!\n");
 	exit (EXIT_FAILURE);
