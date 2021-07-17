@@ -1,0 +1,19 @@
+Napisz program, ktory wykona nastepujacy algorytm:
+
+1) Zdefiniuje tablice w pamieci BSS o rozmiarze 1MB.
+
+2) Wczyta zawartosc ze standardowego wejscia do tej tablicy.
+   Tyle danych ile sie uda wczytac, ale nie wiecej niz rozmiar tej tablicy.
+
+3) Zaalokouje w pamieci HEAP tablice, rozmiar ma byc dokladnie taki,
+   ile danych udalo sie wczytac do tablicy BSS podczas punktu 2.
+
+4) Skopiuje do tablicy HEAP wszystkie te dane z tablicy BSS, ale w odwrotnej kolejnosci.
+
+5) Wypelni cala tablice BSS wartoscia '1'.
+
+6) Wypisze na stanardowe wyjscie cala tablice HEAP.
+
+7) Dealokuje pamiec HEAP (zwolni pamiec)
+
+8) Koniec programu

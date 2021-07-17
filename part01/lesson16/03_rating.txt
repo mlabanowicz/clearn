@@ -1,0 +1,2 @@
+Ok, program dziala poprawnie,
+jedynie dla wartosci 0 do potegi 0 podaje niepoprawny wynik :).
