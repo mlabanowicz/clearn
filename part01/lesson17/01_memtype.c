@@ -15,7 +15,7 @@ int mem_stack(int a) {
 
   char str1 [32]; /* tablica 32 znakow, !!! zawartosc jest niezdefiniowana !!! */
 
-  char str2 [32] = "cos tam"; /* tablica 32 znakow, zawartosc jest niezdefiniowana,
+  char str2 [32] = "cos tam"; /* tablica 32 znakow, zawartosc jest zdefiniowana,
                                  pierwsze 7 bajtow to ten napis, reszta to same zera,
                                  inicjalizacja jest zawsze wykonywana podczas odpalania funkcji */
 

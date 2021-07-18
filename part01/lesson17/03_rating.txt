@@ -1,0 +1,32 @@
+Na pierwszy rzut oka program wykonuje swoje zadanie prawidlowo,
+  '02_lesson17.c'
+ale tylko dla danych tekstowych.
+Niestety, korzysta z pamieci poza obszarem zaalokowanym.
+
+Do poprawienia:
+
+[1] Zamiast uzywania czegos takiego:
+16: for(i = 0; i <= 999999;i++){
+48: for(i=0;i != 1000000;i++){
+Lepiej byloby wykorzystac operator sizeof, czyli:
+16: for(i = 0; i <= (int)sizeof(tab) - 1;i++){
+48: for(i=0;i != (int)sizeof(tab);i++) {
+
+Wtedy, program mozna latwo modyfikowac tylko przez zmiane
+wielkosci tablicy 'tab'. Takie rzeczy sie przydaja do testowania,
+latwiej jest testowac przypadki skrajne dla tablicy 10 bajtowej,
+niz dla wartosci 1000000.
+
+[2] Ten fragment nie jest potrzebny, nie do konca rozumiem, po co jest
+20: if(tab[i] == '\n' || tab[i] == ' '){
+...
+... }
+
+[3] Ten kawalek jest jak najbardziej ok, ale przydaloby sie tutaj
+skorzystac ze wskaznikow, byloby to o wiele szybsze
+43: buffer[q] = tab[i-1];
+49: tab[i]='1';
+
+[4] Tutaj mamy skorzystanie z pamieci poza zaalokowanym obszarem.
+53: printf("%s\n", buffer);
+Ta sprawe pozostawie do zbadania i do naprawienia.
