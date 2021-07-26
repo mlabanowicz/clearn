@@ -1,0 +1,32 @@
+Do poprawienia:
+
+[1] Ta tablica chyba za mala jest :)
+12: static char tab[10];
+Do testow jak najbardziej, ale finalny program
+powinien byc skonfigurowany wg ustalen.
+
+[2] Ten warunek przydaloby sie lepiej przetestowac,
+16: for(i = 0; i <= (int)sizeof(tab) - 2;i++){
+wg ustalen, program ma wypelnic cala tablice, a tutaj
+jakby cos jest nie tak.
+Ten problem dobrze wlasnie sprawdzic dla tablicy 10 bajtowej,
+przykladowo dla takich danych wejsciowych:
+0123456789
+Oczekiwany wynik (gdy rozmiar tab jest 10) to:
+9876543210
+
+[3] Nie korzystamy ze wskaznikow,
+17: if(scanf("%c", &tab[i]) == EOF){
+Duzo syzbsze byloby uzycie:
+17: if(scanf("%c", p) == EOF){
+
+[4] Allokujemy 1 bajt wiecej, ale to na razie pozostawimy,
+bo to nie jest problem, jest to niezgodne ze specyfikacja,
+ale na razie to zostawiamy.
+
+[5] Tutaj korzystamy polowicznie ze wskaznikow, ale to jest na razie ok
+40: buffer[q] = *p;
+
+[6] No i dalej mamy (tym razem tylko czasami) problem z niedozwolonym dostepem do pamieci.
+52: printf("%s\n", buffer);
+Ta sprawe pozostawie do zbadania i do naprawienia.
