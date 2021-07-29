@@ -1,0 +1,35 @@
+Program dziala poprawnie (dla kazdych danych, binarnych i testowych),
+jednak ma jeden maly mankament dla przypadku skrajnego,
+czyli dla takiego, gdzie liczba danych wejsciowych jest rowna 0.
+(Wejsciem jest plik o rozmiarze 0 bajtow)
+
+Wtedy program probuje zaalokowac 0 bajtow, to jest ok,
+ale trzeba w takim skrajnym przypadku pamietac, ze malloc moze
+zwrocic:
+    a) wlasciwy wsaznik na pamiec o rozmiarze 0
+       (wtedy tak zaalokowana pamiec _MUSI_ byc zwolniona za pomoca free)
+  albo:
+    b) wartosc NULL i to nie jest blad
+       (do free mozna podac NULL, tak wiec, kazda wartosc
+        otrzymana od malloc mozna przekazac do free)
+
+[1] Jezeli bedzie ten skrajny przypadek i malloc zwroci NULL,
+wtedy program zakonczy sie z bledem, ze nie moze zaalokowac 0 bajtow.
+W takim przypadku program nie powinien konczyc sie bledem.
+
+[2] Jezeli bedzie ten skrajny przypadek i malloc zwroci jakis adres (nie NULL),
+w lini 39 mamy cos takiego:
+        p = &tab[i];
+w tym przypadku zmienna 'i' ma wartosc -1,
+czyli bedzie proba zaadresowania niedozwolonego obszaru.
+To jest niepoprawne.
+Nie powinno sie tak robic, bo podczas uzywania adresowania,
+nie wolno ustawiac wskaznikow na obszary niekontrolowane przez program.
+
+[3] Poprawic kod dla wersji C++
+Jest:
+ 4: #ifdef cplusplus
+59: #ifdef cplusplus2
+Powinno byc:
+ 4: #ifdef __cplusplus
+59: #ifdef __cplusplus
