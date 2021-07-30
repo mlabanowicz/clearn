@@ -1,0 +1,19 @@
+'08_lesson17.c' program prawie dziala.
+Na koncu niepotrzebnie wypisuje na standardowe wyjscie znak nowej lini.
+Jezeli chcemy cos wypisywac poza wymaganiami programu, lepiej to robic
+na stderr, przy czym wtedy przed tym lepiej wyczyscic bufor stdout'a
+za pomoca fflush:
+NOTE: o) strumien wyjsciowy 'stdout' moze miec w sobie jakis bufor,
+         czyli dopiero po wypelnieniu bufora (albo na koncu programu)
+         dane trafia na wyjscie
+      o) strumien wyjsciowy 'stderr' nie ma w sobie takiego bufora,
+         wszystko od razu trafia na wyjscie
+{
+  ...
+  fflush(stdout);
+  fprintf(stderr, "\n");
+}
+
+Reszta programu dziala juz teraz prawidlowo i bez bledow.
+
+W pliku '09_template.c' umiescilem rozwiazanie wzorcowe dla tego zadania.
