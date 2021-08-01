@@ -56,7 +56,8 @@ extern "C"
         for(i=0;i <= q; i++){
         printf("%c", buffer[i]);
         }
-		printf("\n");
+		fflush(stdout);
+		fprintf(stderr, "\n");
         free(buffer);
         return EXIT_SUCCESS;
     }

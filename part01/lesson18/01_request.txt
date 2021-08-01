@@ -1,0 +1,21 @@
+Napisz program, ktory dla kazdej wczytanej liczby (ilosc jest niezdefiniowana)
+wypisze ja w postaci tekstowej w jezyku polskim
+(bez znakow diakrytycznych).
+
+Liczba zawiera sie w przedziale 0..1000.
+
+Przyklad:
+
+IN:
+0
+1
+13
+157
+1000
+
+OUT:
+zero
+jeden
+trzynascie
+sto piecdziesiat siedem
+tysiac
