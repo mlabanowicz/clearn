@@ -139,10 +139,6 @@ int setek(int length,char num)
 	return EXIT_SUCCESS;
 }
 
-
-
-
-
 int main(void) {
 	int length;
 	char num[5]="xxxx";
@@ -188,7 +184,6 @@ int main(void) {
 	}
   return EXIT_SUCCESS;
 }
-
 #ifdef __cplusplus
 }
 #endif
