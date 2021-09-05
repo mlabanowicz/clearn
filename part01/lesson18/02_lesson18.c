@@ -7,11 +7,10 @@ extern "C" {
 #endif
 
 int jednosci(int length, char num1, char num2, char num3);
-
 int dziesiatek(int length,char num1,char num2);
-
 int setek(int length, char num);
 
+	
 int jednosci(int length, char num1, char num2, char num3)
 {
 	switch(num1)
@@ -82,6 +81,7 @@ int jednosci(int length, char num1, char num2, char num3)
 	}
 	return EXIT_SUCCESS;
 }
+	
 int dziesiatek(int length,char num1,char num2)
 {
 	switch(num1)
@@ -138,7 +138,7 @@ int setek(int length,char num)
 	}
 	return EXIT_SUCCESS;
 }
-
+	
 int main(void) {
 	int length;
 	char num[5]="xxxx";
