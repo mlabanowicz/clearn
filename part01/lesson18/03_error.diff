@@ -1,0 +1,652 @@
+20c20
+< dziewietnascie
+---
+> dziewiecnascie
+41c41
+< czterdziesci
+---
+> czterydziesci
+43,50c43,50
+< czterdziesci dwa
+< czterdziesci trzy
+< czterdziesci cztery
+< czterdziesci piec
+< czterdziesci szesc
+< czterdziesci siedem
+< czterdziesci osiem
+< czterdziesci dziewiec
+---
+> czterydziesci dwa
+> czterydziesci trzy
+> czterydziesci cztery
+> czterydziesci piec
+> czterydziesci szesc
+> czterydziesci siedem
+> czterydziesci osiem
+> czterydziesci dziewiec
+52c52
+< piecdziesiat jeden
+---
+> pietdziesiat jeden
+62c62
+< szescdziesiat jeden
+---
+> szesdziesiat jeden
+111c111
+< sto dziesiec
+---
+> sto dziedziesiec
+113,120c113,120
+< sto dwanascie
+< sto trzynascie
+< sto czternascie
+< sto pietnascie
+< sto szesnascie
+< sto siedemnascie
+< sto osiemnascie
+< sto dziewietnascie
+---
+> sto jedennascie
+> sto jedennascie
+> sto jedennascie
+> sto jedennascie
+> sto jedennascie
+> sto jedennascie
+> sto jedennascie
+> sto jedennascie
+141c141
+< sto czterdziesci
+---
+> sto czterydziesci
+143,150c143,150
+< sto czterdziesci dwa
+< sto czterdziesci trzy
+< sto czterdziesci cztery
+< sto czterdziesci piec
+< sto czterdziesci szesc
+< sto czterdziesci siedem
+< sto czterdziesci osiem
+< sto czterdziesci dziewiec
+---
+> sto czterydziesci dwa
+> sto czterydziesci trzy
+> sto czterydziesci cztery
+> sto czterydziesci piec
+> sto czterydziesci szesc
+> sto czterydziesci siedem
+> sto czterydziesci osiem
+> sto czterydziesci dziewiec
+152c152
+< sto piecdziesiat jeden
+---
+> sto pietdziesiat jeden
+162c162
+< sto szescdziesiat jeden
+---
+> sto szesdziesiat jeden
+201,300c201,300
+< dwiescie
+< dwiescie jeden
+< dwiescie dwa
+< dwiescie trzy
+< dwiescie cztery
+< dwiescie piec
+< dwiescie szesc
+< dwiescie siedem
+< dwiescie osiem
+< dwiescie dziewiec
+< dwiescie dziesiec
+< dwiescie jedenascie
+< dwiescie dwanascie
+< dwiescie trzynascie
+< dwiescie czternascie
+< dwiescie pietnascie
+< dwiescie szesnascie
+< dwiescie siedemnascie
+< dwiescie osiemnascie
+< dwiescie dziewietnascie
+< dwiescie dwadziescia
+< dwiescie dwadziescia jeden
+< dwiescie dwadziescia dwa
+< dwiescie dwadziescia trzy
+< dwiescie dwadziescia cztery
+< dwiescie dwadziescia piec
+< dwiescie dwadziescia szesc
+< dwiescie dwadziescia siedem
+< dwiescie dwadziescia osiem
+< dwiescie dwadziescia dziewiec
+< dwiescie trzydziesci
+< dwiescie trzydziesci jeden
+< dwiescie trzydziesci dwa
+< dwiescie trzydziesci trzy
+< dwiescie trzydziesci cztery
+< dwiescie trzydziesci piec
+< dwiescie trzydziesci szesc
+< dwiescie trzydziesci siedem
+< dwiescie trzydziesci osiem
+< dwiescie trzydziesci dziewiec
+< dwiescie czterdziesci
+< dwiescie czterdziesci jeden
+< dwiescie czterdziesci dwa
+< dwiescie czterdziesci trzy
+< dwiescie czterdziesci cztery
+< dwiescie czterdziesci piec
+< dwiescie czterdziesci szesc
+< dwiescie czterdziesci siedem
+< dwiescie czterdziesci osiem
+< dwiescie czterdziesci dziewiec
+< dwiescie piecdziesiat
+< dwiescie piecdziesiat jeden
+< dwiescie piecdziesiat dwa
+< dwiescie piecdziesiat trzy
+< dwiescie piecdziesiat cztery
+< dwiescie piecdziesiat piec
+< dwiescie piecdziesiat szesc
+< dwiescie piecdziesiat siedem
+< dwiescie piecdziesiat osiem
+< dwiescie piecdziesiat dziewiec
+< dwiescie szescdziesiat
+< dwiescie szescdziesiat jeden
+< dwiescie szescdziesiat dwa
+< dwiescie szescdziesiat trzy
+< dwiescie szescdziesiat cztery
+< dwiescie szescdziesiat piec
+< dwiescie szescdziesiat szesc
+< dwiescie szescdziesiat siedem
+< dwiescie szescdziesiat osiem
+< dwiescie szescdziesiat dziewiec
+< dwiescie siedemdziesiat
+< dwiescie siedemdziesiat jeden
+< dwiescie siedemdziesiat dwa
+< dwiescie siedemdziesiat trzy
+< dwiescie siedemdziesiat cztery
+< dwiescie siedemdziesiat piec
+< dwiescie siedemdziesiat szesc
+< dwiescie siedemdziesiat siedem
+< dwiescie siedemdziesiat osiem
+< dwiescie siedemdziesiat dziewiec
+< dwiescie osiemdziesiat
+< dwiescie osiemdziesiat jeden
+< dwiescie osiemdziesiat dwa
+< dwiescie osiemdziesiat trzy
+< dwiescie osiemdziesiat cztery
+< dwiescie osiemdziesiat piec
+< dwiescie osiemdziesiat szesc
+< dwiescie osiemdziesiat siedem
+< dwiescie osiemdziesiat osiem
+< dwiescie osiemdziesiat dziewiec
+< dwiescie dziewiecdziesiat
+< dwiescie dziewiecdziesiat jeden
+< dwiescie dziewiecdziesiat dwa
+< dwiescie dziewiecdziesiat trzy
+< dwiescie dziewiecdziesiat cztery
+< dwiescie dziewiecdziesiat piec
+< dwiescie dziewiecdziesiat szesc
+< dwiescie dziewiecdziesiat siedem
+< dwiescie dziewiecdziesiat osiem
+< dwiescie dziewiecdziesiat dziewiec
+---
+> dwascie
+> dwascie jeden
+> dwascie dwa
+> dwascie trzy
+> dwascie cztery
+> dwascie piec
+> dwascie szesc
+> dwascie siedem
+> dwascie osiem
+> dwascie dziewiec
+> dwascie dziedziesiec
+> dwascie jedenascie
+> dwascie jedennascie
+> dwascie jedennascie
+> dwascie jedennascie
+> dwascie jedennascie
+> dwascie jedennascie
+> dwascie jedennascie
+> dwascie jedennascie
+> dwascie jedennascie
+> dwascie dwadziescia
+> dwascie dwadziescia jeden
+> dwascie dwadziescia dwa
+> dwascie dwadziescia trzy
+> dwascie dwadziescia cztery
+> dwascie dwadziescia piec
+> dwascie dwadziescia szesc
+> dwascie dwadziescia siedem
+> dwascie dwadziescia osiem
+> dwascie dwadziescia dziewiec
+> dwascie trzydziesci
+> dwascie trzydziesci jeden
+> dwascie trzydziesci dwa
+> dwascie trzydziesci trzy
+> dwascie trzydziesci cztery
+> dwascie trzydziesci piec
+> dwascie trzydziesci szesc
+> dwascie trzydziesci siedem
+> dwascie trzydziesci osiem
+> dwascie trzydziesci dziewiec
+> dwascie czterydziesci
+> dwascie czterdziesci jeden
+> dwascie czterydziesci dwa
+> dwascie czterydziesci trzy
+> dwascie czterydziesci cztery
+> dwascie czterydziesci piec
+> dwascie czterydziesci szesc
+> dwascie czterydziesci siedem
+> dwascie czterydziesci osiem
+> dwascie czterydziesci dziewiec
+> dwascie piecdziesiat
+> dwascie pietdziesiat jeden
+> dwascie piecdziesiat dwa
+> dwascie piecdziesiat trzy
+> dwascie piecdziesiat cztery
+> dwascie piecdziesiat piec
+> dwascie piecdziesiat szesc
+> dwascie piecdziesiat siedem
+> dwascie piecdziesiat osiem
+> dwascie piecdziesiat dziewiec
+> dwascie szescdziesiat
+> dwascie szesdziesiat jeden
+> dwascie szescdziesiat dwa
+> dwascie szescdziesiat trzy
+> dwascie szescdziesiat cztery
+> dwascie szescdziesiat piec
+> dwascie szescdziesiat szesc
+> dwascie szescdziesiat siedem
+> dwascie szescdziesiat osiem
+> dwascie szescdziesiat dziewiec
+> dwascie siedemdziesiat
+> dwascie siedemdziesiat jeden
+> dwascie siedemdziesiat dwa
+> dwascie siedemdziesiat trzy
+> dwascie siedemdziesiat cztery
+> dwascie siedemdziesiat piec
+> dwascie siedemdziesiat szesc
+> dwascie siedemdziesiat siedem
+> dwascie siedemdziesiat osiem
+> dwascie siedemdziesiat dziewiec
+> dwascie osiemdziesiat
+> dwascie osiemdziesiat jeden
+> dwascie osiemdziesiat dwa
+> dwascie osiemdziesiat trzy
+> dwascie osiemdziesiat cztery
+> dwascie osiemdziesiat piec
+> dwascie osiemdziesiat szesc
+> dwascie osiemdziesiat siedem
+> dwascie osiemdziesiat osiem
+> dwascie osiemdziesiat dziewiec
+> dwascie dziewiecdziesiat
+> dwascie dziewiecdziesiat jeden
+> dwascie dziewiecdziesiat dwa
+> dwascie dziewiecdziesiat trzy
+> dwascie dziewiecdziesiat cztery
+> dwascie dziewiecdziesiat piec
+> dwascie dziewiecdziesiat szesc
+> dwascie dziewiecdziesiat siedem
+> dwascie dziewiecdziesiat osiem
+> dwascie dziewiecdziesiat dziewiec
+311c311
+< trzysta dziesiec
+---
+> trzysta dziedziesiec
+313,320c313,320
+< trzysta dwanascie
+< trzysta trzynascie
+< trzysta czternascie
+< trzysta pietnascie
+< trzysta szesnascie
+< trzysta siedemnascie
+< trzysta osiemnascie
+< trzysta dziewietnascie
+---
+> trzysta jedennascie
+> trzysta jedennascie
+> trzysta jedennascie
+> trzysta jedennascie
+> trzysta jedennascie
+> trzysta jedennascie
+> trzysta jedennascie
+> trzysta jedennascie
+341c341
+< trzysta czterdziesci
+---
+> trzysta czterydziesci
+343,350c343,350
+< trzysta czterdziesci dwa
+< trzysta czterdziesci trzy
+< trzysta czterdziesci cztery
+< trzysta czterdziesci piec
+< trzysta czterdziesci szesc
+< trzysta czterdziesci siedem
+< trzysta czterdziesci osiem
+< trzysta czterdziesci dziewiec
+---
+> trzysta czterydziesci dwa
+> trzysta czterydziesci trzy
+> trzysta czterydziesci cztery
+> trzysta czterydziesci piec
+> trzysta czterydziesci szesc
+> trzysta czterydziesci siedem
+> trzysta czterydziesci osiem
+> trzysta czterydziesci dziewiec
+352c352
+< trzysta piecdziesiat jeden
+---
+> trzysta pietdziesiat jeden
+362c362
+< trzysta szescdziesiat jeden
+---
+> trzysta szesdziesiat jeden
+411c411
+< czterysta dziesiec
+---
+> czterysta dziedziesiec
+413,420c413,420
+< czterysta dwanascie
+< czterysta trzynascie
+< czterysta czternascie
+< czterysta pietnascie
+< czterysta szesnascie
+< czterysta siedemnascie
+< czterysta osiemnascie
+< czterysta dziewietnascie
+---
+> czterysta jedennascie
+> czterysta jedennascie
+> czterysta jedennascie
+> czterysta jedennascie
+> czterysta jedennascie
+> czterysta jedennascie
+> czterysta jedennascie
+> czterysta jedennascie
+441c441
+< czterysta czterdziesci
+---
+> czterysta czterydziesci
+443,450c443,450
+< czterysta czterdziesci dwa
+< czterysta czterdziesci trzy
+< czterysta czterdziesci cztery
+< czterysta czterdziesci piec
+< czterysta czterdziesci szesc
+< czterysta czterdziesci siedem
+< czterysta czterdziesci osiem
+< czterysta czterdziesci dziewiec
+---
+> czterysta czterydziesci dwa
+> czterysta czterydziesci trzy
+> czterysta czterydziesci cztery
+> czterysta czterydziesci piec
+> czterysta czterydziesci szesc
+> czterysta czterydziesci siedem
+> czterysta czterydziesci osiem
+> czterysta czterydziesci dziewiec
+452c452
+< czterysta piecdziesiat jeden
+---
+> czterysta pietdziesiat jeden
+462c462
+< czterysta szescdziesiat jeden
+---
+> czterysta szesdziesiat jeden
+511c511
+< piecset dziesiec
+---
+> piecset dziedziesiec
+513,520c513,520
+< piecset dwanascie
+< piecset trzynascie
+< piecset czternascie
+< piecset pietnascie
+< piecset szesnascie
+< piecset siedemnascie
+< piecset osiemnascie
+< piecset dziewietnascie
+---
+> piecset jedennascie
+> piecset jedennascie
+> piecset jedennascie
+> piecset jedennascie
+> piecset jedennascie
+> piecset jedennascie
+> piecset jedennascie
+> piecset jedennascie
+541c541
+< piecset czterdziesci
+---
+> piecset czterydziesci
+543,550c543,550
+< piecset czterdziesci dwa
+< piecset czterdziesci trzy
+< piecset czterdziesci cztery
+< piecset czterdziesci piec
+< piecset czterdziesci szesc
+< piecset czterdziesci siedem
+< piecset czterdziesci osiem
+< piecset czterdziesci dziewiec
+---
+> piecset czterydziesci dwa
+> piecset czterydziesci trzy
+> piecset czterydziesci cztery
+> piecset czterydziesci piec
+> piecset czterydziesci szesc
+> piecset czterydziesci siedem
+> piecset czterydziesci osiem
+> piecset czterydziesci dziewiec
+552c552
+< piecset piecdziesiat jeden
+---
+> piecset pietdziesiat jeden
+562c562
+< piecset szescdziesiat jeden
+---
+> piecset szesdziesiat jeden
+611c611
+< szescset dziesiec
+---
+> szescset dziedziesiec
+613,620c613,620
+< szescset dwanascie
+< szescset trzynascie
+< szescset czternascie
+< szescset pietnascie
+< szescset szesnascie
+< szescset siedemnascie
+< szescset osiemnascie
+< szescset dziewietnascie
+---
+> szescset jedennascie
+> szescset jedennascie
+> szescset jedennascie
+> szescset jedennascie
+> szescset jedennascie
+> szescset jedennascie
+> szescset jedennascie
+> szescset jedennascie
+641c641
+< szescset czterdziesci
+---
+> szescset czterydziesci
+643,650c643,650
+< szescset czterdziesci dwa
+< szescset czterdziesci trzy
+< szescset czterdziesci cztery
+< szescset czterdziesci piec
+< szescset czterdziesci szesc
+< szescset czterdziesci siedem
+< szescset czterdziesci osiem
+< szescset czterdziesci dziewiec
+---
+> szescset czterydziesci dwa
+> szescset czterydziesci trzy
+> szescset czterydziesci cztery
+> szescset czterydziesci piec
+> szescset czterydziesci szesc
+> szescset czterydziesci siedem
+> szescset czterydziesci osiem
+> szescset czterydziesci dziewiec
+652c652
+< szescset piecdziesiat jeden
+---
+> szescset pietdziesiat jeden
+662c662
+< szescset szescdziesiat jeden
+---
+> szescset szesdziesiat jeden
+711c711
+< siedemset dziesiec
+---
+> siedemset dziedziesiec
+713,720c713,720
+< siedemset dwanascie
+< siedemset trzynascie
+< siedemset czternascie
+< siedemset pietnascie
+< siedemset szesnascie
+< siedemset siedemnascie
+< siedemset osiemnascie
+< siedemset dziewietnascie
+---
+> siedemset jedennascie
+> siedemset jedennascie
+> siedemset jedennascie
+> siedemset jedennascie
+> siedemset jedennascie
+> siedemset jedennascie
+> siedemset jedennascie
+> siedemset jedennascie
+741c741
+< siedemset czterdziesci
+---
+> siedemset czterydziesci
+743,750c743,750
+< siedemset czterdziesci dwa
+< siedemset czterdziesci trzy
+< siedemset czterdziesci cztery
+< siedemset czterdziesci piec
+< siedemset czterdziesci szesc
+< siedemset czterdziesci siedem
+< siedemset czterdziesci osiem
+< siedemset czterdziesci dziewiec
+---
+> siedemset czterydziesci dwa
+> siedemset czterydziesci trzy
+> siedemset czterydziesci cztery
+> siedemset czterydziesci piec
+> siedemset czterydziesci szesc
+> siedemset czterydziesci siedem
+> siedemset czterydziesci osiem
+> siedemset czterydziesci dziewiec
+752c752
+< siedemset piecdziesiat jeden
+---
+> siedemset pietdziesiat jeden
+762c762
+< siedemset szescdziesiat jeden
+---
+> siedemset szesdziesiat jeden
+811c811
+< osiemset dziesiec
+---
+> osiemset dziedziesiec
+813,820c813,820
+< osiemset dwanascie
+< osiemset trzynascie
+< osiemset czternascie
+< osiemset pietnascie
+< osiemset szesnascie
+< osiemset siedemnascie
+< osiemset osiemnascie
+< osiemset dziewietnascie
+---
+> osiemset jedennascie
+> osiemset jedennascie
+> osiemset jedennascie
+> osiemset jedennascie
+> osiemset jedennascie
+> osiemset jedennascie
+> osiemset jedennascie
+> osiemset jedennascie
+841c841
+< osiemset czterdziesci
+---
+> osiemset czterydziesci
+843,850c843,850
+< osiemset czterdziesci dwa
+< osiemset czterdziesci trzy
+< osiemset czterdziesci cztery
+< osiemset czterdziesci piec
+< osiemset czterdziesci szesc
+< osiemset czterdziesci siedem
+< osiemset czterdziesci osiem
+< osiemset czterdziesci dziewiec
+---
+> osiemset czterydziesci dwa
+> osiemset czterydziesci trzy
+> osiemset czterydziesci cztery
+> osiemset czterydziesci piec
+> osiemset czterydziesci szesc
+> osiemset czterydziesci siedem
+> osiemset czterydziesci osiem
+> osiemset czterydziesci dziewiec
+852c852
+< osiemset piecdziesiat jeden
+---
+> osiemset pietdziesiat jeden
+862c862
+< osiemset szescdziesiat jeden
+---
+> osiemset szesdziesiat jeden
+911c911
+< dziewiecset dziesiec
+---
+> dziewiecset dziedziesiec
+913,920c913,920
+< dziewiecset dwanascie
+< dziewiecset trzynascie
+< dziewiecset czternascie
+< dziewiecset pietnascie
+< dziewiecset szesnascie
+< dziewiecset siedemnascie
+< dziewiecset osiemnascie
+< dziewiecset dziewietnascie
+---
+> dziewiecset jedennascie
+> dziewiecset jedennascie
+> dziewiecset jedennascie
+> dziewiecset jedennascie
+> dziewiecset jedennascie
+> dziewiecset jedennascie
+> dziewiecset jedennascie
+> dziewiecset jedennascie
+941c941
+< dziewiecset czterdziesci
+---
+> dziewiecset czterydziesci
+943,950c943,950
+< dziewiecset czterdziesci dwa
+< dziewiecset czterdziesci trzy
+< dziewiecset czterdziesci cztery
+< dziewiecset czterdziesci piec
+< dziewiecset czterdziesci szesc
+< dziewiecset czterdziesci siedem
+< dziewiecset czterdziesci osiem
+< dziewiecset czterdziesci dziewiec
+---
+> dziewiecset czterydziesci dwa
+> dziewiecset czterydziesci trzy
+> dziewiecset czterydziesci cztery
+> dziewiecset czterydziesci piec
+> dziewiecset czterydziesci szesc
+> dziewiecset czterydziesci siedem
+> dziewiecset czterydziesci osiem
+> dziewiecset czterydziesci dziewiec
+952c952
+< dziewiecset piecdziesiat jeden
+---
+> dziewiecset pietdziesiat jeden
+962c962
+< dziewiecset szescdziesiat jeden
+---
+> dziewiecset szesdziesiat jeden

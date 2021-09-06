@@ -1,0 +1,11 @@
+Program dziala (brakuje wyswietlania nowej lini na koncu petli),
+ale nie dla wszystkich przypadkow poprawnie.
+W pliku '03_error.diff' znajduja sie wszystkie przypadki, ktore nie przechodza testow,
+format tego pliku:
+< [prawidlowa wartosc]
+> [nieprawodlowa wartosc, wygenerowana przez program 02_lesson18.c]
+
+Przyklad:
+< dziewietnascie
+---
+> dziewiecnascie
