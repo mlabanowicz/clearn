@@ -1,0 +1,3 @@
+Juz prawie idealnie, jeszcze tylko 'dwie' rzeczy:
+  [1] 200 pisze sie "dwiescie"
+  [2] Brak znaku konca nowej lini (blad caly czas obecny, takze we wczesniejszym rozwiazaniu 02_lesson18.c)
