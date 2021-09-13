@@ -1,0 +1,33 @@
+Napisz program, ktory zamieni wielkosc liter na przeciwna,
+tzn. male litery zamieni na duze, a duze na male.
+Program musi obslugiwac polskie litery wg standardu konsoli linuksowej.
+
+Polskie litery w konsoli linuksowej skladaja sie z dwoch bajtow:
+  ą = c485
+  ć = c487
+  ę = c499
+  ł = c582
+  ń = c584
+  ó = c3b3
+  ś = c59b
+  ż = c5bc
+  ź = c5ba
+  Ą = c484
+  Ć = c486
+  Ę = c498
+  Ł = c581
+  Ń = c583
+  Ó = c393
+  Ś = c59a
+  Ż = c5bb
+  Ź = c5b9
+
+Czyli przykladowo, wyraz 'mór', gdzie znak 'ó' pisze
+sie jako 'o' z kreska, w konsoli linuksowej maja postac w bajtach:
+
+  0x6d    0xc3  0xb3    0x72
+    m     o z kreska      r
+
+Pliki przykladowe:
+dane wejsciowe '01_input.txt'
+dane wyjsciowe '02_output.txt'
