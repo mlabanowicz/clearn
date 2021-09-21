@@ -1,0 +1,22 @@
+Program dla danych testowych dziala poprawnie.
+
+Dla danych innych juz nie.
+
+Przykladowo, dla danych wejsciowych:
+  03_test.in
+  hex: 84
+
+Prawidlowe dane wyjsciowe to:
+  03_test.out
+  hex: 84
+
+Dodatkowo, program w tym przykladzie, ma taki oto problem:
+Komunikat z narzedzia valgrind, ktory sprawdzil dzialanie programu:
+  Conditional jump or move depends on uninitialised value(s)
+  ==16023==    at 0x10877F: main (02_lesson19.c:18)
+To nalezy poprawic.
+
+Prosze o poprawienie programu tak, aby modyfikowal tylko:
+  - litery alfabetu angielksiego
+  - litery alfabetu polskiego
+innych znakow (bajtow) program ma nie zmieniac.
