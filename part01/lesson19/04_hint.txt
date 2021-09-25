@@ -1,0 +1,16 @@
+Algorytm dla tego zadania moze wygladac nastepujaco:
+
+1. Deklarujemy bufor na dwa znaki: (a) i (b).
+
+2. wczytujemy do (a) pierwszy znak
+
+3. wczutujemy do (b) kolejny znak
+
+4. jezeli (a,b) tworza polski znak:
+   a) wtedy wypisz na konsole polski znak (a,b) (dwubajtowy) o przeciwnej wielkosci
+      wczytaj do (a) kolejny znak
+   b) jezeli nie, to wypisz na konsole znak (a) (jednobajtowy) o przeciwnej wielkosci
+      do a wpisz wartosc z b
+
+5. GOTO 3
+
