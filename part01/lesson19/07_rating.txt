@@ -1,0 +1,7 @@
+[06_lesson19.c]
+  Wyniki dzialania programu sa poprawne.
+
+[07_template.c] - to jest program wzorcowy
+  *wzorcowy: w takim sensie wzorcowy,
+             ze nie oznacza, ze jest on lepszy, ladniejszy etc.,
+             tylko taki, z ktorym mozna porownac wyniki dzialania.

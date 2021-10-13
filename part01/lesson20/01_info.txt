@@ -1,0 +1,23 @@
+Biblioteki, czyli takie kawalki kodu, ktore mozna uzywac w roznych programach.
+
+Kazda biblioteka ma swoje API (plik *.h) oraz IMPLEMENTACJE (plik *.c).
+
+Przyklad:
+  01_suma.h
+  01_suma.c
+Kompilacja biblioteki statycznej:
+  shell# gcc -c 01_suma.c -o 01_suma.o
+
+Program glowny: 01_main.c, ktory korzysta z biblioteki statycznej.
+
+Kompilacja programu, ktory wykorzysta bibioteke statyczna majac plik zrodlowy (01_suma.c):
+  shell# gcc 01_suma.c 01_main.c -o a_1.exe
+
+Kompilacja programu, ktory wykorzysta bibioteke statyczna majac plik obiektowy (01_suma.o):
+  shell# gcc 01_suma.o 01_main.c -o a_2.exe
+W tym przypadku caly proces kompilacji wogole nie dotyka pliku "01_suma.c",
+ten plik nie jest w tym procesie potrzebny.
+Potrzebne sa tylko:
+  01_suma.o
+  01_suma.h
+  01_main.c

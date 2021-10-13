@@ -1,0 +1,18 @@
+Napisz biblioteke "NR_sleep.h" (zamiast NR wstaw odpowiednia wartosc zgodnie z zasadami wrzucania plikow),
+ktora zaimplementuje 2 fukncje: sleeps i sleepms.
+
+  int sleeps(int seconds);
+
+  int sleepms(int miliseconds);
+
+Biblioteka powinna wykorzystac ANSIC/89 interfejs:
+  <time.h>
+  clock_t clock(void); /* zwraca liczbe, ktora zmienia sie co jeden cykl         */
+  CLOCKS_PER_SEC       /* o taka wartosc rosnie ta liczba w ciagu jednej sekundy */
+
+Funkcja sleepms powinna czekac w petli i caly czas sprawdzac czas za pomoca funkcji 'clock',
+jezeli uplynie wymagany czas, wyjsc z petli.
+
+[opcja]
+Tutaj jeszcze dobrze napisac sobie jakis program do testowania biblioteki,
+nazwij go: "NR_sleep_test.c". Jego zawartosc zalezy tylko od autora bilbioteki.
