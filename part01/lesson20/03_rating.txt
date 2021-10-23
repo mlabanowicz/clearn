@@ -1,0 +1,27 @@
+Biblioteka wyglada elegancko,
+na niektorych systemach dziala prawidlowo.
+
+Teraz trzeba poprawic biblioteke w taki sposob, aby
+dziala na kazdym systemie.
+
+Rozwaz prosze takie systemy, w ktorych:
+
+  [1] Przypadek pierwszy:
+      CLOCKS_PER_SEC jest rowny 1000000
+      : dla takiej wartosci ta bilbioteka dziala poprawnie
+
+  [2] Przypadek drugi (stary system operacyjny DOS tak ma):
+      CLOCKS_PER_SEC jest rowny 18.2
+      : dla takiej wartosci sleepms nie dziala poprawnie
+
+[hint]
+  a) CLOCKS_PER_MSEC zalezy od wartosci CLOCKS_PER_SEC
+  b) nazwy zmiennych nie powinny miec suffixow typu "_t"
+     "_t" uzywa sie przewaznie do nazywania typow danych, przykladowo:
+     typedef struct {
+       int  age;
+       char name [20];
+     } person_t;
+
+Zrob tylko plik implementacyjny, ktory ma to poprawione:
+  04_sleep.c
