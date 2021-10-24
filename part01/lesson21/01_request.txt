@@ -1,7 +1,7 @@
 Napisac biblioteke do prostych operacji graficznych na buforze znakowym.
 Punkt (0,0) znajduje sie w lewym gornym rogu planu graficznego.
 
-API znajduje sie w pliku "txtgfx.h".
+API znajduje sie w pliku "gfxtxt.h".
 
 Nalezy wykorzystac pamiec dynamiczna i skorzystac ze struktur, przyklad:
 
