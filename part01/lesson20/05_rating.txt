@@ -1,0 +1,68 @@
+[04_sleep.c]
+
+Ok, biblioteka teraz zadziala wszedzie.
+
+Oto jej male mankamenty, na razie sie nimi nie przejmujemy:
+
+1) Niepotrzebnie inkluduje biblioteke stdio
+
+2) Brak znaku konca nowej lini (ostatni znak w pliku to 'f').
+   Moze byc problem w niektorych kompilatorach.
+
+3) Funkcje sleeps i sleepms zwracaja wartosc 'int' i zawsze zwracaja EXIT_SUCCESS.
+   EXIT_SUCCESS jest wartoscia uzywana do komunkacji z systemem,
+   czyli funkja glowna main moze zwrocic EXIT_SUCCESS albo EXIT_FAILURE.
+   Taka zwykla funkcja moze bazowac na wartosciach typu 0, 1 etc.
+   Czyli return 0 -> jezeli wszystko sie dualo,
+   albo w przypadku jakiegos bledu: return kod_bledu.
+   To jest taka zasada w programowaniu, 0 zwraca sie, gdy jest ok.
+   W zasadzie ta funkcja w tej implementacji mogla by byc typu 'void', czyli taka
+   funkcja, ktora nic nie zwraca, przyklad:
+   void funkcja(int a) {
+     printf("Jestem funkcja, co to nic nie zwraca, wartosc a=%d\n", a);
+   }
+
+4) Brak nawiasu w define:
+  jest:
+    #define CLOCKS_PER_MSEC CLOCKS_PER_SEC/1000
+  powinno byc:
+    #define CLOCKS_PER_MSEC (CLOCKS_PER_SEC/1000)
+    niestety, tutaj wygeneruje sie kolejny problem, gdy CLOCKS_PER_SEC
+    przykladowo bedzie liczba calkowita 888, wtedy
+    (888/1000) -> czyli dzielenie int przez int da nam int, czyli 0.
+  lepsze rozwiazanie w tym przypdku to uzycie liczby zmiennoprzecinkowej:
+    #define CLOCKS_PER_MSEC (((double)(CLOCKS_PER_SEC))/1000)
+  najbardziej efektywne rozwiazanie:
+    #if CLOCKS_PER_SEC == 1000000
+      /* dla standardowych wartosci w obecnych systemach uzjemy int (szybsze dzialanie) */
+      #define CLOCKS_PER_MSEC 1000
+    #else
+      /* w takim przypadku lepiej posluzyc sie liczbami zmiennoprzecinkowymi */
+      #define CLOCKS_PER_MSEC (((double)(CLOCKS_PER_SEC))/1000)
+    #endif
+
+5) Funkcja nie jest zabezpieczona przed przepelnieniem.
+   Funkcja 'clock()' zwraca wartosc zegara systemowego.
+   Zalozmy dla uproszczenia, ze clock_t to jest jeden bajt,
+   czyli moze miec wartosci od 0 do 255, czyli zgodnie z czasem clock zwraca:
+   0,1,2,3..254,255,0,1,2... -> i tak w kolko
+   Wtedy przykladowo, odczytujemy obecny czas:
+     przypadek 1:
+       t = 10
+       chcemy czekac 150 cykli:
+       czyli czekamy do wartosci 160 -> wtedy ta funkcja zadziala poprawnie.
+     przypadek 2:
+       t = 10
+       chcemy czekac 260 cykli:
+       czyli czekamy do 10 + 260 = 270 % 256 = 14 -> wtedy ta funkcja poczeka tylko 4 cykle.
+     przypadek 3:
+       t = 10
+       chcemy poczekac 250 cykli:
+       czyli czekamy do 10 + 250 = 260 % 256 = 4 -> wtedy ta funkcja nic nie poczeka,
+       bo odczytany obecny czas bedzie juz wiekszy niz ten koncowy.
+
+Oczywiscie, takie podejscie do czekania (za pomoca funkcji 'clock()')
+moze byc uzyte w programach, niestety wiaze sie to z tym,
+ze taka operacja czekania niepotrzebnie zuzywa procesor.
+W normalnych systemach sa dostepne funkcje do czekania, ktore nie uzywaja CPU.
+O takim podejsciu bedziemy sie uczyc pozniej.

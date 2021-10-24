@@ -1,0 +1,69 @@
+Napisac biblioteke do prostych operacji graficznych na buforze znakowym.
+Punkt (0,0) znajduje sie w lewym gornym rogu planu graficznego.
+
+API znajduje sie w pliku "txtgfx.h".
+
+Nalezy wykorzystac pamiec dynamiczna i skorzystac ze struktur, przyklad:
+
+typedef struct {
+  int     jakies_dane_etc;
+  char ** linie;
+  int     inne_dane_etc;
+} handle_t;
+
+void * create(...) {
+
+  /* alokacja struktury glownej */
+  handle_t * h = (handle_t *)malloc(sizeof(handle_t));
+
+  /* alokacja wskaznikow dla kazdego wiersza */
+  h->linie = malloc(sizeof(char *) * liczba_lini);
+
+  for (i = 0; i < liczba_lini; ++i) {
+    /* alokacje kazdego wiersza */
+    h->linie[i] = (char *)malloc(sizeof(char) * dlugosc_lini);
+  }
+
+  return h;
+}
+
+void destroy(void * handle) {
+
+  handle_t * h = (handle_t *)handle;
+
+  for (i = 0; i < liczba_lini; ++i) {
+    free(h->linie[i]);
+  }
+
+  free(h->linie);
+
+  free(h);
+}
+
+Przykladowy bufor znakowy skladajacy sie z 5 lini o szerokosci 20 znakow, wypelniony bajtem 'o':
+oooooooooooooooooooo
+oooooooooooooooooooo
+oooooooooooooooooooo
+oooooooooooooooooooo
+oooooooooooooooooooo
+
+Po wypelnieniu go bajtem '.':
+....................
+....................
+....................
+....................
+....................
+
+Po wywolaniu DrawRect(handle, 0, 0, 8, 4, '#')
+########............
+#......#............
+#......#............
+########............
+....................
+
+Po wywolaniu FillRect(handle, 5, 2, 10, 3, '@')
+########............
+#......#............
+#....@@@@@@@@@@.....
+#####@@@@@@@@@@.....
+.....@@@@@@@@@@.....
