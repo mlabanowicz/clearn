@@ -58,8 +58,17 @@ Oto jej male mankamenty, na razie sie nimi nie przejmujemy:
      przypadek 3:
        t = 10
        chcemy poczekac 250 cykli:
-       czyli czekamy do 10 + 250 = 260 % 256 = 4 -> wtedy ta funkcja nic nie poczeka,
-       bo odczytany obecny czas bedzie juz wiekszy niz ten koncowy.
+       czyli czekamy do 10 + 250 = 260 % 256 = 4 -> wtedy ta funkcja poczeka do t=4, czyli OK
+     przypadek 4:
+       t = 10
+       checemy poczekac 10 cykli:
+       czyli czekamy do 10 + 10 = 20 -> wtedy ta funkcja poczeka do t=20, ale
+       moze sie zdazyc, ze clock() zwroci 19, a nastepny odczyt z clock() bedzie 21,
+       wtedy ta funkcja nie wiadomo ile poczeka. Wczesniej tego nie zauwazylem.
+       W kodzie powinno byc:
+         while (endtime > clock()) {
+         }
+       wtedy ten problem by nie istnial
 
 Oczywiscie, takie podejscie do czekania (za pomoca funkcji 'clock()')
 moze byc uzyte w programach, niestety wiaze sie to z tym,
