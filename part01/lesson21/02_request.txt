@@ -1,0 +1,13 @@
+Biblioteke jest w czesci napisana w pliku 'gfxtxt.c'.
+
+Zapoznaj sie z obecna implementacja.
+
+Po tym sprobuj dokonczyc implementacje funkcji:
+  GFXTXT_DrawRect
+  i
+  GFXTXT_FillRect.
+
+Zmian dokonuj w plikach
+  'gfxtxt.c'
+  'gfxtxt_test.c' (zawiera przyklad uzycia takiej biblioteki)
+(_NIE_ tworz kolejnych plikow).
