@@ -1,0 +1,12 @@
+Zmowdyfikuj program 03_hint.c tak, aby jego output wygladal nastepujaco:
+----------
+----------
+----------
+----------
+----------
+Rysowanie prostokata
+----------
+-@@@@@@@--
+-@-----@--
+-@-----@--
+-@@@@@@@--
