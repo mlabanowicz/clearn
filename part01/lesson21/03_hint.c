@@ -12,6 +12,7 @@ extern "C" {
 
 int main(void)
 {
+    int i;
   char plan_graficzny [WIDTH * HEIGHT];
 
   /* Wypelnienie planu graficznego znakami '-' */
@@ -49,6 +50,16 @@ int main(void)
 
   printf("Rysowanie prostokata\n");
   {
+    for(i=11;i!=19;i++){
+        plan_graficzny[i]='@';
+    }
+    for(i=0;i!=2;i++){
+        plan_graficzny[21+WIDTH*i]='@';
+        plan_graficzny[28+WIDTH*i]='@';
+    }
+    for(i=41;i!=49;i++){
+        plan_graficzny[i]='@';
+    }  
     /* !!TODO!! */
     /* Narysuj prostokat w tablicy 'plan_graficzny' za pomoca znaku '@',
      * czyli wypelnij komorki odpowiednich bajtow w tej tablicy,
