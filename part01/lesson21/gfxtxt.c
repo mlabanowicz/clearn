@@ -85,10 +85,18 @@ int GFXTXT_DrawRect(void * handle, int x, int y, int width, int height, int byte
 
       char * line = (char *)((void *)(h + 1));
 
-      fprintf(stderr, "!!! GFXTXT_DrawRect !!! : Not implemented\n");
-      fprintf(stderr, "!!! dimension: %dx%d\n", h->width, h->height);
-      fprintf(stderr, "!!! pointer to line0: %p\n", (void *)line);
-      fprintf(stderr, "!!! char to draw '%c'\n", (char)byte);
+      line += x + y * h->width;
+
+      fprintf(stderr, "!!! GFXTXT_DrawRect !!! : Not completed\n");
+
+      /* Ten kod robi dokladnie co FillRect, a nie powinien.        */
+      /* Nalezy go zmodyfikowac tak, aby rysowal tylko obramowanie. */
+      while (height--) {
+
+        memset(line, byte, width);
+
+        line += h->width;
+      }
 
     }
 
@@ -99,9 +107,30 @@ int GFXTXT_DrawRect(void * handle, int x, int y, int width, int height, int byte
 
 int GFXTXT_FillRect(void * handle, int x, int y, int width, int height, int byte)
 {
-  fprintf(stderr, "!!! GFXTXT_FillRect !!! : Not implemented\n");
+  int result = -1;
 
-  return -1;
+  if (handle && x >= 0 && y >= 0 && width > 0 && height > 0) {
+
+    gfxtxt_t * h = (gfxtxt_t *)handle;
+
+    if (x + width <= h->width && y + height <= h->height) {
+
+      char * line = (char *)((void *)(h + 1));
+
+      line += x + y * h->width;
+
+      while (height--) {
+
+        memset(line, byte, width);
+
+        line += h->width;
+      }
+
+    }
+
+  }
+
+  return result;
 }
 
 int GFXTXT_ToFile(void * handle, FILE * file)

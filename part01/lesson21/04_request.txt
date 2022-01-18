@@ -1,0 +1,55 @@
+Dodalem kompletna implementacje funkcji:
+  GFXTXT_FillRect
+
+Implementacja funkcji:
+  GFXTXT_DrawRect
+  jest niedokonczona, robi dokladnie to, co FillRect,
+  a ma robic tylko narysowanie obwodki
+
+Nalezy dokonczyc implementacje funkcji GFXTXT_DrawRect (plik: gfxtxt.c)
+Nalezy wykorzystac wiedze nabyta podczas implementacji kodu "03_hint.c".
+
+Po skompilowaniu kodu:
+  $ gcc gfxtxt.c gfxtxt_test.c -o a.exe && ./a.exe
+
++------------------------------------------+------------------------------------------+
+|                                          |                                          |
+|          mamy taki efekt:                |          oczekiwany efekt:               |
+|                                          |                                          |
++------------------------------------------+------------------------------------------+
+|                                                                                     |
+| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+| aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa | aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+| ------                                   | ------                                   |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| ------                                   | ------                                   |
+| !!! GFXTXT_DrawRect !!! : Not completed  |                                          |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@.....@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@.....@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@.....@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@.@@@.@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@.....@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@.@@@.@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@.....@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@.....@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+| @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ | @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ |
+|                                                                                     |
++------------------------------------------+------------------------------------------+
