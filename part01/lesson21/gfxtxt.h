@@ -27,7 +27,6 @@ int    GFXTXT_ToFile  (void * handle, FILE * file);
 
 int    GFXTXT_DrawAndFillRect(void *handle, int x, int y, int width, int height, int bytedraw, int bytefill);
 
-int    GFXTXT_FillTriangle(void *handle, int x1, int x2,int x3, int y1 ,int y2 ,int y3, int byte);
 
 void   GFXTXT_Destroy (void * handle);
 
