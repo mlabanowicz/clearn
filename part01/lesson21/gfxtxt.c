@@ -1,4 +1,3 @@
-
 #include "gfxtxt.h"
 
 #include <stdlib.h> /* malloc, free */
@@ -130,6 +129,45 @@ int GFXTXT_FillRect(void * handle, int x, int y, int width, int height, int byte
   }
 
   return result;
+}
+
+int GFXTXT_DrawAndFillRect(void *handle, int x, int y, int width, int height, int bytedraw, int bytefill){
+	  int result = -1;
+	  int i = height;
+  if (handle && x >= 0 && y >= 0 && width > 0 && height > 0) {
+
+    gfxtxt_t * h = (gfxtxt_t *)handle;
+
+    if (x + width <= h->width && y + height <= h->height) {
+
+      char * line = (char *)((void *)(h + 1));
+
+      line += x + y * h->width;
+
+      while (i--) {
+
+        memset(line, bytefill, width);
+
+        line += h->width;
+      }
+	   line -= h->width;
+	   memset(line, bytedraw, width);
+	  if(width >> 1 && height >> 1){
+	    height -= 2;
+		  while (height--) {
+			line -= h->width;
+		    memset(line, bytedraw, 1);
+			memset(line+width-1, bytedraw, 1);
+		  }	
+		line -= h->width;
+		memset(line, bytedraw, width);
+      }
+    }
+
+  }
+
+  return result;
+
 }
 
 int GFXTXT_ToFile(void * handle, FILE * file)
