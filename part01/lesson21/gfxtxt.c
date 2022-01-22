@@ -82,26 +82,25 @@ int GFXTXT_DrawRect(void * handle, int x, int y, int width, int height, int byte
     gfxtxt_t * h = (gfxtxt_t *)handle;
 
     if (x + width <= h->width && y + height <= h->height) {
-
+	
       char * line = (char *)((void *)(h + 1));
 
       line += x + y * h->width;
 
-      fprintf(stderr, "!!! GFXTXT_DrawRect !!! : Not completed\n");
-
-      /* Ten kod robi dokladnie co FillRect, a nie powinien.        */
-      /* Nalezy go zmodyfikowac tak, aby rysowal tylko obramowanie. */
-      while (height--) {
-
-        memset(line, byte, width);
-
-        line += h->width;
+	   memset(line, byte, width);
+	   line += h->width;
+	  if(width >> 1 && height >> 1){
+	    height= height -2;
+		  while (height--) {
+		    memset(line, byte, 1);
+			memset(line+width-1, byte, 1);
+			line += h->width;
+		  }	
+		memset(line, byte, width);
+		line += h->width;
       }
-
-    }
-
+	}
   }
-
   return result;
 }
 
