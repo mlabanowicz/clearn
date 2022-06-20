@@ -1,0 +1,99 @@
+Prosze przygotowac srodowisko pracy na komputerze.
+
+Wymagania:
+
+  1) /bin/bash - shell - powloka umozliwiajaca
+                         wywolywanie polecen
+
+     a) Windows: zainstaluj system cygwin
+
+     b) Linux: terminal jest juz defaultowo zainstalowany
+
+     Komendy, z ktorymi nalezy sie zaznajomic:
+
+     pwd - wyswietlenie obecnego katalogu
+           przyklad:
+            #> pwd
+
+     cd  - zmiana katalogu
+           przyklad:
+            #> cd katalog1/katalog2/../katalog3
+
+     ls  - wylistowaonie zawartosci katalogu
+           przyklad:
+            #> ls -la /tmp
+
+     cat - wyswietlenie zawartosci pliku na standardowe wyjscie
+           przyklad:
+            #> cat < plik.txt
+
+            '< plik.txt' - takie cos oznacza,
+                           ze program otrzyma dane z pliku,
+                           zamiast z klawiatury
+
+  2) Zainstalowac program 'git'
+
+     Pobranie repozytorium:
+
+     #> git clone http://github.com/mlabanowicz/clearn
+
+     Wrzucenie zmian (po tym, jak w repozytorium dokonamy zmian):
+
+     #  wejscie do repozytorium
+     #> cd clearn
+
+     #  dodanie wszystkich zmian i nowych plikow do nowego commit'a
+     #> git add .
+
+     #  wyswietlenie zawartosci nowego commit'a
+     #> git diff --cached
+
+     #  Zatwierdzenie commit'a lokalnie (z krotkim opisem)
+     #> git commit -m "Opis zmiany"
+
+     #  Wrzucenie commit'a na github'a
+     #> git push
+
+  3) Przygotowac sobie edytor plikow,
+     ktory uwzglednia kolorowanie skladni dla:
+       *.c, *.h i *.sh.
+
+     Wybor jest dowolny.
+
+     Osobiscie uzywam 'vim', ale na poczatek proponuje cos prostszego,
+     przyklad:
+       Windows : notepad-c++
+       Linux   : Kate
+
+  4) Zainstalowac kompilator 'gcc':
+
+     Windows: w cygwinie nalezy zainstalowac (albo doinstalowac) pakiet gcc
+
+     Linux: Juz to powinno byc zainstalowane, a jezeli nie, to:
+            #> sudo apt install gcc
+
+     Finalnie, w konsoli powinien byc dostepny kompilator:
+
+       #> gcc
+
+  5) Ostatnim krokiem jest napisanie programu 'cat.c',
+     ktory wyswietli na standardowe wyjscie wszystkie znaki,
+     ktore otrzyma na standardowym wejsciu.
+
+     Program powinien byc napisany zgodnie z takim wzorcem:
+     ../../part01/lesson10/01_example.c
+     (chodzi o makra __cplusplus i wartosc zwracana przez funkcje main)
+
+     Wskazowka, jak sprawdzic program na konsoli bash:
+
+      kompilacja:
+      #> gcc -W -Wall -ansi -pedantic -Werror -Wextra cat.c -o cat.exe
+
+      uruchomienie:
+      #> ./cat.exe < cat.c
+
+      Spodziewane wyjscie:
+      <zawartosc pliku cat.c>
+
+     Ten program wrzucic na githuba jako plik 'cat.c'
+
