@@ -1,0 +1,128 @@
++ echo kompilacja
+kompilacja
++ gcc cat.c -o cat.exe
++ gcc cat_buffered.c -o cat_buffered.exe
++ echo 'kompilacja z roznymi rozmiarami bufora:'
+kompilacja z roznymi rozmiarami bufora:
++ for buffer_size in 1 8 16 32 128 512
++ gcc -DBUFFER_SIZE=1 cat_buffered.c -o cat_buffered_1.exe
++ for buffer_size in 1 8 16 32 128 512
++ gcc -DBUFFER_SIZE=8 cat_buffered.c -o cat_buffered_8.exe
++ for buffer_size in 1 8 16 32 128 512
++ gcc -DBUFFER_SIZE=16 cat_buffered.c -o cat_buffered_16.exe
++ for buffer_size in 1 8 16 32 128 512
++ gcc -DBUFFER_SIZE=32 cat_buffered.c -o cat_buffered_32.exe
++ for buffer_size in 1 8 16 32 128 512
++ gcc -DBUFFER_SIZE=128 cat_buffered.c -o cat_buffered_128.exe
++ for buffer_size in 1 8 16 32 128 512
++ gcc -DBUFFER_SIZE=512 cat_buffered.c -o cat_buffered_512.exe
++ echo 'wygenerowanie testowego pliku o rozmiarze 512MB:'
+wygenerowanie testowego pliku o rozmiarze 512MB:
++ openssl rand 536870912
+++ ls -1 cat_buffered_128.exe cat_buffered_16.exe cat_buffered_1.exe cat_buffered_32.exe cat_buffered_512.exe cat_buffered_8.exe cat_buffered.exe cat.exe
++ for f in $(ls -1 cat*.exe)
++ echo '[cat_buffered_128.exe] sprawdzenie poprawnosci dzialania programu:'
+[cat_buffered_128.exe] sprawdzenie poprawnosci dzialania programu:
++ rm -fr output.data
++ ./cat_buffered_128.exe
++ cmp input.data output.data
++ echo '[cat_buffered_128.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):'
+[cat_buffered_128.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):
++ ./cat_buffered_128.exe
+
+real	0m0,291s
+user	0m0,207s
+sys	0m0,084s
++ for f in $(ls -1 cat*.exe)
++ echo '[cat_buffered_16.exe] sprawdzenie poprawnosci dzialania programu:'
+[cat_buffered_16.exe] sprawdzenie poprawnosci dzialania programu:
++ rm -fr output.data
++ ./cat_buffered_16.exe
++ cmp input.data output.data
++ echo '[cat_buffered_16.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):'
+[cat_buffered_16.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):
++ ./cat_buffered_16.exe
+
+real	0m0,962s
+user	0m0,890s
+sys	0m0,072s
++ for f in $(ls -1 cat*.exe)
++ echo '[cat_buffered_1.exe] sprawdzenie poprawnosci dzialania programu:'
+[cat_buffered_1.exe] sprawdzenie poprawnosci dzialania programu:
++ rm -fr output.data
++ ./cat_buffered_1.exe
++ cmp input.data output.data
++ echo '[cat_buffered_1.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):'
+[cat_buffered_1.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):
++ ./cat_buffered_1.exe
+
+real	0m12,925s
+user	0m12,847s
+sys	0m0,076s
++ for f in $(ls -1 cat*.exe)
++ echo '[cat_buffered_32.exe] sprawdzenie poprawnosci dzialania programu:'
+[cat_buffered_32.exe] sprawdzenie poprawnosci dzialania programu:
++ rm -fr output.data
++ ./cat_buffered_32.exe
++ cmp input.data output.data
++ echo '[cat_buffered_32.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):'
+[cat_buffered_32.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):
++ ./cat_buffered_32.exe
+
+real	0m0,575s
+user	0m0,487s
+sys	0m0,088s
++ for f in $(ls -1 cat*.exe)
++ echo '[cat_buffered_512.exe] sprawdzenie poprawnosci dzialania programu:'
+[cat_buffered_512.exe] sprawdzenie poprawnosci dzialania programu:
++ rm -fr output.data
++ ./cat_buffered_512.exe
++ cmp input.data output.data
++ echo '[cat_buffered_512.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):'
+[cat_buffered_512.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):
++ ./cat_buffered_512.exe
+
+real	0m0,222s
+user	0m0,137s
+sys	0m0,085s
++ for f in $(ls -1 cat*.exe)
++ echo '[cat_buffered_8.exe] sprawdzenie poprawnosci dzialania programu:'
+[cat_buffered_8.exe] sprawdzenie poprawnosci dzialania programu:
++ rm -fr output.data
++ ./cat_buffered_8.exe
++ cmp input.data output.data
++ echo '[cat_buffered_8.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):'
+[cat_buffered_8.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):
++ ./cat_buffered_8.exe
+
+real	0m1,743s
+user	0m1,662s
+sys	0m0,080s
++ for f in $(ls -1 cat*.exe)
++ echo '[cat_buffered.exe] sprawdzenie poprawnosci dzialania programu:'
+[cat_buffered.exe] sprawdzenie poprawnosci dzialania programu:
++ rm -fr output.data
++ ./cat_buffered.exe
++ cmp input.data output.data
++ echo '[cat_buffered.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):'
+[cat_buffered.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):
++ ./cat_buffered.exe
+
+real	0m0,068s
+user	0m0,000s
+sys	0m0,068s
++ for f in $(ls -1 cat*.exe)
++ echo '[cat.exe] sprawdzenie poprawnosci dzialania programu:'
+[cat.exe] sprawdzenie poprawnosci dzialania programu:
++ rm -fr output.data
++ ./cat.exe
++ cmp input.data output.data
++ echo '[cat.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):'
+[cat.exe] test z pomiarem czasu (czas dzialania programu jest w linijce user):
++ ./cat.exe
+
+real	0m15,167s
+user	0m15,076s
+sys	0m0,088s
++ echo SUCCESS
+SUCCESS

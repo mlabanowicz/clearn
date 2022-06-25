@@ -1,0 +1,20 @@
+Program napisany poprawnie, robi to co mial robic.
+
+Jednak wczytywanie znak po znaku nie jest optymalnym rozwiazaniem.
+
+Mozna go przyspieszyc, wykorzystujac buforowanie,
+tak jak pokazano w pliku: 'cat_buffered.c'
+
+Wykonanie pomiaru realizuje skrypt test.sh:
+
+Wywolanie:
+  #> ./test.sh 2>&1 | tee test_result_<CPU_NAME>.txt
+
+Wynik odpalony na moim komputerze znajduje sie w pliku:
+  test_result_i74770.txt
+Czas dzialania programow:
+  cat.exe          : 0m15,076s
+  cat_buffered.exe : 0m0,000s
+
+Prosze wykonac pomiar na swoim komputerze (doinstalowac ewentualnie wymagane narzedzia jak openssl).
+
