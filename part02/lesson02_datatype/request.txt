@@ -1,0 +1,31 @@
+Prosze napisac biblioteke (zgodnie ze schematem: ../../part01/lesson20/01_suma.<hc>),
+ktora dla typow standardowych w C bedzie w sobie zawierala funkcje wypisujace dane na temat tych typow:
+
+void datatype_info_char   (char   const * cptr);
+void datatype_info_short  (short  const * hptr);
+void datatype_info_int    (int    const * iptr);
+void datatype_info_long   (long   const * lptr);
+void datatype_info_str    (char   const * str );
+void datatype_info_float  (float  const * fptr);
+void datatype_info_double (double const * dptr);
+
+Kazda z tych funkcji powinna wypisac na standardowe wyjscie:
+(<type>) <size_bytes>:<size_bits>@<addr> = <value>
+
+  type       : typ jako string, czyli dla funkcji datatype_info_short bedzie to string "short"
+  size_bytes : rozmiar danego typu w bajtach : nalezy skorzystac z operatora sizeof(type), w przypadku str nalezy skorzystac z strlen
+  size_bits  : rozmiar danego typu w bitach  : nalezy pomnozyc size_bytes * CHAR_BITS (wymagana biblioteka <limits.h>)
+  addr       : adres zmiennej, czyli zawartosc pointer'a
+  value      : zawartosc zmiennej, w przypadku str nazley wypisac zawartosc stringa
+
+Przyklad:
+{
+  int x = 67;            /* zalozmy, ze zmienna x lezy pod adresem: 0xffff1234 */
+  datatype_info_int(&x); /* do funkcji przekazany jest adres zmiennej 'x'       */
+}
+Oczekiwane wyjscie:
+(int) 4:32@0xffff1234 = 67
+
+Biblioteke zapisac pod nazwa data_type.h + data_type.c,
+plik do przetestowania bilbioteki moze miec nazwe data_type_test.c.
+
