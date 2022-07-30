@@ -1,0 +1,112 @@
+Prosze zaimplementowac biblioteke textdata.c ktora to bedzie
+tworzyc w pamieci podane struktury pamieci:
+
+Dla przykladowego takiego pliku:
+--{file:beg}--
+pies
+dom
+kot
+--{file:end}--
+
+wygeneruje taka strukture danych (kazda struktura jako osobny kawalek zaalokowany za pomoca malloc):
+
+  (adres tego elementu ma byc zwrocony przez funkcje TEXTDATA_LoadFile)
+   \
+    \
+     \
+  +--line-----+   +--char--+   +--char--+   +--char--+   +--char-----+
+  | data=-------->| c='p'  |   | c='i'  |   | c='e'  |   | c='s'     |
+  | next=-+   |   | next=----->| next=----->| next=----->| next=NULL |
+  +-------|---+   +--------+   +--------+   +--------+   +-----------+
+          |
+         \_/
+  +--line-----+   +--char--+   +--char--+   +--char-----+
+  | data=-------->| c='d'  |   | c='o'  |   | c='m'     |
+  | next=-+   |   | next=----->| next=----->| next=NULL |
+  +-------|---+   +--------+   +--------+   +-----------+
+          |
+         \_/
+  +--line-----+   +--char--+   +--char--+   +--char-----+
+  | data=-------->| c='k'  |   | c='o'  |   | c='t'     |
+  | next=NULL |   | next=----->| next=----->| next=NULL |
+  +-----------+   +--------+   +--------+   +-----------+
+
+Fukcja TEXTDATA_LoadFile otrzymuje strumien danych tekstowych (FILE) i z niego czyta az do EOF.
+Koniec lini uwazamy znak '\n' (0x0a)
+
+1) W pierwszym kroku zaimplementowac funckje TEXTDATA_LoadFile
+
+2) W drugim kroku zaimplementowac funkcje TEXTDATA_Free,
+   ktora pousuwa cala ta strukture (zwolni kazdy element),
+   Ta funkcja dostaje dokladnie ten adresm ktory zwrocila funkcja TEXTDATA_LoadFile,
+   z niego jest w stanie dostac sie do wszystkich elementow po kolei.
+
+Przyklad alokowania:
+{
+  textdata_line_t * line = NULL;
+  textdata_char_t * znak = NULL;
+
+  /* wskanizk na ostatni znak w lini */
+  textdata_char_t * last_char = NULL;
+
+  line = (textdata_line_t *)malloc(sizeof(textdata_line_t));
+
+  if (!line) {
+    fprintf(stderr, "Alloc failed !\n");
+    exit(EXIT_FAILURE);
+  }
+
+  /* zerujemy pola struktury */
+  line->data = NULL;
+  line->next = NULL;
+
+  /* alokujemy pierwsza strukture char */
+  znak = (textdata_char_t *)malloc(sizeof(textdata_char_t));
+
+  if (!znak) {
+    fprintf(stderr, "Alloc failed !\n");
+    exit(EXIT_FAILURE);
+  }
+
+  /* wypelniamy strukture danymi */
+  znak->c    = 'a';
+  znak->next = NULL;
+
+  /* dodanie elementu znak do lini 'line' */
+  if (last_char) {
+    last_char->next = znak;
+  } else {
+    line->data = znak;
+  }
+  last_char = znak;
+
+  /* alokujemy kolejna strukture char */
+  znak = (textdata_char_t *)malloc(sizeof(textdata_char_t));
+
+  if (!znak) {
+    fprintf(stderr, "Alloc failed !\n");
+    exit(EXIT_FAILURE);
+  }
+
+  /* wypelniamy strukture danymi */
+  znak->c    = 'b';
+  znak->next = NULL;
+
+  /* dodanie elementu znak do lini 'line' */
+  if (last_char) {
+    last_char->next = znak;
+  } else {
+    line->data = znak;
+  }
+  last_char = znak;
+
+  /* ... */
+}
+
+Przy pisaniu prosze uzywac kartki i rysowac,
+zaalokowane struktury wraz z zawartoscia pol.
+Najlepiej na tablicy albo na tablecie (czesto trzeba cos podmienic w strukturze).
+Wskazniki rysowac jako strzalki do wskazywanych struktur (podobnie, jak to ma miejsce w powyzszym przykladzie).
+Takie podejscie (uzywane czesto przez doswiadczonych programistow)
+zawsze ulatwia zrozumienie dzialania pisanego kodu.
+

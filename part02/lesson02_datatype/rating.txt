@@ -1,0 +1,6 @@
+Poprawilem typy uzywane w funkcji fprintf.
+
+sizeof(type) zwraca typ size_t -> on w ANSI-ISO nie ma swojego markera w fubkcji printf, dlatego trzeba go rzutowac
+na jakis standardowy typ - najlepiej "unsigned long". Na "long" tez jest ok.
+
+za pomoca git mozna sprawdzic, co sie zmienilo.
