@@ -20,6 +20,7 @@ int main(void) {
         if (first_line) { line = line->next; }
         else{
             line = TEXTDATA_LoadFile(fp);
+            TEXTDATA_Dump(line, stderr);
             first_line = line;
         }
         znak = line->data;

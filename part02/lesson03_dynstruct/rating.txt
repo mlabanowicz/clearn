@@ -1,0 +1,71 @@
+
+Prosze poprawic ponizej wymienione problemy:
+
+1) [-] Niepoprawna obsluga bajtow o wartosci 0xff (255)
+
+   fgetc zwraca wartosc unsigned char, czyli wartosc mieszczaca sie w przedziale <0,255>
+   gdy jest koniec pliku, zwarca wartosc EOF (w wiekszosci przypadkow jest ona zdefinionwana jako -1)
+   'signed char c' moze przechowywac wartosci mieszczace sie w przedziale od <-128,127>.
+   255 przekonwertowane na signed char da w wyniku wartosc -1, co jest rowne EOF.
+
+   {
+     signed char c = (signed char)255;
+
+     if ((int)c == -1) {
+       printf("Ale numer, -1 jest rowne 255 :)");
+     }
+   }
+
+   Zeby pozbyc sie problemu, w ktorym plik wejsciowy zawiera w sobie bajty o wartosci 255
+   (czyli po scastowaniu na signed char bedzie to EOF), nalezy zrobic cos takiego:
+
+   {
+     int c = fgetc(f);
+
+     if (c == EOF) {
+       /* Ok, to jest na bank koniec danych */
+     } else {
+       /* mamy znak (moze on byc nawet 255, ale to nie jest koniec pliku), mozemy teraz go przypisac do char */
+       znak->c = (char)c;
+     }
+   }
+
+2) [-] Za duzo jest zalokowanych obszarow pamieci.
+  Dla pliku tekstowego, skladajacego sie z 3 bajtow a,b,'\n':
+--{file:beg}--
+ab
+--{file:end}--
+
+  struktura dynamicznych powiazan powinna wygladac tak:
+
+  +--line-----+   +--char--+   +--char-----+
+  | data=-------->| c='a'  |   | c='b'     |
+  | next=NULL |   | next=----->| next=NULL |
+  +-----------+   +--------+   +-----------+
+
+  Tymczasem, wyglada ona tak:
+
+  +--line-----+   +--char--+   +--char-----+   +--char-----+
+  | data=-------->| c='a'  |   | c='b'     |   | c='\n     |
+  | next=-+   |   | next=----->| next=-------->| next=NULL |
+  +-------|---+   +--------+   +-----------+   +-----------+
+          |
+         \_/
+  +--line-----+   +--char-----+
+  | data=-------->| c=EOF     |
+  | next=NULL |   | next=NULL |
+  +-----------+   +-----------+
+
+Wynik funkcji TEXTDATA_Dump (adresy oczywiscie beda sie roznic w zaleznosci od systemu/kompilatora/uruchomienia):
+  01: line@0x602000000030 = char@0x602000000050=97'a' -> char@0x602000000070=98'b' -> char@0x602000000090=10'.'
+  02: line@0x6020000000b0 = char@0x6020000000d0=-1'.'
+
+3) [-] Program nie potrafi zwolnic wszystkich blokow, ktore zaalokowal:
+  W funkcji: TEXTDATA_Free
+  Pomysl z uzyciem zmiennej 'next_line' jest bardzo dobry,
+  jednak brakuje uzycia tej zmiennej.
+  Ona jest wypelniona wartoscia NULL na starcie i pozniej juz
+  nigdy nie jest zmieniana.
+    Ten kawalek robi chyba nie do konca to, co powinien:
+      70: line->next = next_line;
+

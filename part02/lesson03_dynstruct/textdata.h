@@ -25,6 +25,9 @@ struct textdata_line_s {
 /* creates text data structure in HEAP */
 textdata_line_t * TEXTDATA_LoadFile(FILE * f);
 
+/* Dump structure to file */
+void TEXTDATA_Dump(textdata_line_t const * first_line, FILE * f);
+
 /* destroy text data structure from HEAP */
 void TEXTDATA_Free(textdata_line_t * textdata);
 
