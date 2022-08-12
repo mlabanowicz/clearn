@@ -22,18 +22,18 @@ int main(void) {
             line = TEXTDATA_LoadFile(fp);
             TEXTDATA_Dump(line, stderr);
             first_line = line;
+			if(line == NULL){
+				fprintf(stderr, "LOG: plik pusty!");
+				break;
+			}
         }
         znak = line->data;
-        while (1) {
+        while (znak != NULL) {
             last_znak = znak;
             znak = znak->next;
-            if (last_znak->next == NULL) {
-                printf("\n");
-                break;
-            }
-            printf("%c", last_znak->c);
-
+			printf("%c", last_znak->c);
         }
+		printf("\n");
         if(line->next == NULL)  break;
     }
 
