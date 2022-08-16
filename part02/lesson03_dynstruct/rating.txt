@@ -1,7 +1,7 @@
 
-Prosze poprawic ponizej wymienione problemy:
+DONE
 
-1) [-] Niepoprawna obsluga bajtow o wartosci 0xff (255)
+1) [+] Niepoprawna obsluga bajtow o wartosci 0xff (255)
 
    fgetc zwraca wartosc unsigned char, czyli wartosc mieszczaca sie w przedziale <0,255>
    gdy jest koniec pliku, zwarca wartosc EOF (w wiekszosci przypadkow jest ona zdefinionwana jako -1)
@@ -30,7 +30,7 @@ Prosze poprawic ponizej wymienione problemy:
      }
    }
 
-2) [-] Za duzo jest zalokowanych obszarow pamieci.
+2) [+] Za duzo jest zalokowanych obszarow pamieci.
   Dla pliku tekstowego, skladajacego sie z 3 bajtow a,b,'\n':
 --{file:beg}--
 ab
@@ -60,7 +60,7 @@ Wynik funkcji TEXTDATA_Dump (adresy oczywiscie beda sie roznic w zaleznosci od s
   01: line@0x602000000030 = char@0x602000000050=97'a' -> char@0x602000000070=98'b' -> char@0x602000000090=10'.'
   02: line@0x6020000000b0 = char@0x6020000000d0=-1'.'
 
-3) [-] Program nie potrafi zwolnic wszystkich blokow, ktore zaalokowal:
+3) [+] Program nie potrafi zwolnic wszystkich blokow, ktore zaalokowal:
   W funkcji: TEXTDATA_Free
   Pomysl z uzyciem zmiennej 'next_line' jest bardzo dobry,
   jednak brakuje uzycia tej zmiennej.

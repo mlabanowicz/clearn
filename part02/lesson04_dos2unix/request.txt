@@ -1,0 +1,15 @@
+Napisac program, ktory przerobi plik zapisany w trybie tekstowym DOS na plik w systemie UNIX.
+
+W trybie DOS  znak konca lini to sa dwa bajty: "\r\n"
+W trybie UNIX znak konca lini to jest jeden bajt '\n'.
+
+W przypadku, gdy linia jest juz  w trybie UNIX, tej lini ma nie zmieniac.
+Takze, jezeli wykryje gdzies 'samotny' znak '\r', to tez go ma nie zmieniac.
+
+Plik ma sie nazywac 'dos2unix.c'.
+
+plik wejsciowy 'input.txt'
+plik wyjsciowy 'output.txt'
+
+Ma on dzialac na kazdym systemie tak samo,
+czyli pliki musza byc otwierane w trybie binarnymn "rb"/"wb".

@@ -43,8 +43,25 @@ textdata_line_t *TEXTDATA_LoadFile(FILE *f) {
 /*tu mialem duzy problem ale znalazlem taka konfiguracje ktora dziala ale nie wiem dlaczego */
 /*bez pobrania nastepnego znaku tworzy strukture dla \n */
 /*a jesli dam w warunku \n to tworzy strukture dla \r, troche tego nie rozumiem */
-			if (c == '\r') {
-				c = fgetc(f);
+
+/* ML: w plikach tekstowych zakonczenie lini moze byc reprezentowane w roznoraki sposob: */
+/*  a) "\n"   : standardowe zakonczenie w linux                                          */
+/*  b) "\r\n" : standardowe zakonczenie w dos/windows                                    */
+/*  c) "\n\r" : (chyba gdzies to widzialem) zakonczenie w Macu (apple)                   */
+/*                                                                                       */
+/*  Generalnie, najlepiej reagowac tylko na '\n' - to jest takie standardowe podejscie.  */
+/*  Przewaznie tak jest (nie zawsze - bo u Ciebie chyba to nie zadzialalo),              */
+/*  ze system automatycznie konwertuje znaki konca lini na '\n'                          */
+/*    w windows:                                                                         */
+/*      fgetc(f)       -> gdy w pliku beda znaki "\r\n" to fgetc zwroci '\n'             */
+/*      fputc('\n', f) -> do pliku zostana zapisane dwa znaki "\r\n"                     */
+/*                                                                                       */
+/*  Zeby wykluczyc takie dziwne mechanizmy, plik mozna otworzyc w trybie binarnym        */
+/*  "rb" albo "wb".                                                                      */
+/*                                                                                       */
+/*  W tym zadaniu otwarcie pliku w trybie tekstowym "r" jest jak najbardziej prawidlowe. */
+
+			if (c == '\n') {
 				break;
 			}
 
