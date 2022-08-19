@@ -1,0 +1,19 @@
+Biblioteki systemowe powinny byc includowane uzywajac '<libname.h>'
+- #include "stdlib.h"
++ #include <stdlib.h>
+
+Program nie dziala prawidlowo, ponizej jest opisany test.
+
+Test bazuje na skrypcie rating01_test.sh (wymagane narzedzia systemowe: dos2unix,awk,xxd,diff)
+1) Ten test tworzy plik wejsciowy
+2) Generuje poprawny output (plik o nazwie correct.txt) uzywajac narzedzia
+   systemowego dos2unix (tak, istnieje takie cos juz w systemie)
+3) Generuje output.txt za pomoca napisanego programu
+4) Porownuje wyniki (powinny byc takie same)
+5) Jezeli sa rozne, wyswietla zawartosc plikow i zwraca ERROR
+
+Wynik testu:
+  rating01_test.log
+
+Prosze poprawic program tak, aby odpalenie skryptu rating01_test.sh powodowalo wyswietlenie "OK".
+

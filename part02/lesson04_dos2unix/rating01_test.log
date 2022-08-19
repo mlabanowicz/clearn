@@ -1,0 +1,31 @@
++ gcc -DNDEBUG -Wbad-function-cast -Wmissing-declarations -Wmissing-parameter-type -Wmissing-prototypes -Wnested-externs -Wstrict-prototypes -Wdeclaration-after-statement -Wpointer-sign -ansi -pedantic -Wall -Wextra -Werror -Os dos2unix.c -o dos2unix.exe
++ awk '{srand(1);for(i=0; i<10; ++i){r=int(rand() * 3); printf("%02x", r==0?0xd:r==1?0xa:0x41);}}'
++ xxd -ps -r
++ echo
++ dos2unix -f
++ ./dos2unix.exe
++ cmp correct.txt output.txt
+correct.txt output.txt differ: byte 1, line 1
++ echo 'Failed!'
+Failed!
++ cat input.txt
+A
+
+AA
+A+ xxd
+00000000: 410a 0d0a 4141 0a0d 410d                 A...AA..A.
++ cat correct.txt
+A
+
+AA
+A+ cat output.txt
+
+
+A
+A++ xxd
++ diff /dev/fd/63 /dev/fd/62
+++ xxd
+1c1
+< 00000000: 410a 0a41 410a 0d41 0d                   A..AA..A.
+---
+> 00000000: 0a0a 410a 41                             ..A.A
