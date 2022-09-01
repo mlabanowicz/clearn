@@ -23,7 +23,7 @@ int main(void) {
         next_c = fgetc(fp_in);;
     }
     while (c != EOF) {
-        if (c != 13 && next_c != 10) {
+        if (c != 13 || next_c != 10) {
             fputc(c, fp_out);
         }
         c = next_c;
