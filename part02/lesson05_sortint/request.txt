@@ -1,0 +1,77 @@
+Napisac program, ktory na wejsciu dostanie nieokreslona liczbe wartosci typu int.
+Na wyjsciu ma wypisac wszystkie te liczby posortowane od najmniejszej do najwiekszej.
+
+przyklad:
+INPUT:
+3
+2
+4
+1
+OUTPUT:
+1
+2
+3
+4
+
+Wskazowki:
+
+  1) Najpierw nalezy zaimplementowac wczytanie wszystkich liczb z wejscia do tablicy,
+     jest to utrudnione, poniewaz  nie wiadomo, ile liczb bedzie na wejsciu,
+     tak wiec trzeba sie poslozyc pamiecia HEAP, ktora mozna rozszerzac, przyklad:
+
+     {
+       int * tablica          = NULL; /* adres tablicy - czyli adres zerowego elementu  */
+       int   tablica_rozmiar  = 0;    /* liczba wszystkich komorek typu int w tablicy   */
+       int   tablica_w_uzyciu = 0;    /* ile komorek typu int w tablicy juz jest zajete */
+
+       int liczba;
+
+       .....
+
+       /* gdzies w kodzie: */
+
+       /* ++ dodanie liczby 34 */
+
+       liczba = 34;
+
+       if (tablica_w_uzyciu == tablica_rozmiar) {
+
+         /* ok, nie ma miejsca w obecnej tablicy na kolejna liczbe */
+         /* trzeba zwiekszyc rozmiar tego obszaru tablica          */
+
+         /* rozmiar nowej tablicy bedzie ustalany dynamicznie */
+         int nowy_rozmiar = tablica_rozmiar ? tablica_rozmiar * 2 : 128;
+
+         void * nowy_adres = realloc(tablica, sizeof(int) * nowy_rozmiar);
+
+         /* realloc moze zwrocic trzy rozne wartosci: */
+         /* a) NULL - operacja sie nie powiodla                                                                          */
+         /* b) oryginalna wartosc 'tablica' - oznacza to, ze adres sie nie zmeinil, ale rozmiar zostal zwiekszony        */
+         /* c) nowy adres - oznacza to, ze adres sie zmienil, stara wartosc wskaznika 'tablica' nie moze juz byc uzywana */
+         /*                 i co najwazniejsze, poprzednie dane zostaly przekopiowane automatycznie do nowego adresu     */
+
+         /* realloc moze zwiekszac albo zmniejszac rozmiar */
+
+         /* przyklad rozszerzenia tablicy 3 elementowej:     */
+         /*   tablica    = {1,<?>,3}                         */
+         /*   <?> - oznacza nieustalona/nieustawiona wartosc */
+         /* po reallocu na 7 elementow:                      */
+         /*   nowy_adres = {1,<?>,3,<?>,<?>,<?>,<?>}         */
+
+         if (NULL == nowy_adres) {
+           fprintf(stderr, "!! Failed to realloc !!\n");
+           exit(EXIT_FAILURE);
+         }
+
+         tablica_rozmiar = nowy_rozmiar;
+         tablica         = (int *)nowy_adres;
+       }
+
+       tablica[tablica_w_uzyciu++] = liczba;
+
+       /* -- dodanie liczby 34 */
+
+     }
+
+  2) Do sortowanie mozna uzyc jak najprostszego algorytmu (moze byc Babelkowy).
+
