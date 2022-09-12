@@ -45,6 +45,10 @@ extern "C"
         }
       }
     }
+    for (i = 0; i < tablica_w_uzyciu; ++i) {
+      printf("%d\n", tablica[i]);
+    }
+    free(tablica);
     return EXIT_SUCCESS;
   }
 

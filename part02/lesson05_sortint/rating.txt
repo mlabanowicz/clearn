@@ -1,0 +1,4 @@
+Porgram ma male niedociagniecia:
+ a) nie dokonal wypisania wyniku na wyjscie
+ b) nie zwolnil uzywanej pamieci (kazda zaalokowana pamiec powinna byc zwalniana, gdy juz nie jest potrzebna)
+po dokonaiu tych zmian jest OK.
