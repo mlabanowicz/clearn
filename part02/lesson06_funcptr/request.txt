@@ -1,0 +1,75 @@
+Kazda funkcja w C ma swoj adres w pamieci.
+
+Adres takiej funkcji mozna pobrac w programie za pomoca operatora '&', przyklad:
+
+  /* jest sobie funkcja */
+  long dodaj_liczby(int a, int b)
+  {
+    long wynik;
+    printf("uwaga, dodaje liczby\n");
+    wynik = (long)a + b;
+    return wynik;
+  }
+
+  /* gdzies w programie ta funkcje mozemy wywloac na wiele sposobow: */
+  {
+    dodaj_liczby(34, 78); /* normalne wywolanie funkcji w C */
+  }
+
+  /* zrobimy sobie wskaznik, ktory bedzie przechowywal adres funkcji */
+  {
+    long (* wskaznik_na_funkcje)(int, int) = NULL;
+
+    /* jak widac powyzej, deklaracja takiego wskaznika musi byc zgodna z funkcja, na ktora ma on wskazywac */
+    /* czyli funkcja zwraca long, przyjmuje dwa parametry typu int */
+
+    /* w tym momencie ten wskaznik ma wartosc NULL, teraz jeszcze nie mozna wywolywac funkcji */
+
+    /* taki wskaznik mozna porownywac do NULL tak jak zwykly wskaznik */
+    if (wskaznik_na_funkcje == NULL) {
+      printf("wskaznik na funkcje jest rowny NULL\n");
+    }
+    if (wskaznik_na_funkcje) {
+      printf("wskaznik na funkcje ma jakas wartosc inna niz NULL\n");
+    }
+
+    /* ustawienie wskaznika na adres funkcji dodaj_liczby */
+    wskaznik_na_funkcje = &dodaj_liczby;
+
+    /* Teraz mozna wywolac funkcje dodaj_liczby, ale uzywajac wskaznika */
+    wskaznik_na_funkcje(56, 89);
+
+    /* wynik dzialania wskazywanej funkcji mozna oczywiscie wypisac */
+    printf("%ld\n", wskaznik_na_funkcje(9, 8));
+  }
+
+Napisac prosty kalkulator, ktorego implementacja wykorzystuje wskaznik na funkcje.
+Kalkulator przyjmuje na wejsciu jako pierwszy argument jeden ze znakow:
+  '+' '-' '*' '/'
+Po odczytaniu znaku, wskaznik na funkcje powinien otrzymac adres odpowiedniej funkcji,
+wykonujacej odpowiednia operacje.
+Operacja przyjmuje 2 liczby typu int i zwraca takze typ int.
+
+Nastepnie program przyjmuje nieokreslona liczbe dwoch liczb, i wykorzystujac
+ten wczesniej przypisany wskaznik na funkcje,
+dokonuje obliczen uzywajac tych dwoch liczb jako parametrow i wypisuje wynik funkcji na wyjscie.
+
+Przykladowy Input A:
++
+1 2
+3 4
+Output:
+3
+7
+
+Przykladowy Input B:
+*
+3 6
+7 8
+9 0
+10 10
+Output:
+18
+56
+0
+100
