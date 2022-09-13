@@ -4,11 +4,11 @@
 extern "C"
 {
 #endif
-    int multiply(int a, int b)
+    static int multiply(int a, int b)
     {
         return a * b;
     }
-    int divide(int a, int b)
+    static int divide(int a, int b)
     {
         if (b == 0)
         {
@@ -16,20 +16,17 @@ extern "C"
         }
         return b ? a / b : 0;
     }
-    int add(int a, int b)
+    static int add(int a, int b)
     {
         return a + b;
     }
-    int subtract(int a, int b)
+    static int subtract(int a, int b)
     {
         return a - b;
     }
 
     int main(void)
     {
-        int *tablica = NULL;
-        int tablica_rozmiar = 0;
-        int tablica_w_uzyciu = 0;
         int (*funcptr)(int, int) = NULL, a = 0, b = 0;
         char symbol;
         if (!(scanf("%c", &symbol)))
@@ -56,28 +53,10 @@ extern "C"
             exit(EXIT_FAILURE);
             break;
         }
-        while ((scanf("%d %d", &a, &b)) != EOF)
+        while ((scanf("%d %d", &a, &b)) == 2)
         {
-            if (tablica_w_uzyciu == tablica_rozmiar)
-            {
-                int nowy_rozmiar = tablica_rozmiar ? tablica_rozmiar + 1 : 1;
-                void *nowy_adres = realloc(tablica, sizeof(int) * nowy_rozmiar);
-                if (NULL == nowy_adres)
-                {
-                    fprintf(stderr, "!! Failed to realloc !!\n");
-                    exit(EXIT_FAILURE);
-                }
-                tablica_rozmiar = nowy_rozmiar;
-                tablica = (int *)nowy_adres;
-            }
-            tablica[tablica_w_uzyciu++] = funcptr(a, b);
+            printf("%d\n", funcptr(a, b));
         }
-
-        for (a = 0; a < tablica_rozmiar; a++)
-        {
-            printf("%d\n", tablica[a]);
-        }
-        free(tablica);
         return EXIT_SUCCESS;
     }
 

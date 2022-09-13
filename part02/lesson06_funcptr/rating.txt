@@ -1,0 +1,41 @@
+Scanf zwraca liczbe udanych przeczytanych danych, w tym przypadku powinno byc 2 inty.
+Bezpieczniej posluzyc sie przyrownaniuem do 2.
+Gdy jest EOF program wariuje przy podaniu jakiejs cyfry zamiast liczby.
+
+
+Generalnie jest OK, ale taki kalkulator niepotrzebnie uzywa pamiec typu HEAP.
+W poprzednim zadaniu (sortint) nalezalo zapamietac te wszystkie liczby z wejscia, aby je posortowac.
+W tym programie nie ma takiej potrzeby.
+
+
+PS: Dodalem static przed definicjami funkcji.
+
+Compilator GCC z wlacznymi wszystkimi ostrzezeniami nie lubi (zglosi problem),
+gdy jest jakas globalna funkcja, ktora nie ma deklaracji.
+
+Przyklad:
+
+  /* Globalna funkcja: */
+  int funkcjaA(int a, int b) /* definicja */
+  {
+    return a + b;
+  }
+
+Tutaj bedzie ostrzezenie, bo z punktu widzenia kompilatora jest cos takiego:
+  "Jest to definicja globalnej funkcji, czyli ona moze byc widziana przez inne moduly,
+   i taka funkcja nigdzie wczesniej nie byla zadklarowana? Hmm, to jest dziwne."
+
+Przyklad poprawny, gdy jest deklaracja:
+  int funkcjaB(int a, int b); /* deklaracja - to sie najczesciej znajduje w pliku *.h */
+  int funkcjaB(int a, int b)  /* definicja */
+  {
+    return a + b;
+  }
+
+Przyklad poprawny, gdy dana funkcja jest lokalna (typ static),
+czyli nie jest widziana poza tym modulem,
+taka funkcja nie potrzebuje (ale moze ja miec) deklaracji:
+  static int funkcjaC(int a, int b)  /* definicja funkcji lokalnej */
+  {
+    return a + b;
+  }
