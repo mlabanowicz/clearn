@@ -1,0 +1,18 @@
+W katalogu glownym powstal katalog modules.
+
+Bedziemy tam robic moduly, ktore bedzie mozna wykorzystac w programach.
+
+Przyklad:
+  buildinfo_test.c  - program testowy funkcji buildinfo.c
+  buildinfo_test.sh - skrypt, ktory buduje i testuje program
+
+Zadanie 1:
+  Prosze sie zapoznac i uruchomic buildinfo_test.sh.
+
+Zadanie 2:
+  Dodac implementacje funkcji:
+    UTILS_LoadFile - jej opis znajduje sie w pliku utils.h
+  Czyli nalezy:
+    1) utworzyc plik <clearn.git>/modules/utils/loadfile.c
+    2) Zaimplementowac w tym pliku tylko funkcje: UTILS_LoadFile
+    3) Wygenerowac pliki do testowania loadfile_test.c + loadfile_test.sh - bazujac na plikach buildinfo_test.*
