@@ -26,7 +26,7 @@ else
   . ../opts.sh
 
   # kompilacja wszystkich plikow *.c do plikow obiektowych *.o
-  gcc ${opts} ${ops_rel} -I.. -c *.c
+  gcc ${opts} ${opts_rel} -I.. -c *.c
 
   # wygenerowanie biblioteki zawierajacej wszystkie pliki *.o
   ar cr ../${1}.a *.o

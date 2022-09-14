@@ -10,7 +10,7 @@ ${MODULES}/build.sh utils
 . ${MODULES}/opts.sh
 
 # kompilacja programu z wykorzystaniem biblioteki
-gcc ${ops} ${opts_rel} buildinfo_test.c -I${MODULES} ${MODULES}/utils.a -o buildinfo_test.exe
+gcc ${opts} ${opts_rel} buildinfo_test.c -I${MODULES} ${MODULES}/utils.a -o buildinfo_test.exe
 
 # uruchomienie/test programu
 ./buildinfo_test.exe

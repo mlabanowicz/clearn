@@ -6,5 +6,5 @@ opts="${opts} -Wbad-function-cast -Wmissing-declarations -Wmissing-parameter-typ
 opts="${opts} -Wstrict-prototypes -Wdeclaration-after-statement -Wpointer-sign -ansi -pedantic"
 opts="${opts} -Wall -Wextra -Werror"
 
-opts_dbg="-DDEBUG -o0"
-opts_rel="-DNDEBUG -o2"
+opts_dbg="-DDEBUG -O0"
+opts_rel="-DNDEBUG -O2"
