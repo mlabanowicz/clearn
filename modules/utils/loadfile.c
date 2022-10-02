@@ -10,18 +10,36 @@ extern "C"
 #endif
     void *UTILS_LoadFile(FILE *stream, size_t *size_ptr)
     {
-        char *buffer = NULL;
-        size_t result = 0,length=0;
-        buffer = (char *)malloc(*(int *)size_ptr * CHAR_BIT);
-        result = fread(buffer, CHAR_BIT, *size_ptr, stream);
-        fseek(stream,0,SEEK_END);
-        length = ftell(stream);
-        if (result != length && !feof(stream))
-        {
-            fprintf(stderr, "LOG:blad wczytywania ze strumienia stdin do pamieci HEAP %d\n", *buffer);
+        char   * buffer = NULL; /* Bufor wynikowy                  */
+        size_t   length = 0;    /* Liczba bajtow uzytych w buforze */
+
+        /* Odczytywanie danych ze strumienia, o ktorym nic nie wiemy,
+         * mozna zrealizowac za pomoca fgetc */
+        int c;
+
+        while ((c = fgetc(stream)) != EOF) {
+
+          /* OK, w strumieniu jest dodatkowy bajt, dodajmy go do wyjsciowego bufora: */
+
+          void * ptr = realloc(buffer, length + 1);
+
+          if (!ptr) {
+            fprintf(stderr, "LOG:blad realokacji HEAP\n");
             free(buffer);
             exit(EXIT_FAILURE);
+          }
+
+          buffer = (char *)ptr; /* buffer ma teraz nowy adres, i jest wiekszy o 1 bajt */
+
+          /* wrzucmy ten bajt na koniec tego bufora i pozniej
+           * zwiekszmy zmienna 'length' przechowujaca jego rozmiar */
+          buffer[length++] = (unsigned char)c;
+
         }
+
+        /* *size_ptr jest to parametr, ktory powinien byc wypelniony przez ta funkcje */
+        *size_ptr = length;
+
         return buffer;
     }
 

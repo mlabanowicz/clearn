@@ -10,7 +10,7 @@ ${MODULES}/build.sh utils
 . ${MODULES}/opts.sh
 
 # kompilacja programu z wykorzystaniem biblioteki
-gcc ${opts} ${opts_rel} loadfile_test.c -I${MODULES} ${MODULES}/utils.a -o loadfile_test.exe
+gcc ${opts} ${opts_rel} dumpdata_test.c -I${MODULES} ${MODULES}/utils.a -o dumpdata_test.exe
 
 # uruchomienie/test programu (jako wejscie stdin podano ten skrypt)
-./loadfile_test.exe < "${0}"
+./dumpdata_test.exe < "${0}"

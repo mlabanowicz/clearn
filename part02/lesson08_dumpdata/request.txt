@@ -1,0 +1,5 @@
+Prosze dopisac implementacje funkcji UTILS_DumpData.
+Jej opis i deklaracja znajduja sie w pliku "utils.h".
+
+Test dumpdata_test.c i dumpdata_test.sh jest juz zrobiony,
+w pliku dumpdata_test.expected jest prawidlowe wyjscie testu.

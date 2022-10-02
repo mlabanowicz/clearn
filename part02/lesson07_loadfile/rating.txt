@@ -1,0 +1,16 @@
+Generalnie, nalezy zawsze zaczynac od rozwiazania tzw bazowego,
+ktore moze nie jest najlepsze/najszybsze (funkcja fgetc + realloc),
+ale dziala prawidlowo - obecna implementacja,
+prosze ja przegladnac.
+
+Dopiero, jak to rozwiazanie bazowe jest zrobione, mozna zajac sie,
+o ile jest takie zapotrzebowanie metodami lepszymi/szybszymi (funkcja fread)
+
+Praca ze strumieniami polega na tym, aby udalo sie
+je traktowac jak prawdziwe strumienie danych, czyli czytanie/zapisywanie
+odbywa sie sekwencyjnie, gdzie uzytkownik nie zna finalnego rozmiaru,
+przy czytaniu dopiero gdy sie pojawi EOF, mozna ustalic,
+jaki rozmiar mialy dane w strumieniu.
+
+Funkcje jak fseek/ftell dzialaja _TYLKO_ na konkretnych typach strumieni,
+ktore powstaly w wyniku otwarcia pliku.

@@ -11,7 +11,7 @@ extern "C"
   int main(void)
   {
     char *buffer = NULL;
-    size_t length = 10;
+    size_t length = 10; /* tutaj ta wartosc nie musi byc ustawiana, bo funkcja UTILS_LoadFile sama wypelni te pole */
     size_t i;
     buffer = UTILS_LoadFile(stdin, &length);
 
