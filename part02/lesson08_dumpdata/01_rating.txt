@@ -1,0 +1,18 @@
+Po uruchomieniu programu:
+
+# ./dumpdata_test.sh > ouput.txt
+
+Wynik: output.txt
+
+Oczekiwany wynik: dumpdata_test.expected
+
+Niestety, te dwa pliki sie roznia.
+
+Prosze tak poprawic funkcje UTILS_DumpData w taki sposob,
+aby pliki byly takie same.
+
+Podpowiedz, porownanie plikow za pomoca komendy:
+
+# diff -u output.txt dumpdata_test.expected && echo SUCCESS
+
+Jak na razie jest brak SUCCESSu.
