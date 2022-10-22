@@ -17,7 +17,7 @@ extern "C"
         char *ptr = (char *)data;
         for (i = 0; i < (size / 16) + 1 && i * 16 <= size; i++)
         {
-            fprintf(output, "| ");
+            fprintf(output, " | ");
             for (j = 0; j < 16; j++)
             {
                 if (j == 0)
@@ -29,9 +29,13 @@ extern "C"
                 else
                 {
                     fprintf(output, "%02X ", ptr[(i * 16) + j]);
+                    
                 }
+                if (j == 7){
+                        fprintf(output, " ");
+                    }
             }
-            fprintf(output, " | ");
+            fprintf(output, "| ");
             for (j = 0; j < 16; j++)
             {
                 if ((i * 16) + j >= size)
@@ -43,7 +47,7 @@ extern "C"
                     fprintf(output, "%c", (ptr[(i * 16) + j] >= ' ' && ptr[(i * 16) + j] < SCHAR_MAX) ? ptr[(i * 16) + j] : '.');
                 }
             }
-            fprintf(output, "\n");
+            fprintf(output, " |\n");
         }
     }
 
