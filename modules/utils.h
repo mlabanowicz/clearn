@@ -55,6 +55,15 @@ void * UTILS_LoadFile(FILE * stream, size_t * size_ptr);
  */
 void UTILS_DumpData(FILE * output, void const * data, size_t size);
 
+/* Funckja zwroci liczbe bitow ustawionych
+ * na podanym obszarze pamieci
+ *
+ * Przykladowo, gdy pamiec wyglada tak (hex):
+ * data = 00 01 02 03, size = 4 (bajty)
+ * zwroci: 0 + 1 + 1 + 2 = 4 - bo tyle bitow jest ustawionych
+ */
+size_t UTILS_BitsCount(void const * data, size_t size);
+
 #ifdef __cplusplus
 }
 #endif

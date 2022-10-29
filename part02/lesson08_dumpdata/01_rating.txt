@@ -1,6 +1,6 @@
 Po uruchomieniu programu:
 
-# ./dumpdata_test.sh > ouput.txt
+# ./dumpdata_test.sh > output.txt
 
 Wynik: output.txt
 

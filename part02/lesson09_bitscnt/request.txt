@@ -1,0 +1,6 @@
+Prosze dopisac implementacje funkcji UTILS_BitsCount.
+Jej opis i deklaracja znajduja sie w pliku "utils.h".
+
+Na pierwszy strzal prosze to zrobic jak najprosciej,
+dla kazdego bajta obliczajac liczbe bitow,
+po tym sie zastanowimy, jak to przyspieszyc.
