@@ -1,0 +1,59 @@
+Program dziala poprawnie, czyli mozemy sprobowac go przyspieszyc.
+
+Nalezy zauwazyc, ze czesto w tej funkcji robimy to samo.
+
+Przykladowo, gdy dostaniemy na wejsciu bajty:
+  0x01, 0x02, 0x70, 0x70, 0x70, 0x02
+
+Wowczas, liczymy dla bajtow o wartosci:
+  0x01 - liczymy liczbe bitow 1 raz
+  0x02 - liczymy liczbe bitow 2 razy
+  0x70 - liczymy liczbe bitow 3 razy
+
+W zasadzie, czesto robimy to samo.
+
+Mozna by bylo pokusic sie, o jakas tablice, ktore bedzie przechowywala juz
+wlasnie wyliczona liczbe bitow dla danej wartosci bajta.
+
+Przykladowa tablica:
+
+unsigned char bits_count [] {0, 1, 1, 2, /* itd. */}
+
+wtedy, dla bajta o wartosci 0x02 mozna by bylo pobrac wynik z tablicy:
+{
+  byte_value = 0x02;
+  licbza_bitow += bits_count[byte_value];
+}
+
+Bajt moze przyjmowac wartosci od 0 do 255 (256 kombinacji), tak wiec ta tablica nie bylaby jakas duza,
+a znaczaco przyspieszylaby dzialanie programu.
+
+Prosze przyspieszyc dzialanie tej funkcji wykorzystujac powzyzszy sposob.
+
+
+
+NOTES:
+
+/* chcialem zeby probram wypisywal mi tez binarna postac ale jak przesuwam bity w lewo to te najwyzsze sie chyba nie zeruja(10000000>>1 = 100000000)?  */
+
+  przesuniecie w prawo:
+
+    10000000>>1 da w efekcie: 01000000
+
+  natomiast przesuniecie w lewo:
+
+    10000000<<1 da w efekcie: 00000000
+
+    _CHYBA_ _ZE_ operujemy na liczbie typu INT, ktora sklada sie z ilus bajtow, przyklaodow z 4, wtedy
+
+    liczba wejsciowa 10000000 wyglada tak w 32 bitowym INT:
+
+    00000000.00000000.00000000.10000000
+
+    po przesunieciu w lewo:
+
+    00000000.00000000.00000001.00000000
+
+  Przykladowy kod pokazujacy problem, zawsze dobrze sobie takie cos robic:
+    shl.c
+    Gdy c jest typu unsigned char to ta '1' zniknie, ale gdy zmienimy typ zmiennej 'c' na unsigned int, wtedy jedynka zostaje.
