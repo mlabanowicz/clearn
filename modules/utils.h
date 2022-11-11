@@ -62,7 +62,8 @@ void UTILS_DumpData(FILE * output, void const * data, size_t size);
  * data = 00 01 02 03, size = 4 (bajty)
  * zwroci: 0 + 1 + 1 + 2 = 4 - bo tyle bitow jest ustawionych
  */
-size_t UTILS_BitsCount(void const * data, size_t size);
+size_t UTILS_BitsCountByArray(void const * data, size_t size);
+size_t UTILS_BitsCountByShift(void const *data, size_t size);
 
 #ifdef __cplusplus
 }

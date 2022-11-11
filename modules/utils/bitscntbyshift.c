@@ -7,7 +7,7 @@ extern "C"
 {
 #endif
 
-    size_t UTILS_BitsCount(void const *data, size_t size)
+    size_t UTILS_BitsCountByShift(void const *data, size_t size)
     {
         size_t count = 0;
         char *ptr = (char *)data;
