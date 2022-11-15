@@ -1,0 +1,6 @@
+Prosze zapoznac sie z programem stack.c
+
+a nastepnie uzupelnic program o implementacje funkcji,
+ktora usuwa ze stosu podany element:
+  o) RemoveStackElement
+
