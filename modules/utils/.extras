@@ -1,0 +1,11 @@
+
+build()
+{
+  (cd bitscnt && ./generuj_tablice.sh)
+}
+
+clean()
+{
+  (cd bitscnt && ./clean.sh)
+}
+

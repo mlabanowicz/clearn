@@ -13,7 +13,7 @@ if [ "${#}" -eq 0 ]; then
 
 else
 
-  # Wygeneorwanie konkretnego modulu
+  # Wygenerowanie konkretnego modulu
 
   (
   # przejscie do katalogu MODULES/<module_name>
@@ -21,6 +21,21 @@ else
 
   # usuniecie poprzednioch plikow
   rm -fr *.[o] ../${1}.a
+
+  build()
+  {
+    :
+  }
+
+  clean()
+  {
+    :
+  }
+
+  [ ! -f .extras ] || . .extras
+
+  clean
+  build
 
   # zaladowanie opcji wymaganych do kompilacji
   . ../opts.sh

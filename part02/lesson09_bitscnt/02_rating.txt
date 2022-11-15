@@ -1,0 +1,53 @@
+Jest OK, ale co odpalenie tej funkcji wykonuje sie kod, generujacy tablice.
+
+Jest to OK.
+
+Wydej sie, ze lepszym rozwiazaniem jest utworzyc taka tablice
+wczesniej (jest ona mala, tylko 256 liczb od 0 do 8)
+i ja "wsadzic" do programu na stale.
+
+mozna to zrobic przykladowo tak:
+
+{
+  static unsigned char const tablica [] =
+  {
+    0, 1, 1, 2, ... itd, ostatni element na pozycji 255 bedzie mial wartosc 8
+  };
+}
+
+static - oznacza to, ze ta tablica jest w pamieci dostepna caly czas, nie bedzie ona na stosie.
+
+         ! Bez slowa static, ta tablica bylaby umieszczona na stosie, co wiazaloby sie z tym,
+           ze przy kazdym wejsciu do funkcji bylaby tworzona (wypelniana podanym wzorcem)
+           na tym stosie od nowa - czyli strata czasu
+
+const  - dzieki temu taka tablica pojawi sie w pamieci typu READ-ONLY.
+
+         ! W niektorych systemach moze przyspieszyc prace programu,
+           albo zmniejszyc zuzycie pamieci, bo wtedy adres tej tablicy moze wskazywac
+           na pamiec ROM (flash).
+
+
+Zastanowmy sie, jak osiagnac taki efekt, ale nie wpisujac tych elementow recznie,
+przeciez komputer moze to zrobic za nas.
+
+Rozwiazaniem tego problemu jest wygenerowanie tej tablicy osobnym programem
+i umieszczenie zawartosci tablicy za pomoca dyrektywy #include, przyklad:
+
+1) Program generujacy tablice:
+
+   a) kompilacja:
+     gcc generuj_tablice.c -o generuj_tablice.exe
+
+   b) generacja tablicy:
+     ./generuj_tablice.exe > tablica.txt
+
+2) Wsadzenie wynikow wygenerowanej tablicy do programu:
+{
+  static unsigned char const tablica [] =
+  {
+    #include "tablica.txt"
+  };
+}
+
+Taka implementacja zostala dodana, prosze sie z nia zapoznac.
