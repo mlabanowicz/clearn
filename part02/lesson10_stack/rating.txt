@@ -1,0 +1,23 @@
+Implementacja jest poprawna, prosze zapoznac sie z komentarzami.
+
+Ponizej rozwiazanie wzorcowe:
+
+static struct data_type_s * RemoveStackElement(struct data_type_s * top, struct data_type_s * element)
+{
+  struct data_type_s * p = top;
+
+  if (top == element)
+  {
+    return top->prev;
+  }
+
+  /* szukamy takiego elementu, ktory poprzedza ten, ktory ma byc usuniety */
+  while (p->prev != element)
+  {
+    p = p->prev;
+  }
+
+  p->prev = element->prev;
+
+  return top;
+}

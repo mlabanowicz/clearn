@@ -1,0 +1,14 @@
+BST to drzewo, ktorego elementu maja co najwyzej 2 dzieci.
+
+Dziecko z lewej strony jest zawsze  <= od rodzica,
+dziecko z prawej strony jest zawsze >= od rodzica.
+
+Prosze zapoznac sie z programem bst.c
+
+Dodac implementacje funkcji dodajacej element do drzewa BST:
+
+  o) addElementToBst
+
+Do takich zadan bardzo przydaje sie tablica/tablet albo kartka papieru.
+Nalezy sobie rysowac te elementy i wskazniki.
+Takie podejscie upraszcza zrozumienie pisanego kodu.

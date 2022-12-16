@@ -23,6 +23,12 @@ extern "C"
   {
     struct data_type_s *i = top;
     struct data_type_s *j = top->prev;
+
+    /* Generalnie zakladamy, ze skoro usuwamy element, to istnieje on */
+    /* na stacku, ale ok, skoro juz sprawdzamy, czy 'top' nie jest NULL'em, to jak najbardziej mozemy to robic, */
+    /* tylko ze w takim przypadku istnieje mozliwosc, ze ktos moze podac top = NULL, */
+    /* wtedy w linijce 25 wydarzy sie cos, czego nikt by nie chcial */
+
     if (top)
     {
       if (i == element)
@@ -43,6 +49,8 @@ extern "C"
             if (element == j && j->prev != NULL)
             {
               i->prev = j->prev;
+              /* tutaj moglby byc break, bo wlasnie usuniety zostal element, */
+              /* nie ma sensu przeszukiwac nadal stosu */
             }
             i = j;
             j = j->prev;
