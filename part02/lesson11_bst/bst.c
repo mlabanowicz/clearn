@@ -33,14 +33,59 @@ static int isLess(struct data_type_s const * a, struct data_type_s const * b)
 
 /* Dodaje nowy element do struktury BST */
 /* Zwraca nowy root (o ile sie zmienil) */
-static struct data_type_s * addElementToBst(struct data_type_s * root, struct data_type_s * element)
+static struct data_type_s *addElementToBst(struct data_type_s *root, struct data_type_s *element)
 {
-  /* do zaimplementowania */
+ /*       t       */
+ /*      .#.      */
+ /*     .###.     */
+ /*    .#%##%.    */
+ /*   .%##%###.   */
+ /*  .##%###%##.  */
+ /* .#%###%##%##. */
+ /*       #       */
+ /*wesolych swiat */
+  struct data_type_s *ptr = root;
+  
+  element->left = NULL;
+  element->right = NULL;
+  element->parent = NULL;
+  /*jak nie zerowalem elementow data_type_s to wskazywaly one na 0x1 itp. nie wiem czemu*/
+  if (root)
+  {
+    while (!element->parent)
+    {
+      if (isLess(ptr, element))
+      {
+        if (ptr->right)
+        {
+          ptr = ptr->right;
+        }
+        else
+        {
+          ptr->right = element;
+          element->parent = ptr;
+        }
+      }
+      else
+      {
+        if (ptr->left)
+        {
+          ptr = ptr->left;
+        }
+        else
+        {
+          ptr->left = element;
+          element->parent = ptr;
+        }
+      }
+    }
+  }
+  else
+  {
+    root = element;
+  }
 
-  /* W strukturze wskazywanej przez element ta funkcja powinna poustawiac */
-  /* pola parent, left i right na odpowiednie wartosci. */
-
-  /* Do porownywnaian, ktory elemnt jest wiekszy/mmniejszy funkcja ma uzywac tylko funkcji isLess */
+  return root;
 }
 
 int main(void)
@@ -57,7 +102,6 @@ int main(void)
   /* Na samym poczatku root jest NULL, drzewo ma 0 elementow */
 
   root = addElementToBst(root, &a);
-
   /* Po dodaniu pierwszego elementu, root powinien wskazywac na element a, cale drzewo ma 1 element: */
   /*                                                 */
   /*  root --> &a                                    */
@@ -124,7 +168,6 @@ int main(void)
   /*                        /                        */
   /*                     [d:4]                       */
   /*                                                 */
-
   return EXIT_SUCCESS;
 }
 
