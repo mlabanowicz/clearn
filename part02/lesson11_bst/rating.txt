@@ -1,0 +1,21 @@
+Ok, bardzo dobrze zrobione zadanie.
+
+Jezeli chodzi o komentarz z lini 52:
+
+  /*jak nie zerowalem elementow data_type_s to wskazywaly one na 0x1 itp. nie wiem czemu*/
+
+Bardzo dobrze, ze zerujesz te wartosci.
+
+Mozna zauwazyc, ze elementy:
+  a, b, c, d
+sa zmiennymi w funkcji main(), czyli znajduja sie na stack'u.
+
+Po wejsciu do funkcji main, dla tych elementow zarezerwowany jest obszar pamiec na stacku.
+Ten obszar jest tylko rezerwowany, dane w tym obszarze nie sa ruszane, tak wiec zawartosc
+jest nieustalona. Programista musi zadbac, aby nie uzyc nieustalonej wartosci.
+
+Czyli te zmienne na starcie programu nie sa niczym zainicjalizowane,
+czyli zawieraja 'smieci' (to co akurat bylo na stacku).
+
+Jedynie pole value jest wypelnione odpowiednia wartoscia.
+Reszta pol tych elementow jest nieustalona.
