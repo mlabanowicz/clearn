@@ -1,0 +1,43 @@
+Btree drzewo oparte na zwyklej tablicy, zasady:
+
+  o) ROOT jest pod indeksem 1
+  o) Lewe  dziecko jest pod indeksem (PARENT * 2)
+  o) Prawe dziecko jest pod indeksem (PARENT * 2) + 1
+
+Przyklad drzewa:
+
+              [0]=6
+            _/   \_
+          _/       \_
+         /           \
+       [1]=2        [2]=4
+       / \          / \
+      /   \        /   \
+     /     \      /     \
+   [3]=2  [4]=0 [5]=1   [6]=3 <----- ostatnie elementy nazywane sa liscmi
+
+   lisc0  lisc1  lisc2  lisc3
+
+Dane w tablicy:
+  int btree [] = {0/*unused*/, 6, 2, 4, 2, 0, 1, 3 };
+
+Wysokosc H = 2
+Liczba lisci H^2 = 4
+Liczba wszystkich elementow (razem z nieuzywanym elementem ZEROWYM): (H+1)^2 = 8
+
+Napisac implementacje funkcji, ktora spaceruje po drzewie
+od podanego liscia (liscie numeruje sie od 0) az do ROOTa,
+i sumuje napotkane komorki.
+Funkja ma byc uniwersalna i ma dzialac dla roznych wartosci height.
+
+Dla podanego wyzej drzewa wywolanie funkcji
+
+  walk(btree, 2, 1);
+
+da taki wynik:
+
+  [4]=0
+  [1]=2
+  [0]=6
+
+return 8;
