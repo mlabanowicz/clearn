@@ -6,15 +6,15 @@ Btree drzewo oparte na zwyklej tablicy, zasady:
 
 Przyklad drzewa:
 
-              [0]=6
+              [1]=6
             _/   \_
           _/       \_
          /           \
-       [1]=2        [2]=4
+       [2]=2        [3]=4
        / \          / \
       /   \        /   \
      /     \      /     \
-   [3]=2  [4]=0 [5]=1   [6]=3 <----- ostatnie elementy nazywane sa liscmi
+   [4]=2  [5]=0 [6]=1   [7]=3 <----- ostatnie elementy nazywane sa liscmi
 
    lisc0  lisc1  lisc2  lisc3
 
@@ -36,8 +36,8 @@ Dla podanego wyzej drzewa wywolanie funkcji
 
 da taki wynik:
 
-  [4]=0
-  [1]=2
-  [0]=6
+  [5]=0
+  [2]=2
+  [1]=6
 
 return 8;
