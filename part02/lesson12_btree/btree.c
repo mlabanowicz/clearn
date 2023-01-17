@@ -1,4 +1,4 @@
-
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,8 +8,20 @@ extern "C" {
 
 static int walk(int const * array, int height, int leaf)
 {
-  /* to be implemneted */
+    int index = (int)(pow(height+1,2)-pow(height,2) + leaf-1);
+    int sum=0;
+    while(index != 0){
+    sum += array[index];
+    if(index % 2 == 1){
+      index = (index -1) / 2;
+    }
+    else{
+      index = index/2;
+    }
+    }
+    return sum;
 }
+
 
 int main(void)
 {
@@ -17,7 +29,7 @@ int main(void)
 
   int r;
 
-  r = walk(btree, 2, 1);
+  r = walk(btree, 2, 3);
 
   printf("%d\n", r);
 
