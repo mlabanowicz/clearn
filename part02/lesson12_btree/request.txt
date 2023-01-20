@@ -22,8 +22,8 @@ Dane w tablicy:
   int btree [] = {0/*unused*/, 6, 2, 4, 2, 0, 1, 3 };
 
 Wysokosc H = 2
-Liczba lisci H^2 = 4
-Liczba wszystkich elementow (razem z nieuzywanym elementem ZEROWYM): (H+1)^2 = 8
+Liczba lisci: 2 do potegi H = pow(2, H)= 4
+Liczba wszystkich elementow (razem z nieuzywanym elementem ZEROWYM): 2 do potegi (H+1) = pow(w, H+1) = 8
 
 Napisac implementacje funkcji, ktora spaceruje po drzewie
 od podanego liscia (liscie numeruje sie od 0) az do ROOTa,
