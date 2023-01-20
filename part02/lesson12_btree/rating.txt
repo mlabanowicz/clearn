@@ -1,0 +1,5 @@
+Funkja nie dziala prawidlowo - dziala jedynie dla drzew o wysokosci 2 i 1.
+
+Prosze wyeliminowac uzywanie pow(...), przyczyny:
+1 - jest to tutaj zle uzyte, powinno byc 2 do potegi, czyli pow(2, potega)
+2 - jest to straszne spowolnienie kodu, prosze znalezc inny sposob na obliczenie potegi z liczby 2
