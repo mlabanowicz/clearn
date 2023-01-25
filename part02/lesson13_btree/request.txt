@@ -1,0 +1,18 @@
+Napisz caly program, ktory na wjesciu dostanie liczby lisci w drzewie,
+i dla kazdej z tych liczb wypisze, jaka musi byc minimalna wysokosc drzewa
+dla danej liczby lisci.
+Prosze nie korzystac z biblioteki math.
+
+Przykladowo:
+
+INPUT:
+1
+2
+3
+4
+
+OUTPUT:
+0
+1
+2
+2
