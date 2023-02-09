@@ -1,0 +1,27 @@
+Napisz program, ktory usuwa komentarze z podanego wejscia (jakiegos pliku zrodlowego).
+
+Program moze wykorzystac maksymalnie 256 bajtow pamieci,
+rozmiary danych wejsciowych nie maja ograniczen.
+
+Przyklad:
+
+INPUT:
+/* to jest jakis plik zrodolowy */
+#include <stdlib.h> /* zaladowanie biblioteki */
+// to jest komentarz
+int main(void)
+{
+  // to jest komentarz \
+     ktory konczy sie tutaj
+  return EXIT_SUCCESS;
+}
+
+OUTPUT:
+
+#include <stdlib.h> 
+
+int main(void)
+{
+  
+  return EXIT_SUCCESS;
+}
