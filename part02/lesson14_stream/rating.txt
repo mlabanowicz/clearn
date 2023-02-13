@@ -1,0 +1,6 @@
+Dokladnie chodzilo o to, aby zapamietac zawartosc poprzedniego znaku i to jest zrobione.
+
+Niestety program nie do konca dziala tak jak powinien.
+
+Prosze jeszcze tak go poprawic, aby byl w stanie usunac komentarze z podanego programu testowego:
+  test_input.cpp
