@@ -1,61 +1,56 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-    /*
-    i = 1 zeby nie wypisywal '/' w *
-    i = 2 dla 2 x /
-    i = 3 dla *
-    */
     int main(void)
     {
         char c='\0', last_c='\0';
-        short status = 0, x = 0;
+        unsigned short jest_komentarz = 0, jest_string = 0;
         if ((last_c = getchar())== EOF)
         {
             exit(EXIT_SUCCESS);
         }
+        if(last_c == '\"')  jest_string =1;
+        if(last_c == '\'')  jest_string =2;
         while ((c = getchar()) != EOF)
         {
-            if (last_c == '/' && c == '/')
-                status = 2;
-            if (last_c == '/' && c == '*')
-                status = 3;
-            if (!status)
-            {
-                putchar(last_c);
-            }
-            if (status == 1)
-            {
-                status--;
-            }
-            if (status == 2 && c == 92)
-            {
-                x = 1;
-            }
-            if (status == 2 && c == '\n')
-            {
-                if (x)
-                {
-                    x = 0;
-                }
-                else
-                {
-                    status = 0;
-                }
-            }
-            if (status == 3 && last_c == '*' && c == '/')
-            {
-                status = 1;
-            }
-            last_c = c;
+        if(c == '\"' && last_c != '\\'){
+            if(jest_string == 0)    jest_string = 2;
+            if(jest_string == 1)    jest_string = 0;
         }
-        if (!status)
-        {
+        if(c == '\'' && last_c != '\\'){
+            if(jest_string == 0)    jest_string = 4;
+            if(jest_string == 3)    jest_string = 0;
+        }
+        if(jest_string == 0){
+        if (last_c == '/' && c == '/')
+                jest_komentarz = 4;
+        if (last_c == '/' && c == '*')
+                jest_komentarz = 3;
+        if(jest_komentarz != 0){
+            if(jest_komentarz == 4 && c =='\n' && last_c != '\\'){
+                jest_komentarz = 1;
+            }
+            if(jest_komentarz == 3 && c == '/' && last_c == '*'){
+                jest_komentarz = 2;
+            }
+        }
+        }
+        if(!jest_komentarz){
             putchar(last_c);
+        }
+        if(jest_komentarz<3 && jest_komentarz !=0){
+            jest_komentarz--;
+        }
+        if(jest_string == 4 || jest_string == 2){
+            jest_string--;
+        }
+        last_c = c;
+        }
+        if(!jest_komentarz){
+            putchar(last_c);            
         }
         return EXIT_SUCCESS;
     }
