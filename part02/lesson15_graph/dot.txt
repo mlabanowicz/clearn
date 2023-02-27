@@ -1,0 +1,14 @@
+digraph
+{
+  1 [label="1\nRed"];
+  2 [label="2\nGreen"];
+  3 [label="3\nYellow"];
+  4 [label="4\nBlue"];
+  5 [label="5\nBlack"];
+
+  1 -> 5 [label="1"];
+  1 -> 4 [label="2"];
+  1 -> 3 [label="3"];
+  2 -> 5 [label="5"];
+  3 -> 2 [label="4"];
+}

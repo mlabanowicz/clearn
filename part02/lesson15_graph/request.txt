@@ -1,0 +1,29 @@
+Grafy umoliwiaja rozwiazywanie wielu problemow algorytmicznych.
+Tym razem poznamy program, ktory potrafi taki graf narysowac.
+
+Generlanie, za punkt wejscia do programow, grafy przedstawiane sa w formie:
+V - Vertex (wierzcholek)
+E - Edge   (krawedz)
+--------
+Vcount Ecount
+V1desc
+V2desc
+...
+V{Vcount}desc
+E1src E1dst E1weight
+E2src E2dst E2weight
+...
+E{Ecount}src E{Ecount}dst E{Ecount}weight
+--------
+
+Przyklad opisu takiego grafu w pliku 'graph.txt'
+
+Program 'dot' (dostepny w linuxie w pakiecie graphviz) wymaga odpowiedniego formatu.
+
+Przyklad inputu dla programu 'dot' jest w pliku: dot.txt (odpowiednik graph.txt)
+
+Narysowanie grafu do pliku w formacie png:
+# dot -Tpng < dot.txt > dot.png
+
+Twoje zadanie to jest napisanie programu, ktory przekonwertuje
+graf z postaci standardowej "graph.txt" do formatu "dot.txt".
