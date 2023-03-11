@@ -1,0 +1,63 @@
+Zapoznamy sie ze struktura mheap.
+Jest to drzewo, ktore (w trybie MIN) w korzeniu zawsze ma Element o najmniejszej wartosci.
+Moze byc ono reprezentowane na zwyklej tablicy.
+
+  int array [] = {7, 1, 2, 5, 3, 6, 5, 9};
+
+             [1]
+              |
+        +-----+----+
+        |          |
+       [2]         [5]
+        |           |
+     +--+--+     +--+--+
+     |     |     |     |
+    [3]   [6]   [5]   [9]
+
+   array[0] - liczba elementow
+
+   array[1] - korzen, zawsze zawiera najmniejsza wartosc
+
+   array[n*2+0] - dziecko lewe
+   array[n*2+1] - dziecko prawe
+
+  Zasada W: Wartosc rodzica jest zawsze mniejsza lub rowna w porownaniu do dziecka.
+
+Operacje na takim drzewie:
+
+1) dodanie elementu o danej wartosci:
+
+   algorytm:
+     dodaje sie go jako ostatni element tablicy
+     i przesuwa sie maksymalnie w gore zgodnie z zasada W.
+
+2) usuniecie elementu o podanym indeksie w tablicy:
+
+   algorytm:
+     w miejsce elementu usuwanego wstawia sie element ostatni z tablicy,
+     i przesuwa sie tym elementem w dol zgodnie z zasdada W.
+
+Prosze zaimplementowac program, ktory na wejsciu dostanie nieokreslona liczbe takich komend:
+
+add <value> - dodaje liczbe do drzewa
+get         - wyswietla liczbe z korzenia (najmniejsza wartosc)
+del <index> - usuwa liczbe z podanego indeksu
+dump        - wyswietla tablice w formacie:
+              <liczba elementow>:[ el1[ el2 ...]]
+
+Przyklad:
+
+Input:
+dump
+add 4
+add 3
+add 6
+add 1
+get
+del 6
+dump
+
+Output:
+0:
+1
+3: 1 3 4
