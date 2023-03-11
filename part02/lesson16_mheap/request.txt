@@ -35,7 +35,7 @@ Operacje na takim drzewie:
 
    algorytm:
      w miejsce elementu usuwanego wstawia sie element ostatni z tablicy,
-     i przesuwa sie tym elementem w dol zgodnie z zasdada W.
+     i przesuwa sie tym elementem w dol lub w gore, zgodnie z zasdada W.
 
 Prosze zaimplementowac program, ktory na wejsciu dostanie nieokreslona liczbe takich komend:
 
