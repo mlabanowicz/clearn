@@ -12,6 +12,8 @@ extern "C"
 
     void dump(int array[]);
 
+    void check_integrity(int array []);
+
     void dump(int array[])
     {
         int i, j = 1, x = j, max, z = 1;
@@ -112,6 +114,36 @@ extern "C"
             index = leaf;
         }
     }
+
+    void check_integrity(int array [])
+    {
+      int count = array[0];
+
+      int id;
+
+      for (id = 1; id <= count; id++)
+      {
+        int child = (id << 1);
+
+        int j = 2;
+
+        while (j--)
+        {
+          if (child <= count)
+          {
+            if (array[id] > array[child])
+            {
+              printf("ID:%d has greater value than CHILD:%d\n", id, child);
+              dump(array);
+              exit(EXIT_FAILURE);
+            }
+          }
+
+          ++child;
+        }
+      }
+    }
+
     int main(void)
     {
         int array[100] = {0};
@@ -126,6 +158,8 @@ extern "C"
 
             if (strcmp(str, "dump") == 0)
             {
+                str = strtok(NULL, delim);
+                if (str && *str) { printf("[DUMP:%s] ", str); }
                 dump(array);
             }
             else if (strcmp(str, "add") == 0)
@@ -147,6 +181,8 @@ extern "C"
             else{
                 printf("cos poszlo nie tak :/\n");
             }
+
+            check_integrity(array);
         }
 
         return 0;

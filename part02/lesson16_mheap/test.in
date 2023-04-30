@@ -1,0 +1,16 @@
+add 76
+add 64
+add 41
+add 23
+dump A
+del 1
+dump B
+add 25
+dump C
+add 80
+dump D
+del 2
+dump E
+del 4
+dump F
+add 5

@@ -1,0 +1,19 @@
+Program nie dziala, tak jak powinien.
+
+Dodalem generator testow: test.c
+Uruchomienie dla wygenerowania 50 instrukcji:
+gcc test.c -o test.exe && echo 50 | ./test.exe > test.in
+
+W sourcach dodalem funkcje "check_integrity", ktora dla kazdego elementu sprawdza,
+czy jego dzieci sa wieksze, jezeli tak, to jest wyswietlony blad i program konczy dzialanie.
+
+Przykladowe dane testowe, ktore powoduja, ze program nie dziala, zawieraja sie w pliku:
+  test.in
+
+WYNIK:
+[DUMP:A] 4: [23  [41 64  [76 ] ] ]
+[DUMP:B] 3: [41  [76 64  [] ] ]
+[DUMP:C] 4: [25  [41 64  [76 ] ] ]
+[DUMP:D] 5: [25  [41 64  [76 80 ] ] ]
+ID:2 has greater value than CHILD:4
+4: [25  [80 64  [76 ] ] ]
