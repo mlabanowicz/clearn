@@ -2,15 +2,15 @@ add 76
 add 64
 add 41
 add 23
-dump A
+dump
 del 1
-dump B
+dump
 add 25
-dump C
+dump
 add 80
-dump D
+dump
 del 2
-dump E
+dump
 del 4
-dump F
+dump
 add 5
