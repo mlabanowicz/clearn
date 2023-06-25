@@ -1,0 +1,36 @@
+Zadanie praktyczne:
+
+Rozwazmy rower, w ktorym sa dwa rodzaje przerzutek:
+  a) przednia przerzutka skladajaca sie z N biegow
+  b) tylna przerzutka skladajaca sie z M biegow
+Program ma wczytac konfiguracje przerzutek i wypisac wszystkie kombinacje przelozen w kolejnosci
+od najwolniejszej (przelozenie najlzejsze) do najszybszej (przelozenie najciezsze).
+
+Program musi byc precyzyjny i nie moze uzywac liczb zmienno-przecinkowych,
+do obliczen moze uzywac tylko typow calkowitych.
+
+Dane wejsciowe:
+N <a1> <a2> ... <aN>
+M <b1> <b2> ... <bM>
+
+1 < N,M < 10000
+
+1 < bi, ai < 10000 --> liczba zebow na danej zebatce
+
+Dane wyjsciowe:
+aX-bY
+aP-bQ
+...
+
+Przyklad:
+Input:
+1 52
+7 43 38 33 28 23 18 13
+Output:
+52-43
+52-38
+52-33
+52-28
+52-23
+52-18
+52-13
