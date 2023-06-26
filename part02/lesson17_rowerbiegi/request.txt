@@ -13,12 +13,12 @@ Dane wejsciowe:
 N <a1> <a2> ... <aN>
 M <b1> <b2> ... <bM>
 
-1 < N,M < 10000
+1 <= N,M <= 10000
 N * M <= 1000000
-1 < bi, ai < 10000 --> liczba zebow na danej zebatce
+1 <= bi, ai <= 10000 --> liczba zebow na danej zebatce
 
 NOTE: Gdy dla roznych kombinacji waga przelozenia jest taka sama, to nalezy wypisac tylko jedno z nich,
-to, ktore na przedniej przezrzutce ma wieksza ilosc zebow, przyklad:
+to, ktore na przedniej przerzutce ma wieksza ilosc zebow, przyklad:
   4/2 6/3 8/4
 z tych 3 przelozen wybieramy 8/4, innych juz nie wypisujemy.
 
