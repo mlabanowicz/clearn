@@ -1,0 +1,32 @@
+[10-09-2023] ML
+
+  Rowerowe biegi w teorii dzialaja tak, ze kazdy bieg z przodu mozna zestawic
+  z kazdym biegem z tylu.
+
+  Generalnie wynik powinien byc wylistowaniem ulamkow posortowanych rosnaco.
+
+  Program nie dziala poprawnie, przyklad dla danych w pliku data.in i data.out.
+
+  Widze, ze zastosowales szybkie sortowanie z stdliba qsort, to jest ok,
+  nie bylo to wymagane, no ale ok.
+
+  Funkcja porownujaca compareGearCombinations w zasadzie jest zapisana poprawnie,
+  ale nie potrzebnie jest tam usuwanie znacznika 'const' (bo a i b sa w tym trybie):
+
+    void const * a /* to oznacza, ze 'a' jest wskaznikiem na jakies dane, ktorych nie mozna zmieniac */
+
+    /* zamiast: */
+    GearCombination *comb1 = (GearCombination *)a;
+
+    /* powinno byc: */
+    GearCombination const *comb1 = (GearCombination const *)a;
+
+    Wowczas kompilator wie, ze dane w strukturze GearCombination nie beda zmieniane,
+    wtedy optymalizator zawsze moze cos sobie poprzyspieszac.
+
+  Wskazowka:
+
+    Najpierw wygeneruj sobie tablice ze wszystmi mozliwymi przelozeniami
+    a nastepnie ja posortuj tym qsort'em.
+
+  Dodatkowo masz dane testowe huge.in i huge.out do porownania wynikow.
