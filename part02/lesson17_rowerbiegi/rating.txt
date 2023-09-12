@@ -60,3 +60,7 @@
   Zmodyfikuj funkcje compareGearCombinations tak, aby uwzgledniala taki przypadek.
   Generlanie w tym zadaniu ta funkcja nie powinna nigdy zwrocic 0,
   bo przelozenia zawsze sie czyms beda roznic.
+
+[12-09-2023 22:21] ML
+
+  Ok, program teraz dziala poprawnie.
