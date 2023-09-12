@@ -30,3 +30,33 @@
     a nastepnie ja posortuj tym qsort'em.
 
   Dodatkowo masz dane testowe huge.in i huge.out do porownania wynikow.
+
+[12-09-2023] ML
+
+  Zaznaczam moj blad, gdyz zalaczone dane testowe
+  nie uwzglednialy powtarzalanosci wagi przelozen,
+  (to trzeba zrobic, jest to napisane w request.txt)
+  a Twoj program to robi w sposob bardzo dobry.
+
+  (huge + data) .out - zostalo poprawione.
+
+  Program dziala juz prawie perfekcyjnie,
+  jednak funkcja sortujaca nie uwzglednia faktu,
+  ze gdy 2 przelozenia maja taka sama wage, to wowczas przelozenie,
+  ktore ma przednia przerzutke mniejsza, powinno byc priorytetowe.
+
+  W danych testowych data.in sa takie przelozenia o tej samej wadze:
+  28/14 i 34/17.
+  Powinno byc wypisane 28/14, gdyz 28 jest mniejsze niz 34.
+
+  Tu jest taki maly bug (niewykrywalny na etapie nawet uruchamiania).
+  U mnie na komputerze akurat on sie objawia, u Ciebie nie koniecznie.
+
+  Twoja funkcja compareGearCombinations dla porownania takich przelozen
+  zwraca 0, czyli twierdzi, ze te dwa elementy sa identyczne.
+  Oznacza to, ze qsort umiesci je obok siebie w posortowanej tablicy,
+  ale nie wiadomo nigdy, jaka bedzie ich finalna kolejnosc wzgledem siebie.
+
+  Zmodyfikuj funkcje compareGearCombinations tak, aby uwzgledniala taki przypadek.
+  Generlanie w tym zadaniu ta funkcja nie powinna nigdy zwrocic 0,
+  bo przelozenia zawsze sie czyms beda roznic.
