@@ -13,8 +13,22 @@ int compareGearCombinations(const void *a, const void *b)
 {
     GearCombination const *comb1 = (GearCombination *)a;
     GearCombination const *comb2 = (GearCombination *)b;
-
-    return (comb1->front_gear * comb2->rear_gear) - (comb2->front_gear * comb1->rear_gear);
+    int delta = (comb1->front_gear * comb2->rear_gear) - (comb2->front_gear * comb1->rear_gear);
+    if (delta != 0)
+    {
+        return delta;
+    }
+    else
+    {
+        if (comb1->front_gear > comb2->front_gear)
+        {
+            return -1;
+        }
+        else
+        {
+            return 1;
+        }
+    }
 }
 
 int main(void)
@@ -60,7 +74,7 @@ int main(void)
     printf("%d/%d\n", previousCombination.front_gear, previousCombination.rear_gear);
     for (i = 1; i < M * N; i++)
     {
-        if (compareGearCombinations(&combinations[i], &previousCombination) != 0)
+        if ((combinations[i].front_gear * previousCombination.rear_gear) - (previousCombination.front_gear * combinations[i].rear_gear) != 0) 
         {
             printf("%d/%d\n", combinations[i].front_gear, combinations[i].rear_gear);
         }
