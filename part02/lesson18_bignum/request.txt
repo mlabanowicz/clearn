@@ -1,0 +1,123 @@
+Rozwazmy nastepujace problemy uzywajac liczb 2-bajtowych (16-bitow, zakres: <0x0000,0xFFFF>)
+
+1) Problem dodawania:
+
+  unsigned short a = USHRT_MAX; /* 0xffff */
+  unsigned short b = USHRT_MAX; /* 0xffff */
+
+  unsigned short s = a + b; /* tutaj jest tzw. overflow, takich sytuacji    */
+                            /* powinnismy unikac, gdyz nie do konca wiadomo */
+                            /* jak to sie zachowa na roznych systemach      */
+
+  /* w 's' _PRZEWAZNIE_ znajdzie sie 0xfffe,         */
+  /* co nie jest prawidlowym wynikiem tego dodawania */
+
+  Wynik dodawania moze nie zmiescic sie w 2 bajtach:
+    0xffff + 0xffff = 0x1fffe
+  Tak wiec wynik dodawania dwoch liczb 2 bajtowych sklada sie
+  z tzw. wyniku wlasciwego i przeniesienia:
+
+  0xfffe - wynik wlasciwy (low)
+  0x0001 - przeniesienie  (hi )
+
+  Po zlaczeniu tych dwoch wartosci otrzymujemy finalna wartosc:
+
+  0x1fffe - finalna wartosc
+
+  Rozwazmy funkcje, ktora ma dodac dwie liczby uzywajac tylko i wylacznie typu unisgned short:
+
+    unsigned short ushort_sum(unsigned short a, unsigned short b)
+    {
+      unsigned short suma;
+
+      suma = a + b;
+
+      return suma;
+    }
+
+  Taka funkcja nie zadziala poprawnie dla wszystkich wartosci a i b (od 0 do 0xffff).
+  Dodatkowo ta funkcja ma problem taki, ze moze wystapic overflow,
+  wowczas zwracany wynik nie jest juz oczywisty.
+
+  Zadaniem jest zaimplementowanie funkcji, ktora rozwiazauje te dwa problemy.
+  Deklaracja funkcji do zaimplementowania:
+
+    unsigned short ushort_sum(unsigned short a, unsigned short b, unsigned short * carry_ptr);
+
+  W przypadku, gdy wywolamy ja w taki sposob:
+
+  {
+    unsigned short carry;
+
+    unsigned short sum;
+
+    sum = ushort_sum(0xffff, 0xffff, &carry);
+
+    /* prawidlowy wynik: */
+    /* sum   = 0xfffe    */
+    /* carry = 0x0001    */
+  }
+
+  W tym zadaniu moze pomoc pisemny sposob dodawania:
+
+    23
+   +95
+   ---
+   118
+
+    ah al    h=high, l=low
+  + bh bl
+  -------
+    .....
+
+  gdzie dla liczby v = 0xpqst ==> vh=0xpq i vl=0xst
+
+  wowczas dodanie al + bl da wynik, ktory caly czas miesci sie w wymaganym type i nie wystepuje overflow.
+
+  Przyklad, jak uzyskac vh i vl:
+
+  /* stale w programie */
+
+  /* liczba bitow w typie unsigned short */
+  #define BITS      (sizeof(unsigned short) * CHAR_BIT)
+
+  /* liczba bitow w polowie typu (low lub high) */
+  #define BITS_HALF (BITS / 2)
+
+  {
+    unsigned short v = 0x1234;
+
+    unsigned short vh = v >> BITS_HALF;
+    unsigned short vl = v & (((unsigned short)1 << BITS_HALF) - 1);
+
+    /* vh = 0x12 */
+    /* vl = 0x34 */
+  }
+
+  przyklad, jak uzyskac v majac vh i vl:
+
+  {
+    unsigned short vh = 0x23;
+    unsigned short vl = 0x45;
+
+    unsigned short v = (vh << BITS_HALF) | vl;
+
+    /* v = 0x2345 */
+  }
+
+Finalny program do napisania ma za zadanie wczytac z wejscia nieokreslona
+liczbe par liczb 16bitowych podanych szesnastkowo i podac ich sume (przyklad data.in + data.out):
+
+  unsigned int ia, ib; /* niestety musimy skorzystac z typu unsigned int, aby uzyc scanfa */
+
+  while (scanf("0x%04x 0x%04x\n", &ia, &ib) == 2)
+  {
+    unsigned short a = (unsigned short)ia;
+    unsigned short b = (unsigned short)ib;
+
+    unsigned short carry;
+
+    unsigned sum = ushort_sum(a, b, &carry);
+
+    printf("0x%04x%04x\n", (unsigned)carry, (unsigned)sum);
+  }
