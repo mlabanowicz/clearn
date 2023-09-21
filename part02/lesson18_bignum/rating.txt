@@ -1,0 +1,24 @@
+Program dziala bardzo dobrze.
+
+Uwaga kosmetyczna:
+
+  1) #include powinny znajdowac sie na samym poczatku pliku,
+     obecnie sa one w dyrektywie 'extern "C" {',
+     nie jest to poprawne.
+
+Uwaga wydajnosciowa:
+
+  Ten program mozna by zrobic bez tych dodatkowych ifow.
+
+  Ify w programowaniu nalezy uzywac jak najrzadziej sie da,
+  wykonanie 'if'a' przez procesor jest wolniejsze,
+  niz sekwencyjne wykonywanie instrukcji.
+
+  Program template.c ma w sobie to rozwiazanie wzorcowe.
+  ('if' jest tam jedynie po to aby sprawdzic, czy carry_ptr nie jest NULLem).
+
+Idziemy dalej, teraz za zadanie bedziemy mieli dorobic do tego programu
+mozliwosc mnozenia.
+
+Program do tej pory dawal wynik dodawania, teraz jeszcze
+ma za zadanie dodatkowo podac wynik mnozenia tak jak to wyglada w pliku data.in i data.out:

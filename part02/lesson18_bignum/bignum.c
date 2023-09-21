@@ -48,7 +48,7 @@ extern "C"
 
             unsigned short carry;
 
-            unsigned sum = ushort_sum(a, b, &carry);
+            unsigned short sum = ushort_sum(a, b, &carry);
 
             printf("0x%04x%04x\n", (unsigned)carry, (unsigned)sum);
         }

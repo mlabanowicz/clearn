@@ -105,8 +105,27 @@ Rozwazmy nastepujace problemy uzywajac liczb 2-bajtowych (16-bitow, zakres: <0x0
     /* v = 0x2345 */
   }
 
+
+2) Problem mnozenia:
+
+   wiemy, ze mnozenie dwoch liczb 2 bajtowych maksymalnie moze dac w wyniku liczbe 4 bajtowa:
+
+   0xffff * 0xffff = 0xfffe0001
+
+   hi  = 0xfffe
+   low = 0x0001
+
+   Do wykonania tej operacji potrzebujemy funkcji:
+
+   unsigned short ushort_mul(unsigned short a, unsigned short b, unsigned short * hi_ptr);
+
+   Tutaj takze nalezy zastosowac podzial liczby na mniejsze kawalki (ah/al/bh/bl)
+   i posluzyc sie mnozeniem pisemnym.
+
+----
+
 Finalny program do napisania ma za zadanie wczytac z wejscia nieokreslona
-liczbe par liczb 16bitowych podanych szesnastkowo i podac ich sume (przyklad data.in + data.out):
+liczbe par liczb 16bitowych podanych szesnastkowo i podac ich sume oraz iloczyn (przyklad data.in + data.out):
 
   unsigned int ia, ib; /* niestety musimy skorzystac z typu unsigned int, aby uzyc scanfa */
 
@@ -117,7 +136,15 @@ liczbe par liczb 16bitowych podanych szesnastkowo i podac ich sume (przyklad dat
 
     unsigned short carry;
 
-    unsigned sum = ushort_sum(a, b, &carry);
+    unsigned short sum = ushort_sum(a, b, &carry);
 
-    printf("0x%04x%04x\n", (unsigned)carry, (unsigned)sum);
+    unsigned short mul_hi;
+
+    unsigned short mul_low = ushort_mul(a, b, &mul_hi);
+
+    printf("0x%04x%04x ", (unsigned)carry, (unsigned)sum);
+
+    printf("0x%04x%04x\n", (unsigned)mul_hi, (unsigned)mul_low);
   }
+
+
