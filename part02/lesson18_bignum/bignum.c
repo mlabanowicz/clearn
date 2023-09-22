@@ -8,40 +8,55 @@ extern "C"
 
 #define BITS (sizeof(unsigned short) * CHAR_BIT)
 #define BITS_HALF (BITS / 2)
-
+#define BITS_QTR (BITS / 4)
     unsigned short ushort_sum(unsigned short a, unsigned short b, unsigned short *carry_ptr);
+
+    unsigned short ushort_mul(unsigned short a, unsigned short b, unsigned short *hi_ptr);
 
     unsigned short ushort_sum(unsigned short a, unsigned short b, unsigned short *carry_ptr)
     {
-        unsigned short sumh, suml;
-        unsigned short bh = b >> BITS_HALF;
-        unsigned short bl = b & (((unsigned short)1 << BITS_HALF) - 1);
         unsigned short ah = a >> BITS_HALF;
+
         unsigned short al = a & (((unsigned short)1 << BITS_HALF) - 1);
-        sumh = ah + bh;
-        suml = al + bl;
-        if (suml > 0x00ff)
+
+        unsigned short bh = b >> BITS_HALF;
+
+        unsigned short bl = b & (((unsigned short)1 << BITS_HALF) - 1);
+
+        unsigned short low = al + bl;
+
+        unsigned short hi = (low >> BITS_HALF) + ah + bh;
+
+        if (carry_ptr)
         {
-            suml -= 0x0100;
-            sumh += 0x0001;
+            *carry_ptr = hi >> BITS_HALF;
         }
-        if (sumh > 0x00ff)
+
+        return (hi << BITS_HALF) |
+               (low & (((unsigned short)1 << BITS_HALF) - 1));
+    }
+
+    unsigned short ushort_mul(unsigned short a, unsigned short b, unsigned short *hi_ptr)
+    {
+        unsigned short i = 0;
+        unsigned short sum = 0;
+        unsigned short rest = 0;
+        *hi_ptr = 0;
+        for (i = 0; i < 16; i++)
         {
-            sumh -= 0x0100;
-            *carry_ptr = 0x0001;
+            sum = ushort_sum(sum, (((a >> (i)) & 1) * b) << i, &rest);
+            *hi_ptr += rest;
+            *hi_ptr += (((a >> (15 - i)) & 1) * b) >> (i + 1);
         }
-        else
-        {
-            *carry_ptr = 0x0000;
-        }
-        return (sumh << BITS_HALF) | suml;
+
+        return sum;
     }
 
     int main(void)
     {
         unsigned int ia, ib;
 
-        while (scanf("0x%08x 0x%08x\n", &ia, &ib) == 2)
+        while (scanf("0x%04x 0x%04x\n", &ia, &ib) == 2)
         {
             unsigned short a = (unsigned short)ia;
             unsigned short b = (unsigned short)ib;
@@ -50,7 +65,13 @@ extern "C"
 
             unsigned short sum = ushort_sum(a, b, &carry);
 
-            printf("0x%04x%04x\n", (unsigned)carry, (unsigned)sum);
+            unsigned short mul_hi;
+
+            unsigned short mul_low = ushort_mul(a, b, &mul_hi);
+
+            printf("0x%04x%04x ", (unsigned)carry, (unsigned)sum);
+
+            printf("0x%04x%04x\n", (unsigned)mul_hi, (unsigned)mul_low);
         }
         return 0;
     }
