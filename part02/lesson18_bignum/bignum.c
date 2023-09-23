@@ -32,7 +32,7 @@ extern "C"
             *carry_ptr = hi >> BITS_HALF;
         }
 
-        return (hi << BITS_HALF) |
+        return ((unsigned short)(hi << BITS_HALF)) |
                (low & (((unsigned short)1 << BITS_HALF) - 1));
     }
 

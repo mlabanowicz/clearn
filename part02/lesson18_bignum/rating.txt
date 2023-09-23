@@ -22,3 +22,46 @@ mozliwosc mnozenia.
 
 Program do tej pory dawal wynik dodawania, teraz jeszcze
 ma za zadanie dodatkowo podac wynik mnozenia tak jak to wyglada w pliku data.in i data.out:
+
+[23-09-2023]
+
+  Niestety obecne rozwiazanie w funkcji 'ushort_mul' generuje overflow'y.
+
+  Jak mamy dwie liczby 16 bitowe, to wynik mnozenia, aby sie zmiescil,
+  suma bitow uzywanych przez czynniki nie moze przekoroczyc 16:
+
+    c = a * b
+
+    bits_avail(c) = 16
+
+    bits_count(a) + bits_count(b) <= 16
+
+  Jak odpalany jest ten program, ale skompilowany za pomoca
+  kompilatora, ktory wprowadza do kodu sprawdzanie overflowa,
+  pokazuje sie problem:
+
+    $ clang -g -ggdb3 -O0 -fsanitize=integer -lasan -o bignum.exe bignum.c
+
+    $ ./bignum.exe < data.in
+    0x00000001 0x00000000
+    bignum.c:47:35: runtime error: implicit conversion from type 'int' of value 131070 (32-bit, signed) to type 'unsigned short' changed the value to 65534 (16-bit, unsigned)
+    SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior bignum.c:47:35 in 
+    0x0001fffe 0xfffe0001
+
+  W linii 47 jest mnozone czyste 'b' przez jakas liczbe.
+  Takie cos jest niedozwolone, bo gdy 'b' ma wartosc: 0xffff,
+  to juz jakiekolwiek dodwanie/pomnozenie 'b' przez liczbe rozna od zera
+  daje overflow.
+
+  Prosze zastosowac podejscie z podstawowki, mnozenie pisemne, po rozbiciu na dwie polowy:
+
+        ab
+      * cd
+      -----
+        pp  = b * d
+       qq   = b * c
+       ss   = a * d
+    + tt    = a * c
+  ---------
+      hhll  = pp + qq0 + ss0 + tt00
+

@@ -33,7 +33,7 @@ unsigned short ushort_sum(unsigned short a, unsigned short b, unsigned short *ca
   }
 
   return
-    (hi << BITS_HALF)
+    ((unsigned short)(hi << BITS_HALF))
     |
     (low & (((unsigned short)1 << BITS_HALF) - 1));
 }
