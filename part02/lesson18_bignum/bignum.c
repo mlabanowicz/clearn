@@ -1,10 +1,10 @@
+#include <stdio.h>
+#include <limits.h>
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-#include <stdio.h>
-#include <limits.h>
 
 #define BITS (sizeof(unsigned short) * CHAR_BIT)
 #define BITS_HALF (BITS / 2)
