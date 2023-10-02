@@ -50,7 +50,9 @@ ma za zadanie dodatkowo podac wynik mnozenia tak jak to wyglada w pliku data.in 
 
   W linii 47 jest mnozone czyste 'b' przez jakas liczbe.
   Takie cos jest niedozwolone, bo gdy 'b' ma wartosc: 0xffff,
-  to juz jakiekolwiek dodwanie/pomnozenie 'b' przez liczbe rozna od zera
+  to juz
+    jakiekolwiek dodawanie do 'b' liczby roznej od zera,
+    lub pomonozenie 'b' przez liczbe wieksza od 1
   daje overflow.
 
   Prosze zastosowac podejscie z podstawowki, mnozenie pisemne, po rozbiciu na dwie polowy:
