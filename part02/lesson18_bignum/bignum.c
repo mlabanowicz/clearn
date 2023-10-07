@@ -8,7 +8,7 @@ extern "C"
 
 #define BITS (sizeof(unsigned short) * CHAR_BIT)
 #define BITS_HALF (BITS / 2)
-#define BITS_QTR (BITS / 4)
+
     unsigned short ushort_sum(unsigned short a, unsigned short b, unsigned short *carry_ptr);
 
     unsigned short ushort_mul(unsigned short a, unsigned short b, unsigned short *hi_ptr);
@@ -36,20 +36,34 @@ extern "C"
                (low & (((unsigned short)1 << BITS_HALF) - 1));
     }
 
-    unsigned short ushort_mul(unsigned short a, unsigned short b, unsigned short *hi_ptr)
+    unsigned short ushort_mul(unsigned short a_, unsigned short b_, unsigned short *hi_ptr)
     {
-        unsigned short i = 0;
-        unsigned short sum = 0;
-        unsigned short rest = 0;
-        *hi_ptr = 0;
-        for (i = 0; i < 16; i++)
+        unsigned short a = a_ >> BITS_HALF;
+        unsigned short b = a_ & (((unsigned short)1 << BITS_HALF) - 1);
+        unsigned short c = b_ >> BITS_HALF;
+        unsigned short d = b_ & (((unsigned short)1 << BITS_HALF) - 1);
+
+        unsigned short hi;
+        unsigned short pp = b * d;
+        unsigned short qq = b * c;
+        unsigned short ss = a * d;
+        unsigned short tt = a * c;
+
+        unsigned short carry1, carry2, carry3;
+
+        unsigned short low = pp;
+        low = ushort_sum(low, (qq << BITS_HALF), &carry1);
+        low = ushort_sum(low, (ss << BITS_HALF), &carry2);
+        low = ushort_sum(low, (tt << (2 * BITS_HALF)), &carry3);
+
+        hi = tt + (qq >> BITS_HALF) + (ss >> BITS_HALF) + carry1 + carry2 + carry3;
+
+        if (hi_ptr)
         {
-            sum = ushort_sum(sum, (((a >> (i)) & 1) * b) << i, &rest);
-            *hi_ptr += rest;
-            *hi_ptr += (((a >> (15 - i)) & 1) * b) >> (i + 1);
+            *hi_ptr = hi;
         }
 
-        return sum;
+        return low;
     }
 
     int main(void)
