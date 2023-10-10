@@ -67,3 +67,51 @@ ma za zadanie dodatkowo podac wynik mnozenia tak jak to wyglada w pliku data.in 
   ---------
       hhll  = pp + qq0 + ss0 + tt00
 
+[10-10-2023]
+
+  Program dziala bardzo dobrze, ale sa dwie rzeczy niescisle:
+
+  1) Gdy robimny przesuniecie bitowe w lewo, dobrze miec pewnosc,
+     ze ta operacja nie spowoduje przepelnienia, przykladowo liczba
+     zapisana:
+
+     a)
+
+       a = 0x00A5 /* zapis binarny: 0000 0000 1010 0101 */
+
+       po operacji a = a << 8 wyglada tak:
+
+       a = 0xA500 /* zapis binarny: 1010 0101 0000 0000 */
+
+       I to jest OK, natomiast liczba:
+
+     b)
+
+       b = 0x0267 /* zapis binarny: 0000 0010 0110 0111 */
+
+       po operacji b = b << 8 wyglada tak:
+
+       b = 0x6700 /* zapis binarny: 0110 0111 0000 0000 */
+
+       W tym drugim przypadku mamy przepelnienie, lepiej tego unikac.
+
+     Taki problem wystepuje w lini 55 i 56
+
+  2) Linia 57 robi zagadkowe przesuniecie:
+
+    57: low = ushort_sum(low, (tt << (2 * BITS_HALF)), &carry3);
+
+    liczba tt jest liczba 16 bitowa, i jest ona przesuwana o 16 bitow w lewo,
+    jaki bedzie wynik tej operacji ?
+
+    Ta cala linia jest zbedna, w efekcie zmienna 'carry3' jest niepotrzebna.
+
+Zalaczam pelny program wzorcowy dla tego zadania, w ktorym jest zastosowany typ uzytkownika,
+  bignum_type_t,
+mozna dzieki takiemu podejsciu latwo przerobic program na dzialanie z innymi typami,
+
+przykladowo:
+
+  typedef unsigned long bignum_type_t;
+
+  #define BIGNUM_HEX_DIGITS_COUNT_STR "16" /* assuming bignum_type_t is 64 bits long */

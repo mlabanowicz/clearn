@@ -7,51 +7,88 @@
 extern "C" {
 #endif
 
-#define BITS (sizeof(unsigned short) * CHAR_BIT)
+typedef unsigned short bignum_type_t;
+
+#define BIGNUM_HEX_DIGITS_COUNT_STR "4" /* assuming bignum_type_t is 16 bits long */
+
+#define BITS (sizeof(bignum_type_t) * CHAR_BIT)
 
 #define BITS_HALF (BITS / 2)
 
-unsigned short ushort_sum(unsigned short a, unsigned short b, unsigned short *carry_ptr);
-
-unsigned short ushort_sum(unsigned short a, unsigned short b, unsigned short *carry_ptr)
+static bignum_type_t LOW(bignum_type_t v)
 {
-  unsigned short ah = a >> BITS_HALF;
+  return v & (((bignum_type_t)1 << BITS_HALF) - 1);
+}
 
-  unsigned short al = a & (((unsigned short)1 << BITS_HALF) - 1);
+static bignum_type_t HI(bignum_type_t v)
+{
+  return v >> BITS_HALF;
+}
 
-  unsigned short bh = b >> BITS_HALF;
+static bignum_type_t JOIN(bignum_type_t hi, bignum_type_t low)
+{
+  return (hi << BITS_HALF) | low;
+}
 
-  unsigned short bl = b & (((unsigned short)1 << BITS_HALF) - 1);
+static bignum_type_t bignum_type_sum(bignum_type_t a, bignum_type_t b,
+  bignum_type_t *carry_ptr)
+{
+  bignum_type_t low = LOW(a) + LOW(b);
 
-  unsigned short low = al + bl;
-
-  unsigned short hi = (low >> BITS_HALF) + ah + bh;
+  bignum_type_t hi = HI(low) + HI(a) + HI(b);
 
   if (carry_ptr)
   {
-    *carry_ptr = hi >> BITS_HALF;
+    *carry_ptr = HI(hi);
   }
 
-  return
-    ((unsigned short)(hi << BITS_HALF))
-    |
-    (low & (((unsigned short)1 << BITS_HALF) - 1));
+  return JOIN(LOW(hi), LOW(low));
+}
+
+static bignum_type_t bignum_type_mul(bignum_type_t a, bignum_type_t b,
+  bignum_type_t *hi_ptr)
+{
+  bignum_type_t r0 = LOW(a) * LOW(b);
+
+  bignum_type_t ab = LOW(a) * HI(b);
+
+  bignum_type_t ba = HI(a) * LOW(b);
+
+  bignum_type_t r1 = HI(r0) + LOW(ab) + LOW(ba);
+
+  if (hi_ptr)
+  {
+    *hi_ptr = HI(a) * HI(b) + HI(r1) + HI(ab) + HI(ba);
+  }
+
+  return JOIN(LOW(r1), LOW(r0));
 }
 
 int main(void)
 {
-  unsigned int ia, ib;
+  unsigned long la, lb;
 
-  while (scanf("0x%04x 0x%04x\n", &ia, &ib) == 2)
+  while (scanf("0x%lx 0x%lx\n", &la, &lb) == 2)
   {
-    unsigned short a = (unsigned short)ia;
-    unsigned short b = (unsigned short)ib;
+    bignum_type_t a = (bignum_type_t)la;
 
-    unsigned short carry;
+    bignum_type_t b = (bignum_type_t)lb;
 
-    unsigned short sum = ushort_sum(a, b, &carry);
+    bignum_type_t carry;
 
-    printf("0x%04x%04x\n", (unsigned)carry, (unsigned)sum);
+    bignum_type_t sum = bignum_type_sum(a, b, &carry);
+
+    bignum_type_t mul_hi;
+
+    bignum_type_t mul_low = bignum_type_mul(a, b, &mul_hi);
+
+    printf("0x%0" BIGNUM_HEX_DIGITS_COUNT_STR
+           "lx%0" BIGNUM_HEX_DIGITS_COUNT_STR "lx ",
+           (unsigned long)carry, (unsigned long)sum);
+
+    printf("0x%0" BIGNUM_HEX_DIGITS_COUNT_STR
+           "lx%0" BIGNUM_HEX_DIGITS_COUNT_STR "lx\n",
+           (unsigned long)mul_hi, (unsigned long)mul_low);
   }
 
   return EXIT_SUCCESS;
