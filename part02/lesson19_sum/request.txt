@@ -1,3 +1,5 @@
+https://pl.spoj.com/problems/AL_01_01/
+
 Jest takie fajne zadanie, prosze sprobowac je zaimplementowac,
 na pierwszy strzal zrob tak, aby dzialalo.
 
