@@ -1,0 +1,5 @@
+Jest takie fajne zadanie, prosze sprobowac je zaimplementowac,
+na pierwszy strzal zrob tak, aby dzialalo.
+
+Nastpenie, moze wpadniesz na jakis szybki sposob rozwiazania tego zadania,
+mnie sie jeszzce nie udalo, podobno jest to proste :).
