@@ -31,7 +31,7 @@ extern "C"
                 high = mid - 1;
         }
 
-        return EXIT_SUCCESS;
+        return 0;
     }
 
     int main(void)
@@ -44,9 +44,8 @@ extern "C"
             fprintf(stderr, "Failed to read 2 integers.\n");
             return EXIT_FAILURE;
         }
-        mleko = malloc(n * sizeof(unsigned int));
-        nutella = malloc(n * sizeof(unsigned int));
-        qsort(nutella, n, sizeof(unsigned int), compare);
+        mleko = (unsigned int *)malloc(n * sizeof(unsigned int));
+        nutella = (unsigned int *)malloc(n * sizeof(unsigned int));
 
         if (mleko == NULL || nutella == NULL)
         {
@@ -68,6 +67,7 @@ extern "C"
             }
         }
 
+        qsort(nutella, n, sizeof(unsigned int), compare);
 
         for (i = 0; i < m; i++)
         {

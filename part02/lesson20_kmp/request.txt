@@ -1,0 +1,30 @@
+Zaimplementuj program, ktory dostanie na wejsciu dwa wyrazy a i b,
+i wypisze, ile razy wyraz a pojawil sie w b.
+Wyrazy skladaja sie wylacznie z duzych liter.
+Rozmiar wyrazu nie bedzie dluzszy niz milion znakow.
+
+
+Przyklad:
+
+<in>:
+ALA
+ALLLAKALAKKALALAL
+
+<out>:
+3
+
+Uzasadnienie:
+3 razy, gdyz:
+   ALLLAKALAKKALALAL
+1:       ---
+2:            ---
+3:              ---
+
+
+[A] Prosze zaimplementowac rozwiazanie wolne, ale dzialajace.
+
+[B] Prosze zaimplementowac genertor danych testowych (dane wejsciowe).
+    Wykorzystac w tym celu nalezy funkcje srand i rand,
+    Przyklad wygenerowania wyrazu w pliku: 'losowy_wyraz.c'.
+
+[C] TBD.

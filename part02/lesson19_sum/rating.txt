@@ -1,0 +1,13 @@
+Program nie dzialal poprawnie.
+
+Tablica powinna byc posortowana dopiero po tym, jak zostanie wypelniona danymi.
+
+Funkcja, ktora zwraca TRUE/FALSE, tak jak to jest w przypadku binarySearch
+nie powinna uzywac EXIT_SUCCESS.
+EXIT_SUCCESS/EXIT_FAILURE sa uzyteczne dla funkcji 'main'
+do komunikacji z systemem.
+Nie mamy pewnosci, co sie moze kryc pod tymi stalymi.
+Moga byc systemy, gdzie EXIT_SUCCESS ma wartosc 1, nie jest to zabronione.
+
+Po poprawkach program dziala bardzo dobrze,
+podobno istnieje szybszy sposob na to zadanie, ktorego nie znam.
