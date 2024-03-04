@@ -27,4 +27,31 @@ Uzasadnienie:
     Wykorzystac w tym celu nalezy funkcje srand i rand,
     Przyklad wygenerowania wyrazu w pliku: 'losowy_wyraz.c'.
 
-[C] TBD.
+[C] Program dziala prawidlowo, jednak jest on zbyt wolny,
+    dla testu A.in wynik dzialania to czas ok 2.5 minuty.
+
+    Prosze teraz sprobowac zaimplementowac
+    algorytm opisany na stronie:
+      https://pl.wikipedia.org/wiki/Algorytm_Knutha-Morrisa-Pratta
+    Wowczas program prawdopodobnie znacznie przyspieszy.
+
+    Prosze pamietac, ze majac juz dzialajacy program (wolny),
+    oraz generator danych testowych, mozna sprawdzic, czy rozwiazanie
+    finalne KMP bedzie dzialac prawidlowo, przyklad:
+
+    1) generujemy dane testowe test.in
+    2) uruchamiany wolny   program < test.in > slow.out
+    3) uruchamiany finalny program < test.in > fast.out
+    4) porownujemy pliki fast.out i slow.out, jezeli sa takie same,
+       mamy potwierdzenie, ze program dziala prawidlowo
+
+    Taka procedure mozna uruchomic wielokrotnie w celu upewnienia
+    sie, ze program dziala wlasciwie.
+
+    Jak mozna zauwazyc, program do generowania testow jest
+    bardzo wazny w takim przypadku, im wiecej dziwnych kombinacji
+    jest w stanie wygenerowac, tym bardziej bedzie przetestowane finalne
+    rozwiazanie.
+    Dobrze, jakby ten generator testowy rozwazal rozne dlugosci wyrazow a i b.
+    Takze, czasami moglby losowac tylko z dwoch liter,
+    kombinacji i pomyslow tutaj nie powinno zabraknac.
