@@ -4,7 +4,7 @@ Na pierwszy rzut oka mozna by pomyslec, ze program nie ma bledow.
 
 Niestety, na wspolczesnym komputerze program konczy sie tak:
   gcc memory.c -o memory.exe
-  ./memory.exe
+  ./memory.exe < data.in
   Segmentation fault (core dumped).
 
 Powodem jest uzyta bardzo gleboka rekurencja,
