@@ -7,7 +7,11 @@ void computeT(char *W, int M, int *T);
 void KMPSearch(char *W, char *S);
 
 char *inputString(FILE *fp) {
-    char *str = NULL;
+#if 1
+    char *str = malloc(1000000 + 1);
+    if (fscanf(fp, "%s", str)) { }
+    return str;
+#else
     int ch;
     size_t len = 0;
     const size_t chunk = 16;
@@ -26,6 +30,7 @@ char *inputString(FILE *fp) {
     str[len] = '\0';
 
     return str;
+#endif
 }
 
 void computeT(char *W, int M, int *T) {

@@ -7,19 +7,32 @@
 #define LITERA_MIN 'A'
 #define LITERA_MAX 'Z'
 
-#define DLUGOSC_KLUCZA 16
-#define DLUGOSC_CIAGU 256
-
-#define LITERA_CNT (LITERA_MAX - LITERA_MIN + 1)
+static int randRange(int from, int to)
+{
+  return from + (rand() % (to - from + 1));
+}
 
 int main(void)
 {
-  char klucz [DLUGOSC_KLUCZA + 1];
-  char ciag [DLUGOSC_CIAGU + 1];
-  int i = sizeof(klucz);
-  int j;
-  int ilosc_powtorzen =0;
-  srand(time(NULL));
+  static char ciag  [1000000 + 1];
+  static char klucz [sizeof(ciag)];
+
+  int DLUGOSC_CIAGU;
+  int DLUGOSC_KLUCZA;
+  int LITERA_CNT;
+
+  int i;
+
+  unsigned srand_value = (unsigned)clock();
+
+  srand(srand_value);
+
+  DLUGOSC_CIAGU  = randRange(1, sizeof(ciag) - 1);
+  DLUGOSC_KLUCZA = randRange(1, DLUGOSC_CIAGU);
+
+  LITERA_CNT = randRange(1, LITERA_MAX - LITERA_MIN + 1);
+
+  i = DLUGOSC_KLUCZA + 1;
 
   klucz[--i] = '\0';
 
@@ -33,35 +46,19 @@ int main(void)
 
   puts(klucz);
 
-
-  i = sizeof(ciag);
+  i = DLUGOSC_CIAGU + 1;
 
   ciag[--i] = '\0';
 
   while (i)
   {
-    int r;
-    do{
-    r = rand();
+    int r = rand();
     r %= LITERA_CNT;
     r += LITERA_MIN;
-    }while(r == klucz[0]); /*zabezpieczenie zeby klucz przypadkiem sie nie wygenerowal w ciagu*/
     ciag[--i] = r;
   }
 
-  for(i =0;i<(int)sizeof(ciag)-(int)sizeof(klucz)+1;i++){
-    int r = rand();
-    if(r % 19 == 0){
-      ilosc_powtorzen++;
-      for(j=0;j<(int)sizeof(klucz)-1;j++){
-        ciag[i] = klucz[j];
-        i++;
-      }
-    }
-  }
-
   puts(ciag);
-  printf("%d\n",ilosc_powtorzen);
 
   return EXIT_SUCCESS;
 }

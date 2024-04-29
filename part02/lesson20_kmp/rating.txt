@@ -1,0 +1,6 @@
+kmp.c dziala poprawnie.
+
+Generator moglby byc bardziej skomplikowany,
+generator nie musi generowac danych wyjsciowych,
+ten dane niech wygeneruje osobny program, slow.c (pierwsze rozwiazanei kmp.c).
+Wczytywanie duzych stringow mozna zrealizowac za pomoca scanfa.

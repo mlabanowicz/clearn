@@ -1,0 +1,18 @@
+Plik memory.c zawiera w sobie pewien program.
+
+Na pierwszy rzut oka mozna by pomyslec, ze program nie ma bledow.
+
+Niestety, na wspolczesnym komputerze program konczy sie tak:
+  gcc memory.c -o memory.exe
+  ./memory.exe
+  Segmentation fault (core dumped).
+
+Powodem jest uzyta bardzo gleboka rekurencja,
+co sie wiaze ze zbyt duzym uzyciem pamieci STACK.
+Rozwiazaniem jest oczywiscie zastapienie uzycia STACK na pamiec HEAP (malloc/free).
+
+Prosze tak zmodyfikowac funkcje 'foo', aby ten program wykonywal
+swoja prace dokladnie tak samo, ale zeby zamiast STACK'a korzystal
+z pamieci HEAP.
+
+Prosze nie ruszac innych kawalkow programu, zmiana ma byc tylko w funkcji 'foo'.
