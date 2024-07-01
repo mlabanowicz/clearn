@@ -21,12 +21,10 @@ static long foo(int a, int b, int * c, int * i)
 
   long result = 0;
 
-  if (bar(a, b, c, i))
+  while (bar(a, b, c, i))
   {
     a += 5;
     b -= 7;
-
-    result = foo(a, b, c, i);
 
     result += *i + *c;
   }
