@@ -1,0 +1,5 @@
+Podane rozwiazanie jest dzialajace, jest to kod zoptymalizowany,
+co akurat w tym przykladzie bylo mozliwe.
+
+Prosze sprobowac rozwiazac ten problem (zbyt duze uzycie STACK'a)
+w programie w pliku memory2.c.
