@@ -1,0 +1,33 @@
+C/C++
+
+Zadanie:
+  Liczba wystapien elementu w zbiorze.
+  Zdanie zaimplementuj w C albo w C++.
+
+Dane wejsciowe:
+N
+a1 a2 a3 ... aN
+Q
+b1
+b2
+...
+bQ
+
+
+Przyklad:
+
+IN:
+10
+2 5 8 1 7 4 1 7 9 0
+4
+2 6 1 7
+
+OUT:
+1
+0
+2
+2
+
+2 znajduje 1 raz
+6 znajduje sie 0 razy
+1 i 7 wystepuja po 2 razy
