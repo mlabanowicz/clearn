@@ -1,0 +1,25 @@
+C/C++
+
+Zadanie:
+  Nalezy znalezc wyraz, ktory nie ma swojej pary.
+  Istnieje tylko jeden taki wyraz, nieposiadajacy swojego odpowiednika.
+
+Dane wejsciowe:
+txt1
+txt2
+txt3
+...
+
+Przyklad:
+
+IN:
+ala
+ma
+kota
+kota
+ala
+
+OUT:
+ma
+
+Z podanych wyrazow tylko 'ma' nie ma swojego odpowiednika.

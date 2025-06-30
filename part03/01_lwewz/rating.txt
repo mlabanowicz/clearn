@@ -1,0 +1,25 @@
+Ok, bardzo dobrze
+
+w C++ w funkcji, ktora nie przyjmuje parametrow, nie trzeba uzywac void,
+te dwa zapisy sa takie same:
+  int main(void)
+  int main()
+(w zwyklym C to nie jest to samo)
+
+W C++ jest taki motyw, ze kod zwracany do systemu jako SUCCESS to 0.
+Nie trzeba uzywac EXIT_SUCCESS, mozna uzyc 'return 0'.
+
+Co ciekawe, dotyczy to tylko funkcji main, ta funkcja nie musi miec wogole
+wywolania return. Ono jest tam defaultowo:
+
+int main()
+{
+  return 0; /* <----- taki kawalek kodu jest juz tam defaultowo */
+}
+
+Czyli powyzszy kod jest rownoznaczny takiemu:
+int main()
+{
+}
+
+Prosze pamietac, ze dotyczy to TYLKO funkcji 'main'.
