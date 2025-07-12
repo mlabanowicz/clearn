@@ -1,0 +1,23 @@
+Ok, bardzo dobrze, super.
+
+w CPP uzyles: std::unordered_map, co jest jak najlepszym wyborem,
+jednak kazda taka operacja:
+  word_ctr[word]++;
+to trwa log(N), czyli, nie jest to takie szybkie, jak by sie moglo
+na pierwszy rzut oka wydawac.
+
+Trik dla tego typu zadan, mozna je zrobic liniowo,
+przyklad dla danych binarnych,
+wystarczy XOR na bitach i na koncu wyjdzie poszukiwany element.
+
+INPUT:
+01000001 // = A
+01001000 // = H
+01011000 // = X
+01011010 // = Z
+01000001 // = A
+01001000 // = H
+01011010 // = Z
+
+OUTPUT: (po xorowaniu:)
+01011000 // = X

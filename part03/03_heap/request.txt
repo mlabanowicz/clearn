@@ -1,0 +1,47 @@
+C
+
+Zadanie:
+  Nalezy zaimplementowac program, ktory bedzie dynamicznym
+  zbiorem elementow z powtorzeniami (jedna liczba moze byc wiele razy),
+  do ktorego mozna dodawac/usuwac elementy i wypisac najwiekszy z nich.
+
+Dane wejsciowe:
+<cmd> [liczba]
+
+cmd:
+add <liczba> - dodaje liczbe do zbioru
+del <liczba> - usuwa  liczbe ze zbioru (jezeli jest wiele takich liczb, usuwamy tylko jedna)
+               (zakladamy, ze na pewno istnieje taka liczba w zbiorze)
+max          - wypisuje najwieksza liczbe obecna w zbiorze
+
+przyklad:
+
+IN:
+add 5
+add 8
+add 5
+max
+add 9
+del 5
+del 8
+max
+del 9
+max
+
+OUT:
+8
+9
+5
+
+Wyjasnienie:
+start : { } // zbior pusty
+add 5 : { 5 }
+add 8 : { 5, 8 }
+add 5 : { 5, 8, 5 } // element powtorzony
+max   : wypisanie wartosci najwiekszej: 8
+add 9 : { 5, 8, 5, 9 }
+del 5 : { 5, 8, 9 } // usuwamy tylko jeden element o wartosci 5
+del 8 : { 5, 9 }
+max   : wypisanie wartosci najwiekszej: 9
+del 9 : { 5 }
+max   : wypisanie wartosci najwiekszej: 5
