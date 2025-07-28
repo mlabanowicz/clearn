@@ -1,0 +1,27 @@
+C
+
+Zadanie:
+  To samo zadanie jak w dziale 03_heap, ale tym razem,
+  zaimplementuj je uzywajac zwyklej struktury BST.
+
+  Kazdy element ma informacje o dzieciach (lewym i prawym) oraz o rodzicu.
+
+  typedef struct element_s element_t;
+
+  struct element_s
+  {
+    element_t * left, * right, * parent;
+
+    int value; /* wartosc przechowywanej liczby    */
+
+    int count; /* liczba takich wartosci w zbiorze */
+  };
+
+  Element left  (o ile istnieje), ma mniejsza wartosc.
+  Element right (o ile istnieje), ma wieksza  wartosc.
+
+  Element najbardziej po lewej  stronie ma wartosc minimalna.
+  Element najbardziej po prawej stronie ma wartosc maksymalna.
+
+  Po szczegolowe informacje odsylam do:
+    https://en.wikipedia.org/wiki/Binary_search_tree
