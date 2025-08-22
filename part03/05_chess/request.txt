@@ -1,0 +1,53 @@
+C/C++
+
+Nalezy sprawdzic, czy w jednym ruchu biale (ktore wlasnie go wykonuja)
+sa w stanie zrobic MATA przeciwnikowi.
+
+figury:
+  .  - pole puste
+  Pp - pionek
+  Rr - wieza   (rock)
+  Kk - kon
+  Bb - laufer  (bishop)
+  Qq - krolowa (queen)
+  Kk - krol
+
+Figury biale  sa oznaczone duzymi literami
+Figury czarne sa oznaczone malymi literami
+
+Bialy krol zaczynal od dolu, czarny od gory.
+
+Zakladamy, ze gdy wieza i krol stoja na swoich bazowych polach,
+to roszada jest dozwolona (figury jeszcze sie nie ruszyly).
+
+przyklad A (poczatkowe ustawienie):
+-----------------------------------
+
+IN:
+rkbqkbkr
+pppppppp
+........
+........
+........
+........
+PPPPPPPP
+RKBQKBKR
+
+OUT:
+NIE
+
+przyklad B:
+-----------
+
+IN:
+k.......
+......RR
+K.......
+........
+........
+........
+........
+........
+
+OUT:
+TAK

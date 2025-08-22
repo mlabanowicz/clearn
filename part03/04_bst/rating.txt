@@ -1,0 +1,13 @@
+Bardzo dobrze, dziala prawidlowo.
+
+Dla duzych danych wejsciowych ten program dziala bardzo szybko.
+
+Czyli algorytm BST rozwiazuje problem sortowania danych, ktore sie zmieniaja,
+po kazdej operacji add/del caly czas mamy posortowane elementy.
+
+* [ciekawostka]
+  Dane wejsciowe mozna tak niefortunnie dobrac, aby to rozwiazanie (oparte na BST)
+  z tym sobie nie poradzilo, chodzi o przypadek, gdy dane utworza drzewo,
+  ktore bedzie mialo jedna dluga galaz.
+  Rozwiazaniem na to jest dodanie balansowania takiego drzewa za pomoca
+  algorytmow takich jak RBT, AVL, itd.
