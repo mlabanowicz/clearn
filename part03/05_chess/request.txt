@@ -7,7 +7,7 @@ figury:
   .  - pole puste
   Pp - pionek
   Rr - wieza   (rock)
-  Kk - kon
+  Nn - kon     (knight)
   Bb - laufer  (bishop)
   Qq - krolowa (queen)
   Kk - krol
@@ -24,14 +24,14 @@ przyklad A (poczatkowe ustawienie):
 -----------------------------------
 
 IN:
-rkbqkbkr
+rnbqkbnr
 pppppppp
 ........
 ........
 ........
 ........
 PPPPPPPP
-RKBQKBKR
+RNBQKBNR
 
 OUT:
 NIE
