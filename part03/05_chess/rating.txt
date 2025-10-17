@@ -1,0 +1,53 @@
+To zadanie jest dosyc trudne.
+Przy takich zadaniach bardzo wazne jest to,
+aby koncepcja byla mozliwa do naszkicowania lub opisania,
+im prosciej sie to zrobi, tym czytelniej i latwiej
+bedzie sie pisalo program.
+
+Program napisany jest dosyc czytelnie, implementacja nie jest zakonczona,
+koncepcja jest ok.
+
+Wydaje mi sie, ze takie zalozenia powinny byc na poczatku:
+
+  0) Plansza to jednolita struktura, ktora zawiera w sobie
+     wszystkie informacje o stanie gry.
+     ChessBoard chessBoard;
+
+  1) Atakuja zawsze bierki biale (duze litery atakuja male)
+
+  2) Plansze mozna odwrocic, tak, zeby atakujacymi byly bierki czarne.
+     Czyli przekrecimy plansze o 180 stopni, z zamiana liter duzych na male i odwrotnie.
+     (
+      * na poczatek to mozna zignorowac, ale na przyszlosc:
+        o) bedzie trzeba gdzies to pamietac, czy roszada jest mozliwa
+        o) tak samo jezeli chodzi o bicie w przelocie
+     )
+  ChessBoard reversed = ChessBoard_reverse(chessBoard);
+
+  3) Nalezy potrafic wygenerowac wszystkie potencjalne ruchy dla bialych.
+     * taka lista moze w sobie zawierac ruchy niedozwolone,
+       przykladowo ruch, ktory odslania krola bialych.
+  Moves moves = ChessBoard_potentialMoves(chessBoard);
+
+  4) Majac te wszystkie potencjalne ruchy, nalezy miec funkcje, ktora sprawdza,
+     czy jest jakikolwiek ruch, ktory szachuje krola czarnego.
+  ChessBoard_IsBlackKingInChess(chessBoard, moves)
+
+  5) Kazdy potencjalny ruch nalezy zweryfikowac, czy jest on wogole dozwolony,
+     to znaczy sprawdzamy, czy nie odslonimy bialego krola danym ruchem.
+     Ruch sprawdzmy metodami powyzszymi:
+     ChessBoard moveReversed = ChessBoard_reverse(moves[i])
+     Moves moveReversedMoves = ChessBoard_potentialMoves(moveReversed);
+     if (ChessBoard_IsBlackKingInChess(moveReversed, moveReversedMoves))
+     {
+       // ruch moves[i] jest niedozwolony, bo bialy krol bedzie odsloniety
+     }
+     (
+       ** na przyszlosc: w przypadku roszady, nalezy tez sprawdzic,
+          czy trzy pola, po ktorych przemieszczal sie krol, nie byly atakowane
+          przez czarne
+     )
+
+  6) Jezeli liczba dozwolonych ruchow jest 0 wowczas sa dwie mozliwosci:
+     Gdy krol bialy jest szachowany, to jest MAT
+     w przeciwnym wypadku jest PAT.
