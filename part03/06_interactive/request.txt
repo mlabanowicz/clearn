@@ -1,0 +1,35 @@
+C
+
+Program ma na celu znalezienie liczby x,
+gdy ja znajdzie konczy swoje dzialanie.
+
+Algorytm powinien byc taki, aby w miare mozliwosci
+liczba zadawanych pytan byla jak najmniejsza.
+
+Program zadaje pytanie, wypisujac na stdout liczbe,
+po czym, odczytuje z stdin'a odpowiedz,
+ktora sklada sie z jednej lini zawierajacej jeden znak:
+< - szukana liczba jest mniejsza
+> - szukana liczba jest wieksza
+= - liczba znaleziona
+
+Program zadaje pytanie i otrzymuje odpowiedz wg takiego szablonu:
+
+char query(int value)
+{
+  char answer [8];
+  printf("%d\n", value); /* wysylamy zapytanie do uzytkownika */
+  fflush(stdout);
+  scanf("%s", answer); /* odczytujemy cala linie jaka odpowiedz */
+  return *answer;
+}
+
+przykladowe uzycie:
+  if (query(123) == '<') { puts("liczba musi byc mniejsza od 123"); }
+
+HINT#1:
+  Na poczatek zrob program, ktory znajdzie liczby mieszczace sie w typie int.
+
+HINT#2:
+  Pierwszy ruch to znalezienie granic, dolnej i gornej.
+  Nastepny to "madre" wyszukiwanie w tym przedziale.
